@@ -20,13 +20,10 @@ class memento extends Phaser.GameObjects.Sprite {
     makeInteractive() {
         
         this.on('pointerdown', (pointer, gameObject) => {
-            console.log(this);
             this.isDisplayingText = true;
-            console.log('before:');
-            console.log(boxText);
-            boxText.setText(this.text);
-            console.log('after:');
-            console.log(boxText);
+            // boxText.setText(this.text);
+            typeText(this.scene, this.text[0]+'\n\n'+this.text[1]);
+
         });
     }
 
