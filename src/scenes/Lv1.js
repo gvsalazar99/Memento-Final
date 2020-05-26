@@ -5,18 +5,15 @@ class Lv1 extends Phaser.Scene {
 
 	
 	create() {
-
-
 		//camera fade in n out 
 		this.cameras.main.once('camerafadeoutcomplete', function (camera) {
 			this.add.image(1260, 590, 'levelonenew').setOrigin(0, 0);
 			camera.fadeIn(300, 0,0,0);
-	
+
 		 //create sounds
 		 this.music = this.sound.add('level1music');
 		 //this.music.play( {loop:true} );
-		 //play if unmuted
-		 if(mute == false) { this.music.play( { loop: true} ); }
+		 if(mute == false) { this.music.play( { loop: true} ); } //play if unmuted
 
 
 
@@ -27,71 +24,98 @@ class Lv1 extends Phaser.Scene {
 		this.tempLevl2button = this.add.sprite(game.config.width/4,game.config.height/4, 'exitbutton').setScale(0.25,0.25).setOrigin(0);
 		this.tempLevl2button.setInteractive();
 		this.tempLevl2button.on('pointerdown',()=> {this.scene.start('Level2'); this.music.stop()});
-		
 
 		//dialogue box art
 		this.dialogueBox = this.add.sprite(game.config.width/4.5, 0, 'blue1').setOrigin(0).setScale(.55,.4);
 		this.dialogueBox.y = game.config.height/1.01 - this.dialogueBox.displayHeight;
 
+		//create continue text prompt
+		this.continueButton = this.add.text(720, 555, '[CLICK TO CONTINUE]', { font: "15pt Courier", fill: "#ff0000", stroke: "#ff0000", strokeThickness: 1 });
+		this.continueButton.alpha = 0; 	
+		this.continueON = false;
+		this.continueButton.setInteractive();
+		this.continueButton.on('pointerdown', (pointer, gameObject) => {
+			console.log('conditional met');
+			if(this.selectedMemento.continueCount <=1) {
+				typeText(this, this.selectedMemento.text[2] + '\n\n' + this.selectedMemento.text[3]);
+			}
+			else {
+				this.selectedMemento.displayOptions();
+			}
+		});
+
 		//text
-		boxText = this.add.text(410, this.dialogueBox.y + 15, '', { font: "15pt Courier", fill: "#ff0000", stroke: "#ff0000", strokeThickness: 1, wordWrap: { width: 600, useAdvancedWrap: true } });
+		boxText = this.add.text(410, this.dialogueBox.y + 15, '', { font: "15pt Courier", fill: "#ff0000", stroke: "#ff0000", strokeThickness: 1, wordWrap: { width: 570, useAdvancedWrap: true } });
 		//boxText.setText('Welcome to level 1! Click on the magnolia for instructions!');
 		boxText.visible = true;
-		typeText(this, 'Welcome to level 1! Click on the magnolia for instructions!');
+		typeText(this, 'Welcome to level 1! Take a look around and click on what piques your interest');
 		
+
 		//clickable memento magnolia
-		this.memento = new memento(this, game.config.width*.84, game.config.height*.000000000000000001, 'magnolianew').setOrigin(0).setScale(.7999);
-		this.memento.text = ['X+A, a romantic display of affection',
-							'A contract ripped into the bark as a demonstration',
-							'After the guilty often return to the crime scene',
-							'Then visits stop & the gashes fade to scars to memory',
-							'Sometimes we hurt each other and lose a shared, beloved sentiment'];
-		this.memento.makeInteractive();
-
+		this.magnolia = new memento(this, game.config.width*.84, game.config.height*.000000000000000001, 'magnolianew').setOrigin(0).setScale(.7999);
+		this.magnolia.text = ['I\'m a magnolia flower!',
+							'...',
+							'.... what, do you like me or something? Wtf are you looking at?',
+							'...'];
+		this.magnolia.makeInteractive();
 		//tree carving
-		this.memento = new memento(this, game.config.width*.0000000000001, game.config.height*.069, 'treecarving').setOrigin(0).setScale(.75);
-		this.memento.text = 'Rule #1: Don\'t click on the exit button!';
-		this.memento.makeInteractive();
-		
+		this.carving = new memento(this, game.config.width*.0000000000001, game.config.height*.069, 'treecarving').setOrigin(0).setScale(.75);
+		this.carving.text = ['X+A, a romantic display of affection',
+			'A contract ripped into the bark as a demonstration',
+			'After the guilty often return to the crime scene',
+			'Then visits stop & the gashes fade to scars to memory',
+			'Sometimes we hurt each other and lose a shared, beloved sentiment'];
+		this.carving.makeInteractive();
 		//squirrel
-		this.memento = new memento(this, game.config.width*.455, game.config.height*.49, 'squirrel').setOrigin(0).setScale(.6);
-		this.memento.text = 'Rule #1: Don\'t click on the exit button!';
-		this.memento.makeInteractive();
-		
+		this.squirrel = new memento(this, game.config.width*.455, game.config.height*.49, 'squirrel').setOrigin(0).setScale(.6);
+		this.squirrel.text = ['[Squirrel sounds]', 
+							'...',
+							'[Squirrel sounds intensify]',
+							'...'];
+		this.squirrel.makeInteractive();
 		//butterfly
-		this.memento = new memento(this, game.config.width*.0455, game.config.height*.5, 'butterflysmall').setOrigin(0).setScale(.8);
-		this.memento.text = 'Rule #1: Don\'t click on the exit button!';
-		this.memento.makeInteractive();
-		
+		this.butterfly = new memento(this, game.config.width*.0455, game.config.height*.5, 'butterflysmall').setOrigin(0).setScale(.8);
+		this.butterfly.text = ['[oink, oink]',
+							'...',
+							'[oinking intensifies',
+							'...'];
+		this.butterfly.makeInteractive();
 		//girl
-		this.memento = new memento(this, game.config.width*.44, game.config.height*.299, 'girlsmall').setOrigin(0).setScale(.87);
-		this.memento.text = 'Rule #1: Don\'t click on the exit button!';
-		this.memento.makeInteractive();
+		this.girl = new memento(this, game.config.width*.44, game.config.height*.299, 'girlsmall').setOrigin(0).setScale(.87);
+		this.girl.text = ['\"Stranger danger!\"',
+						'...',
+						'I\"m getting my Daddy!',
+						'...'];
+		this.girl.makeInteractive();
 	
-
-
-
-		//character
-		//this.character = new Shadow(this, 0, 385, 'character').setOrigin(0,0).setScale(.7);
-		//this.character.x = game.config.width/2;
-		//this.character.y = game.config.height/2;
-
-	}, this);
+		this.selectedMemento; //current memento being interacted with
+		}, this);
   
-	this.cameras.main.fadeOut(300, 0,0,0);
+		this.cameras.main.fadeOut(300, 0,0,0);
+
+		
+		var pointer = this.input.activePointer;
+
+
 	}
-
-
-
-	keyPress(char) {
-
-	}
-
-
-	
+	//end of create()
+		
 	update() {
-	
-		console.log
+		var pointer = this.input.activePointer;
+		var enterKey= this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
+		console.log('x: ' + pointer.x + '\ny: ' + pointer.y);
+
+		//continue text
+
+		if(Phaser.Input.Keyboard.JustDown(enterKey) && this.continueButton.alpha == 1) {
+			console.log('conditional met');
+			if(this.selectedMemento.continueCount <=1) {
+				typeText(this, this.selectedMemento.text[2] + '\n\n' + this.selectedMemento.text[3]);
+			}
+			else {
+				this.selectedMemento.displayOptions();
+			}
+		}
 	}
 
 //closes .Scene
