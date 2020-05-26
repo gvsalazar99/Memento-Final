@@ -50,4 +50,4 @@ function typeText(scene, str) {
     });
 }
 
-var mute = true;
+var mute = false;
