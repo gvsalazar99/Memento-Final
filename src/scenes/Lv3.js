@@ -4,7 +4,7 @@ class Lv3 extends Phaser.Scene {
 	}
 
 	preload() {
-		this.load.image('level3box', 'assets/TextBoexes, LevelThreeTextBox.PNG');
+		this.load.image('level3box', 'assets/TextBoxes/LevelThreeTextBox.PNG');
 		this.load.audio('level3music', 'assets/audio/bensound-sweet.mp3');
 
 		//mementos for level3 (temp)
@@ -30,7 +30,7 @@ class Lv3 extends Phaser.Scene {
 
 		//dialogue box art
 		this.dialogueBox = this.add.sprite(game.config.width/4.5, 0, 'level3box').setOrigin(0).setScale(.4,.4);
-		this.dialogueBox.y = game.config.height/1.01 - this.dialogueBox.displayHeight;
+	this.dialogueBox.y = game.config.height/1.01 - this.dialogueBox.displayHeight;
 		
 		//exit button switches scenes to Credit (end scene)  
 		this.tempcreditsbutton = this.add.sprite(game.config.width/4,game.config.height/4, 'exitbutton').setScale(0.25,0.25).setOrigin(0);
@@ -79,7 +79,7 @@ class Lv3 extends Phaser.Scene {
 
 	}, this);
   
-		this.cameras.main.fadeOut(300, 0,0,0);
+	this.cameras.main.fadeOut(300, 0,0,0);
 	}
 
 	update() {

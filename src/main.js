@@ -2,7 +2,6 @@
 //https://www.bensound.com/royalty-free-music/acoustic-folk
 
 let config = {
-    type: Phaser.WebGL,
     
     type: Phaser.AUTO,
     width:1260,
@@ -24,11 +23,8 @@ let config = {
 
 let game = new Phaser.Game(config);
 
-
-//this is the text that is positioned within the dialogue box!
 var boxText;
 
-//this function types text into the dialoguebox
 function typeText(scene, str) {
     scene.continueButton.alpha = 0; //make continue button disappear
     boxText.setText('');
@@ -42,9 +38,7 @@ function typeText(scene, str) {
         callback: () => {
             boxText.setText(boxText.text + str[currentChar]);
             currentChar++;
-
-            //printing finished!
-            if(this.textTimer.getRepeatCount() == 0) {
+            if(this.textTimer.getRepeatCount() == 0) { //finished printing
                 if(scene.selectedMemento != null) {    //if printing text for a memento
                    if(scene.selectedMemento.continueCount <= 1) { //options have not been displayed yet if displaying memento
                        scene.continueButton.alpha = 1; //make continue button visible
@@ -63,7 +57,7 @@ function typeText(scene, str) {
     });
 }
 
-var mute = true;;
+var mute = false;
 
 
 

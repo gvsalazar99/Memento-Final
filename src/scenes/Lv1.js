@@ -8,7 +8,7 @@ class Lv1 extends Phaser.Scene {
       //mementos for level1
     	this.load.image('treecarving', 'assets/mementos/treecarvingsmall.png');
      	 this.load.image('squirrel', 'assets/mementos/squirrelsmall.png');
-    	this.load.image('butterflysmall', 'assets/memento//butterflysmall.png');
+    	this.load.image('butterflysmall', 'assets/mementos/butterflysmall.png');
     	this.load.image('magnolianew', 'assets/mementos/glow/magnolianoglow.PNG');
 		this.load.image('girlsmall', 'assets/mementos/girlsmall.png');
 	  
@@ -83,7 +83,6 @@ class Lv1 extends Phaser.Scene {
 			'Then visits stop & the gashes fade to scars to memory',
 			'Sometimes we hurt each other and lose a shared, beloved sentiment'];
 		this.carving.makeInteractive();
-
 		//squirrel
 		this.squirrel = new memento(this, 638, 340, 'squirrel').setOrigin(0).setScale(.64);
 		this.squirrel.text = ['[Squirrel sounds]', 
@@ -128,7 +127,7 @@ class Lv1 extends Phaser.Scene {
 	update() {
 		var pointer = this.input.activePointer;
 		var enterKey= this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
-		//console.log('x: ' + pointer.x + '\ny: ' + pointer.y);
+		console.log('x: ' + pointer.x + '\ny: ' + pointer.y);
 
 		//continue text
 
