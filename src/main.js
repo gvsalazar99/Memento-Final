@@ -3,16 +3,24 @@
 
 let config = {
     type: Phaser.WebGL,
+    
+    type: Phaser.AUTO,
     width:1260,
     height:590,
     physics:{
         default: 'arcade',
         arcade: {
+           
             debug: true,
+           
+              
         }
     },
    scene: [ Menu , Play, Credits, Lv1, Lv2, Lv3 ] 
+
+   
 };
+
 
 let game = new Phaser.Game(config);
 
@@ -52,4 +60,8 @@ function typeText(scene, str) {
     });
 }
 
-var mute = true;
+var mute = false;
+
+
+
+

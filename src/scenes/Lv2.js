@@ -11,12 +11,18 @@ class Lv2 extends Phaser.Scene {
 			camera.fadeIn(300, 0,0,0);
 
 
+
 		//create music
 		this.music = this.sound.add('level2music');
 		this.music.play( {loop:true} );
 
 		//create background
-		let background = this.add.sprite(0,0, 'purple').setOrigin(0, 0).setScale(5); 
+		let background = this.add.sprite(0,0, 'leveltwo').setOrigin(0, 0);
+
+		
+		//progressbar
+		let progressbar = this.add.sprite('progressbar');
+		progressbar= this.add.sprite(game.config.width/3.58,0, 'progressbar').setOrigin(0, 0).setScale(.35,.32);
 		
 		//exit button switches to level 3 
 		this.templevl3button = this.add.sprite(game.config.width/4,game.config.height/4, 'exitbutton').setScale(0.25,0.25).setOrigin(0);
@@ -24,38 +30,38 @@ class Lv2 extends Phaser.Scene {
 		this.templevl3button.on('pointerdown',()=> {this.scene.start('Level3');this.music.stop()});
 		
 		//dialogue box art
-		this.dialogueBox = this.add.sprite(game.config.width/4.5, 0, 'yellow2').setOrigin(0).setScale(.55,.4);
+		this.dialogueBox = this.add.sprite(game.config.width/4.5, game.config.height/4.5, 'level2box').setOrigin(0).setScale(.4,.4);
 		this.dialogueBox.y = game.config.height/1.01 - this.dialogueBox.displayHeight;
 		
 
 		//text
-		boxText = this.add.text(410, this.dialogueBox.y + 15, '', { font: "15pt Courier", fill: "#ff0000", stroke: "#ff0000", strokeThickness: 1, wordWrap: { width: 700, useAdvancedWrap: true } });
+		boxText = this.add.text(430, this.dialogueBox.y + 20, '', { font: "14pt Courier", fill: "#000000", stroke: "#000000", strokeThickness: 1, wordWrap: { width: 700, useAdvancedWrap: true } });
 		boxText.setText('Rule #2: Don\'t trust anything you\'re told');
 		boxText.visible = true;
 		console.log(boxText);
 		
-		//clickable necklace
-		this.memento = new memento(this, 1024, 400, 'necklace').setOrigin(0).setScale(.3);
+		//clickable seahorses
+		this.memento = new memento(this, 130, 150, 'seahorses').setOrigin(0);
 		this.memento.text = 'Thief! I saw you snatch my jewelry!';
 		this.memento.makeInteractive();
 
 		//clickable seaweed
-		this.memento = new memento(this, 1024, 200, 'seaweedtemp').setOrigin(0).setScale(.3);
+		this.memento = new memento(this, 700, 187, 'seaweed').setOrigin(0);
 		this.memento.text = 'Thief! I saw you snatch my jewelry!';
 		this.memento.makeInteractive();
 
-		//clickable clam
-		this.memento = new memento(this, 100, 100, 'clamtemp').setOrigin(0).setScale(.3);
+		//clickable shell
+		this.memento = new memento(this, 811, 245, 'shell').setOrigin(0).setScale(.56,.56);
 		this.memento.text = 'Thief! I saw you snatch my jewelry!';
 		this.memento.makeInteractive();
 
-		//clickable crab
-		this.memento = new memento(this, 500, 100, 'crabtemp').setOrigin(0).setScale(.3);
+		//clickable fish
+		this.memento = new memento(this, 500, 120, 'fish').setOrigin(0).setScale(.8,.8);;
 		this.memento.text = 'Thief! I saw you snatch my jewelry!';
 		this.memento.makeInteractive();
 
-		//clickable seahorse
-		this.memento = new memento(this, 700, 20, 'seahorse').setOrigin(0).setScale(.3);
+		//clickable starfish
+		this.memento = new memento(this, 784, 68, 'starfish').setOrigin(0).setScale(.7,.7);
 		this.memento.text = 'Thief! I saw you snatch my jewelry!';
 		this.memento.makeInteractive();
 
