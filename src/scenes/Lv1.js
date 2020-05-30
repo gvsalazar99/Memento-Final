@@ -103,7 +103,7 @@ class Lv1 extends Phaser.Scene {
 	update() {
 		var pointer = this.input.activePointer;
 		var enterKey= this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
-		console.log('x: ' + pointer.x + '\ny: ' + pointer.y);
+		//console.log('x: ' + pointer.x + '\ny: ' + pointer.y);
 
 		//continue text
 

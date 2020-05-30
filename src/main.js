@@ -2,7 +2,7 @@
 //https://www.bensound.com/royalty-free-music/acoustic-folk
 
 let config = {
-    type: Phaser.CANVAS,
+    type: Phaser.WebGL,
     width:1260,
     height:590,
     physics:{
@@ -31,7 +31,9 @@ function typeText(scene, str) {
         callback: () => {
             boxText.setText(boxText.text + str[currentChar]);
             currentChar++;
-            if(this.textTimer.getRepeatCount() == 0) { //finished printing
+
+            //printing finished!
+            if(this.textTimer.getRepeatCount() == 0) {
                 if(scene.selectedMemento != null) {    //if printing text for a memento
                    if(scene.selectedMemento.continueCount <= 1) { //options have not been displayed yet if displaying memento
                        scene.continueButton.alpha = 1; //make continue button visible
