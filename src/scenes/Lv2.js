@@ -3,6 +3,19 @@ class Lv2 extends Phaser.Scene {
 		super('Level2');
 	}
 
+	preload() {
+		this.load.image('level2box', 'assets/TextBoxes/LevelTwoTextBox.PNG');
+		this.load.image('leveltwo', 'assets/Fullescreen/LevelTwoBackground.png');
+		this.load.audio('level2music', 'assets/audio/bensound-beyondtheline.mp3');
+
+		//mementos for level2 (temp)
+		this.load.image('seahorses', 'assets/mementos/twoseahorses.png');
+		this.load.image('seaweed', 'assets/mementos/seaweed.png');
+		this.load.image('shell', 'assets/mementos/shell.png');
+		this.load.image('starfish', 'assets/mementos/starfish.png');
+		 this.load.image('fish', 'assetsmementos//fishsmall.png');
+	}
+
 	create() {
 
 		//camera fade in n out

@@ -1,5 +1,5 @@
 class memento extends Phaser.GameObjects.Sprite {
-    constructor(scene, x, y, texture, frame) {
+    constructor(scene, x, y, texture, glow_texture, frame) {
         super(scene, x, y, texture, frame);
 
         scene.add.existing(this); //add object to existing scene
@@ -34,14 +34,15 @@ class memento extends Phaser.GameObjects.Sprite {
         boxText.setText(''); //erase current text
 
         //typeText(this.scene, '[OPTION 1]\n[OPTION 2]\n[OPTION 3]');
-        this.option1 = this.scene.add.text(410, this.scene.dialogueBox.y + 15, this.options[0], { font: "15pt Courier", strokeThickness: 1, wordWrap: { width: 570, useAdvancedWrap: true } }).setInteractive();
-        this.option2 = this.scene.add.text(410, this.scene.dialogueBox.y + 45, this.options[1], { font: "15pt Courier", strokeThickness: 1, wordWrap: { width: 570, useAdvancedWrap: true } }).setInteractive();
-        this.option3 = this.scene.add.text(410, this.scene.dialogueBox.y + 75, this.options[2], { font: "15pt Courier", strokeThickness: 1, wordWrap: { width: 570, useAdvancedWrap: true } }).setInteractive();
+        this.option1 = this.scene.add.text(410, this.scene.dialogueBox.y + 15, this.options[0], { font: "15pt Courier", fill: "#000000", stroke: "#000000", strokeThickness: 1, wordWrap: { width: 570, useAdvancedWrap: true } }).setInteractive();
+        this.option2 = this.scene.add.text(410, this.scene.dialogueBox.y + 45, this.options[1], { font: "15pt Courier", fill: "#000000", stroke: "#000000", strokeThickness: 1, wordWrap: { width: 570, useAdvancedWrap: true } }).setInteractive();
+        this.option3 = this.scene.add.text(410, this.scene.dialogueBox.y + 75, this.options[2], { font: "15pt Courier", fill: "#000000", stroke: "#000000", strokeThickness: 1, wordWrap: { width: 570, useAdvancedWrap: true } }).setInteractive();
         this.makeOptionsClickable(this.option1);
         this.makeOptionsClickable(this.option2);
         this.makeOptionsClickable(this.option3);
     }
 
+    //have events happen when player interacts with text options
     makeOptionsClickable(option) {
         option.on('pointerdown', (pointer, gameObject) =>{
             console.log('option clicked!');
@@ -51,12 +52,14 @@ class memento extends Phaser.GameObjects.Sprite {
             this.scene.dialogueBox.visible = false;
         });
 
+        //highlight player option when mouse hovers
         option.on('pointerover', (pointer, gameObject) => {
             //option.tintFill = true;
             //option.setTintFill(0x00ff00, 0x00ff00, 0x00ff00, 0x00ff00);
             option.tint = 0x00ff00;    
         });
-    
+        
+        //remove highlight when player moves mouse away from text option
         option.on('pointerout', (pointer, gameObject) => {
             option.clearTint();
         });
