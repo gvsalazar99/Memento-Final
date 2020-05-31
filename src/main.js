@@ -15,7 +15,7 @@ let config = {
               
         }
     },
-   scene: [ Menu , Play, Credits, Lv1, Lv2, Lv3 ] 
+   scene: [ Menu , Play, Credits, Lv1, cutscenemagnolia, Lv2, cutscenejellyfish, Lv3, cutsceneperson ] 
 
    
 };
@@ -34,7 +34,7 @@ function typeText(scene, str) {
     boxText.setText('');
 
     let currentChar = 0;
-    console.log(this);
+    //console.log(this);
     //console.log(Phaser.Scene.time);
     this.textTimer = scene.time.addEvent({
         delay: 30, //ms

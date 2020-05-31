@@ -21,7 +21,7 @@ class Lv3 extends Phaser.Scene {
 		//camera fade in n out 
 		this.cameras.main.once('camerafadeoutcomplete', function (camera) {
 			this.add.image(1260, 590, 'black').setOrigin(0, 0);
-			camera.fadeIn(300, 0,0,0);	
+			camera.fadeIn(1000, 0,0,0);	
 
 		//create music
 		this.music = this.sound.add('level3music');
@@ -79,7 +79,7 @@ class Lv3 extends Phaser.Scene {
 
 	}, this);
   
-	this.cameras.main.fadeOut(300, 0,0,0);
+	this.cameras.main.fadeOut(1000, 0,0,0);
 	}
 
 	update() {

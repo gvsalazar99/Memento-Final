@@ -21,7 +21,7 @@ class Lv2 extends Phaser.Scene {
 		//camera fade in n out
 		this.cameras.main.once('camerafadeoutcomplete', function (camera) {
 			this.add.image(1260, 590, 'mementomenu').setOrigin(0, 0);
-			camera.fadeIn(300, 0,0,0);
+			camera.fadeIn(1000, 0,0,0);
 
 
 
@@ -40,7 +40,8 @@ class Lv2 extends Phaser.Scene {
 		//exit button switches to level 3 
 		this.templevl3button = this.add.sprite(game.config.width/4,game.config.height/4, 'exitbutton').setScale(0.25,0.25).setOrigin(0);
 		this.templevl3button.setInteractive();
-		this.templevl3button.on('pointerdown',()=> {this.scene.start('Level3');this.music.stop()});
+		//switch scene
+		this.templevl3button.on('pointerdown',()=> {this.scene.start('cutsceneblue');this.music.stop()});
 		
 		//dialogue box art
 		this.dialogueBox = this.add.sprite(game.config.width/4.5, game.config.height/4.5, 'level2box').setOrigin(0).setScale(.4,.4);
@@ -80,7 +81,7 @@ class Lv2 extends Phaser.Scene {
 
 	}, this);
   
-	this.cameras.main.fadeOut(300, 0,0,0);
+	this.cameras.main.fadeOut(1000, 0,0,0);
 	}
 	
 

@@ -21,9 +21,9 @@ class Credits extends Phaser.Scene {
 		this.playagainbutton.on('pointerdown',()=> this.scene.start('menuScene'))
 	
 
-}, this);
+		}, this);
   
-this.cameras.main.fadeOut(1000, 0,0,0);
+		this.cameras.main.fadeOut(1000, 0,0,0);
 	}
 
 	update() {

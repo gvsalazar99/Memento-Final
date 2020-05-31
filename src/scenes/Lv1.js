@@ -5,9 +5,9 @@ class Lv1 extends Phaser.Scene {
 
 	preload() {
 		this.load.image('magnolia', 'assets/mementos/Magnolia.PNG'); 
-      //mementos for level1
+      	//mementos for level1
     	this.load.image('treecarving', 'assets/mementos/treecarvingsmall.png');
-     	 this.load.image('squirrel', 'assets/mementos/squirrelsmall.png');
+     	this.load.image('squirrel', 'assets/mementos/squirrelsmall.png');
     	this.load.image('butterflysmall', 'assets/mementos/butterflysmall.png');
     	this.load.image('magnolianew', 'assets/mementos/glow/magnolianoglow.PNG');
 		this.load.image('girlsmall', 'assets/mementos/girlsmall.png');
@@ -23,7 +23,7 @@ class Lv1 extends Phaser.Scene {
 		//camera fade in n out 
 		this.cameras.main.once('camerafadeoutcomplete', function (camera) {
 			this.add.image(1260, 590, 'levelonenew').setOrigin(0, 0).setScale(.4,.4);;
-			camera.fadeIn(300, 0,0,0);
+			camera.fadeIn(2000, 0,0,0);
 
 		 //create sounds
 		 this.music = this.sound.add('level1music');
@@ -41,7 +41,8 @@ class Lv1 extends Phaser.Scene {
 		//exit button switches scenes to level 2    
 		this.tempLevl2button = this.add.sprite(game.config.width/4,game.config.height/4, 'exitbutton').setScale(0.25,0.25).setOrigin(0);
 		this.tempLevl2button.setInteractive();
-		this.tempLevl2button.on('pointerdown',()=> {this.scene.start('Level2'); this.music.stop()});
+		//switch scenes
+		this.tempLevl2button.on('pointerdown',()=> { console.log('Switching scenes!'); this.scene.start('cutsceneyellow'); this.music.stop();});
 
 		//dialogue box art
 		this.dialogueBox = this.add.sprite(game.config.width/4.5, 0, 'level1box').setOrigin(0).setScale(.4,.4);
@@ -114,7 +115,7 @@ class Lv1 extends Phaser.Scene {
 		this.selectedMemento; //current memento being interacted with
 		}, this);
   
-		this.cameras.main.fadeOut(300, 0,0,0);
+		this.cameras.main.fadeOut(2000, 0,0,0);
 
 		
 		var pointer = this.input.activePointer;

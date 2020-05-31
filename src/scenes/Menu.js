@@ -44,7 +44,7 @@ class Menu extends Phaser.Scene {
      //camera fade in n out
       this.cameras.main.once('camerafadeoutcomplete', function (camera) {
         this.add.image(1260, 590, 'mementomenu').setOrigin(0, 0);
-        camera.fadeIn(300, 0,0,0);
+        camera.fadeIn(1000, 0,0,0);
 
       let background = this.add.sprite('mementomenu');
       let button = this.add.sprite('playbutton');
@@ -60,6 +60,7 @@ class Menu extends Phaser.Scene {
       //play button
       this.playButton = this.add.sprite(460,game.config.height/3, 'playbutton').setScale(1).setOrigin(0);
       this.playButton.setInteractive();
+      //switch scenes
       this.playButton.on('pointerdown',()=> this.scene.start('Level1'))
 
       //muted button
@@ -93,7 +94,7 @@ class Menu extends Phaser.Scene {
 
       }, this);
   
-      this.cameras.main.fadeOut(300, 0,0,0);
+      this.cameras.main.fadeOut(1000, 0,0,0);
     //custom mouse (doesnt work)
     this.input.setDefaultCursor('./assets/butterflysmall.cur), pointer');
   
