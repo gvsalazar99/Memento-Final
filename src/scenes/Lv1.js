@@ -19,16 +19,23 @@ class Lv1 extends Phaser.Scene {
 	}
 
 	create() {
+		mementoGroup = []; //reset collection of mementos
+
+		 //get music ready
+		 this.music = this.sound.add('level1music');
+
+		 //play music if unmuted
+		 if(mute == false) { 
+			this.music.play({ 
+				loop: true, 
+				volume: 0.005
+			}); 
+		} 
 
 		//camera fade in n out 
 		this.cameras.main.once('camerafadeoutcomplete', function (camera) {
 			this.add.image(1260, 590, 'levelonenew').setOrigin(0, 0).setScale(.4,.4);;
 			camera.fadeIn(2000, 0,0,0);
-
-		 //create sounds
-		 this.music = this.sound.add('level1music');
-		 if(mute == false) { this.music.play( { loop: true} ); } //play if unmuted
-
 
 
 		//create background
@@ -38,11 +45,16 @@ class Lv1 extends Phaser.Scene {
 		let progressbar = this.add.sprite('progressbar');
 		progressbar= this.add.sprite(game.config.width/3.58,0, 'progressbar').setOrigin(0, 0).setScale(.35,.32);
 		
-		//exit button switches scenes to level 2    
+		//THIS EXIT BUTTON FUNCTIONS AS A RESTART BUTTON  
 		this.tempLevl2button = this.add.sprite(game.config.width/4,game.config.height/4, 'exitbutton').setScale(0.25,0.25).setOrigin(0);
 		this.tempLevl2button.setInteractive();
-		//switch scenes
-		this.tempLevl2button.on('pointerdown',()=> { console.log('Switching scenes!'); this.scene.start('cutsceneyellow'); this.music.stop();});
+
+		//RESTART SCENE
+		this.tempLevl2button.on('pointerdown',()=> {
+			console.log('RESTARTING THE LEVEL';); 
+			this.scene.start('Level1'); 
+			this.music.stop();
+		});
 
 		//dialogue box art
 		this.dialogueBox = this.add.sprite(game.config.width/4.5, 0, 'level1box').setOrigin(0).setScale(.4,.4);
@@ -51,10 +63,10 @@ class Lv1 extends Phaser.Scene {
 		//create continue text prompt
 		this.continueButton = this.add.text(720, 555, '[CLICK TO CONTINUE]', { font: "15pt Courier", fill: "#ff0000", stroke: "#ff0000", strokeThickness: 1 });
 		this.continueButton.alpha = 0; 	
-		this.continueON = false;
+		//this.continueON = false;
 		this.continueButton.setInteractive();
 		this.continueButton.on('pointerdown', (pointer, gameObject) => {
-			console.log('conditional met');
+			//console.log('conditional met');
 			if(this.selectedMemento.continueCount <=1) {
 				typeText(this, this.selectedMemento.text[2] + '\n\n' + this.selectedMemento.text[3]);
 			}
@@ -104,6 +116,7 @@ class Lv1 extends Phaser.Scene {
 							'[oinking intensifies',
 							'...'];
 		this.butterfly.makeInteractive();
+
 		//girl
 		this.girl = new memento(this, game.config.width*.44, game.config.height*.299, 'girlsmall').setOrigin(0).setScale(.87);
 		this.girl.text = ['\"Stranger danger!\"',
@@ -113,6 +126,7 @@ class Lv1 extends Phaser.Scene {
 		this.girl.makeInteractive();
 	
 		this.selectedMemento; //current memento being interacted with
+
 		}, this);
   
 		this.cameras.main.fadeOut(2000, 0,0,0);
@@ -120,11 +134,22 @@ class Lv1 extends Phaser.Scene {
 		
 		var pointer = this.input.activePointer;
 
+		//I AM FOR DEBUGGING, IF YOU DO NOT COMMENT OUT THIS BLOCK, 
+		//I WILL RUIN THE PLAYER EXPERIENCE
+		//mementoGroup = [this.squirrel, this.girl, this.carving, this.butterfly, this.magnolia];
+
 
 	}
 	//end of create()
 		
 	update() {
+		//switch to cut scene when all options have been chosen from mementos
+		if(mementoGroup.length >= 5) {
+			console.log('Switching scenes!'); 
+			this.scene.start('cutsceneyellow'); 
+			this.music.stop();
+		}
+
 		var pointer = this.input.activePointer;
 		var enterKey= this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
 		//console.log('x: ' + pointer.x + '\ny: ' + pointer.y);

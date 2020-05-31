@@ -18,14 +18,25 @@ class Lv3 extends Phaser.Scene {
 
 
 	create() {
+		mementoGroup = []; //reset collection of mementos
+
+		//create music
+		this.music = this.sound.add('level3music');
+		this.music = this.sound.add('level2music');
+		 //play music if unmuted
+		 if(mute == false) { 
+			this.music.play({ 
+				loop: true, 
+				volume: 0.005
+			}); 
+		} 
+
 		//camera fade in n out 
 		this.cameras.main.once('camerafadeoutcomplete', function (camera) {
 			this.add.image(1260, 590, 'black').setOrigin(0, 0);
 			camera.fadeIn(1000, 0,0,0);	
 
-		//create music
-		this.music = this.sound.add('level3music');
-		if(mute == false) { this.music.play( { loop: true} ); } //play if unmuted
+
 
 
 		//dialogue box art
@@ -35,8 +46,12 @@ class Lv3 extends Phaser.Scene {
 		//exit button switches scenes to Credit (end scene)  
 		this.tempcreditsbutton = this.add.sprite(game.config.width/4,game.config.height/4, 'exitbutton').setScale(0.25,0.25).setOrigin(0);
 		this.tempcreditsbutton.setInteractive();
-		this.tempcreditsbutton.on('pointerdown',()=> {this.scene.start('Credits'); this.music.stop()});
-		
+		//RESTART SCENE
+		this.tempLevl2button.on('pointerdown',()=> {
+			console.log('RESTARTING THE LEVEL';); 
+			this.scene.start('Level3'); 
+			this.music.stop();
+		});
 
 		//text
 		boxText = this.add.text(430, this.dialogueBox.y + 15, '', {font: "14pt Courier", fill: "#000000", stroke: "#000000", wordWrap: { width: 700, useAdvancedWrap: true } });
@@ -77,12 +92,34 @@ class Lv3 extends Phaser.Scene {
 		let progressbar = this.add.sprite('progressbar');
 		progressbar= this.add.sprite(game.config.width/3.58,0, 'progressbar').setOrigin(0, 0).setScale(.35,.32);
 
+		//create continue text prompt
+		this.continueButton = this.add.text(720, 555, '[CLICK TO CONTINUE]', { font: "15pt Courier", fill: "#ff0000", stroke: "#ff0000", strokeThickness: 1 });
+		this.continueButton.alpha = 0; 	
+		this.continueON = false;
+		this.continueButton.setInteractive();
+		this.continueButton.on('pointerdown', (pointer, gameObject) => {
+			console.log('conditional met');
+			if(this.selectedMemento.continueCount <=1) {
+				typeText(this, this.selectedMemento.text[2] + '\n\n' + this.selectedMemento.text[3]);
+			}
+			else {
+				this.selectedMemento.displayOptions();
+			}
+		});		
+
 	}, this);
   
 	this.cameras.main.fadeOut(1000, 0,0,0);
+
 	}
 
 	update() {
+		//switch to cut scene when all options have been chosen from mementos
+		if(mementoGroup.length >= 5) {
+			console.log('Switching scenes!'); 
+			this.scene.start('Credits'); 
+			this.music.stop();
+		}	
 		//boxText._text == 'Oh, c\'mon, no need to throw a fit!' ? this.memento.angle = 135 : this.memento.angle = 0;
 	}
 }

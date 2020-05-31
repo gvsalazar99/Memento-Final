@@ -25,6 +25,9 @@ let game = new Phaser.Game(config);
 
 var mute = false;
 
+//collection of mementos in each scene, meant to be erased at the beginning of each scene
+var mementoGroup = [];
+
 //this is the text that is positioned within the dialogue box!
 var boxText;
 
@@ -40,13 +43,16 @@ function typeText(scene, str) {
         delay: 30, //ms
         repeat: str.length -1,
         callback: () => {
+            console.log('typing!');
             boxText.setText(boxText.text + str[currentChar]);
             currentChar++;
             if(this.textTimer.getRepeatCount() == 0) { //finished printing
+                console.log('done typing!');
                 if(scene.selectedMemento != null) {    //if printing text for a memento
+                    //console.log(scene.selectedMemento.texture.key + '\'s continues used = ' + scene.selectedMemento.continueCount);
                    if(scene.selectedMemento.continueCount <= 1) { //options have not been displayed yet if displaying memento
-                       scene.continueButton.alpha = 1; //make continue button visible
-                       scene.selectedMemento.continueCount ++;
+                        scene.continueButton.alpha = 1; //make continue button visible
+                        scene.selectedMemento.continueCount ++;
                    }
                    else { 
                        //if 2 continues have been displayed, then options are being memento's options are on display
