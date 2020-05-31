@@ -29,11 +29,8 @@ class cutscenemagnolia extends Phaser.Scene {
   }
 
   update() {
-
     if(this.secCount == -1) {
       this.scene.start('Level2');
     }
-
- 
   }
 }
