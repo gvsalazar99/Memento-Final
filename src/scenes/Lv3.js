@@ -47,8 +47,8 @@ class Lv3 extends Phaser.Scene {
 		this.tempcreditsbutton = this.add.sprite(game.config.width/4,game.config.height/4, 'exitbutton').setScale(0.25,0.25).setOrigin(0);
 		this.tempcreditsbutton.setInteractive();
 		//RESTART SCENE
-		this.tempLevl2button.on('pointerdown',()=> {
-			console.log('RESTARTING THE LEVEL';); 
+		this.tempcreditsbutton.on('pointerdown',()=> {
+			console.log('RESTARTING THE LEVEL'); 
 			this.scene.start('Level3'); 
 			this.music.stop();
 		});

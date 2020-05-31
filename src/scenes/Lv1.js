@@ -51,7 +51,7 @@ class Lv1 extends Phaser.Scene {
 
 		//RESTART SCENE
 		this.tempLevl2button.on('pointerdown',()=> {
-			console.log('RESTARTING THE LEVEL';); 
+			console.log('RESTARTING THE LEVEL'); 
 			this.scene.start('Level1'); 
 			this.music.stop();
 		});
