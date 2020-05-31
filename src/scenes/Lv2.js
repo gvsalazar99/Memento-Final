@@ -27,7 +27,7 @@ class Lv2 extends Phaser.Scene {
 
 		//create music
 		this.music = this.sound.add('level2music');
-		this.music.play( {loop:true} );
+		if(mute == false) { this.music.play( { loop: true} ); } //play if unmuted
 
 		//create background
 		let background = this.add.sprite(0,0, 'leveltwo').setOrigin(0, 0);

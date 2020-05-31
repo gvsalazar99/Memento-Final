@@ -25,7 +25,7 @@ class Lv3 extends Phaser.Scene {
 
 		//create music
 		this.music = this.sound.add('level3music');
-		this.music.play( {loop:true} );
+		if(mute == false) { this.music.play( { loop: true} ); } //play if unmuted
 
 
 		//dialogue box art

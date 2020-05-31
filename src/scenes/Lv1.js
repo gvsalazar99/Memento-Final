@@ -27,7 +27,6 @@ class Lv1 extends Phaser.Scene {
 
 		 //create sounds
 		 this.music = this.sound.add('level1music');
-		 this.music.play( {loop:true} );
 		 if(mute == false) { this.music.play( { loop: true} ); } //play if unmuted
 
 

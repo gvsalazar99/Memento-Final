@@ -5,17 +5,10 @@ class Menu extends Phaser.Scene {
     }
 
     preload() {
-      //this.load.image('background', './assets/cosmowanda.png'); 
+      //buttons
       this.load.image('playbutton', 'assets/UI/PlayButtonNew.PNG'); 
-      //this.load.image('pink', './assets/pink.png'); 
-      //this.load.image('character', './assets/Shadow.PNG'); 
-      //this.load.image('box', './assets/box.png'); 
       this.load.image('exitbutton', 'assets/UI/ExitButton.png'); 
-      //this.load.image('popup', './assets/box.png'); 
-      
-      //this.load.image('necklace', './assets/Necklace.PNG'); 
-      //this.load.image('catbed', './assets/Cat bed.PNG'); 
-      // this.load.image('purple', './assets/wallpaper.png'); 
+
       
       //dialogue boxes
       this.load.image('blue1', './assets/TextBoxes/BlueLevel1.PNG');
@@ -24,19 +17,17 @@ class Menu extends Phaser.Scene {
       this.load.image('yellow1', './assets/TextBoxes/YellowLevel1.PNG');
       this.load.image('yellow2', './assets/TextBoxes/YellowLevel2.PNG');
       this.load.image('yellow3', './assets/TextBoxes/YellowLevel3.PNG');
-     // this.load.image('mementomenu', './assets/FullScreen/MenuScreen.PNG');
 
-///////////////////////////////////////////////////////////////////////////////////////////////
       this.load.image('credits', './assets/FullScreen/EndScreen (1).PNG'); 
+
+      //buttons
       this.load.image('playagainbutton', './assets/UI/PlayAgainButton.PNG'); 
       this.load.image('creditsbutton', './assets/UI/CreditsButton.PNG'); 
       this.load.image('mutebutton', './assets/UI/MuteButton.PNG'); 
+      this.load.image('unmutebutton', './assets/UI/UnmuteButton.PNG');
      
-      //dialogue boxes
-      this.load.image('mementomenu', './assets/FullScreen/MenuScreen.PNG');
-      
-      //level backgrounds
 
+      this.load.image('mementomenu', './assets/FullScreen/MenuScreen.PNG');
 
       //sounds
       this.load.audio('mouseclick', './assets/audio/mouseclick.mp3');
@@ -67,19 +58,37 @@ class Menu extends Phaser.Scene {
 
 
       //play button
-      this.button = this.add.sprite(460,game.config.height/3, 'playbutton').setScale(1).setOrigin(0);
-      this.button.setInteractive();
-      this.button.on('pointerdown',()=> this.scene.start('Level1'))
+      this.playButton = this.add.sprite(460,game.config.height/3, 'playbutton').setScale(1).setOrigin(0);
+      this.playButton.setInteractive();
+      this.playButton.on('pointerdown',()=> this.scene.start('Level1'))
 
-      //mute button
-      this.button = this.add.sprite(60,game.config.height*.7, 'mutebutton').setScale(1).setOrigin(0);
-      this.button.setInteractive();
-      this.button.on('pointerdown',()=> this.scene.start(''))
+      //muted button
+      this.mutedButton = this.add.sprite(60,game.config.height*.7, 'mutebutton').setScale(1).setOrigin(0);
+      this.mutedButton.setInteractive();
+      this.mutedButton.alpha = 0; //not visible on launch
+      //unmute the game if clicked
+      this.mutedButton.on('pointerdown',()=> {
+        mute = false;              
+        this.mutedButton.alpha = 0;   //remove this button visibility
+        this.unmutedButton.alpha = 1; //unmuted button is visible
+      });
       
+      //unmuted button
+      this.unmutedButton = this.add.sprite(60, game.config.height*.7, 'unmutebutton').setOrigin(0);
+      this.unmutedButton.setInteractive();
+      //mute the game when clicked
+      this.unmutedButton.on('pointerdown', () =>{
+        mute = true;
+        this.unmutedButton.alpha = 0; //remove this button's visibility
+        this.mutedButton.alpha = 1;   //muted button is visible
+    });
+
       //credits button
       this.button = this.add.sprite(900,game.config.height*.7, 'creditsbutton').setScale(1).setOrigin(0);
       this.button.setInteractive();
       this.button.on('pointerdown',()=> this.scene.start('Credits'))
+
+      
       
 
       }, this);
