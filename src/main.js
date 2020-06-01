@@ -31,6 +31,21 @@ var mementoGroup = [];
 //this is the text that is positioned within the dialogue box!
 var boxText;
 
+//this method will add a glow when the object is hovered over with the mouse pointer
+//assumes that the regular and glow image have the same dimensions
+function addGlow(scene, og, glowKey) {
+    //create glowing image
+    let glow = scene.add.sprite(og.x, og.y, glowKey).setScale(og.scale).setOrigin(0);
+    glow.visible = false;
+    //highlight play button with glow when mouse hovers
+    og.on('pointerover', (pointer, gameObject) => {
+        glow.visible = true;
+    });
+    //remove highlight when mouse moves sway
+    og.on('pointerout', (pointer, gameObject) => {
+        glow.visible = false;
+    });
+}
 //this function types text into the dialoguebox
 function typeText(scene, str) {
     scene.continueButton.alpha = 0; //make continue button disappear

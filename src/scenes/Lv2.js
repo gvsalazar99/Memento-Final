@@ -14,6 +14,12 @@ class Lv2 extends Phaser.Scene {
 		this.load.image('shell', 'assets/mementos/shell.png');
 		this.load.image('starfish', 'assets/mementos/starfish.png');
 		 this.load.image('fish', 'assets/mementos/fishsmall.png');
+		//memento glows
+		this.load.image('seahorsesGlow', 'assets/mementos/glow/twoseahorseswglow.png');
+		this.load.image('seaweedGlow', 'assets/mementos/glow/seaweedwglow.png');
+		this.load.image('shellGlow', 'assets/mementos/glow/shellwglow.png');
+		this.load.image('starfishGlow', 'assets/mementos/glow/starfishwglow.png');
+		this.load.image('fishGlow', 'assets/mementos/glow/fishsmallwglow.png');
 	}
 
 	create() {
@@ -55,7 +61,7 @@ class Lv2 extends Phaser.Scene {
 		this.dialogueBox = this.add.sprite(game.config.width/4.5, game.config.height/4.5, 'level2box').setOrigin(0).setScale(.4,.4);
 		this.dialogueBox.y = game.config.height/1.01 - this.dialogueBox.displayHeight;	
 
-		//text
+		//Welcoming text!
 		boxText = this.add.text(430, this.dialogueBox.y + 20, '', { font: "14pt Courier", fill: "#000000", stroke: "#000000", strokeThickness: 1, wordWrap: { width: 700, useAdvancedWrap: true } });
 		boxText.setText('Rule #2: Don\'t trust anything you\'re told');
 		boxText.visible = true;
@@ -85,6 +91,7 @@ class Lv2 extends Phaser.Scene {
 					'...'];
 		this.seahorses.options = ['lose', 'leave', 'fail'];
 		this.seahorses.makeInteractive();
+		addGlow(this, this.seahorses, 'seahorsesGlow');
 
 		//clickable seaweed
 		this.seaweed = new memento(this, 700, 187, 'seaweed').setOrigin(0);
@@ -94,6 +101,7 @@ class Lv2 extends Phaser.Scene {
 					'...'];
 		this.seaweed.options = ['deserve', 'merit', 'warrant'];
 		this.seaweed.makeInteractive();
+		addGlow(this, this.seaweed, 'seaweedGlow');
 
 		//clickable shell
 		this.shell = new memento(this, 811, 245, 'shell').setOrigin(0).setScale(.56,.56);
@@ -103,6 +111,7 @@ class Lv2 extends Phaser.Scene {
 					'...'];
 		this.shell.options = ['known', 'seed', 'loved'];
 		this.shell.makeInteractive();
+		addGlow(this, this.shell, 'shellGlow');
 
 		//clickable fish
 		this.fish = new memento(this, 500, 120, 'fish').setOrigin(0).setScale(.8,.8);;
@@ -112,6 +121,7 @@ class Lv2 extends Phaser.Scene {
 					'...'];
 		this.fish.options = ['known', 'seed', 'loved'];
 		this.fish.makeInteractive();
+		addGlow(this, this.fish, 'fishGlow');
 
 		//clickable starfish
 		this.starfish = new memento(this, 784, 68, 'starfish').setOrigin(0).setScale(.7,.7);
@@ -121,6 +131,7 @@ class Lv2 extends Phaser.Scene {
 		'...'];
 		this.starfish.options = ['bravery', 'fearlessness','gutsiness'];
 		this.starfish.makeInteractive();
+		addGlow(this, this.starfish, 'starfishGlow');
 
 	}, this);
   
