@@ -61,7 +61,7 @@ class Lv1 extends Phaser.Scene {
 		this.dialogueBox.y = game.config.height/1.01 - this.dialogueBox.displayHeight;
 
 		//create continue text prompt
-		this.continueButton = this.add.text(720, 555, '[CLICK TO CONTINUE]', { font: "15pt Courier", fill: "#ff0000", stroke: "#ff0000", strokeThickness: 1 });
+		this.continueButton = this.add.text(720, 555, '[CLICK TO CONTINUE]', { font: "15pt Courier", fill: "#ff0000", stroke: "#ff0000"});
 		this.continueButton.alpha = 0; 	
 		//this.continueON = false;
 		this.continueButton.setInteractive();
@@ -122,11 +122,7 @@ class Lv1 extends Phaser.Scene {
 
 
 		this.butterfly.makeInteractive();
-<<<<<<< HEAD
 		
-=======
-
->>>>>>> refs/remotes/origin/master
 		//girl
 		this.girl = new memento(this, game.config.width*.44, game.config.height*.299, 'girlsmall').setOrigin(0).setScale(.87);
 		this.girl.text = ['I remember how little Maya was when her family first moved into the house I was rooted beside.  At this age, she would always climb my branches and play pretend in my leaves.  As she got older, she began to read books in the shade I offered, and fall peacefully asleep at my roots.',
