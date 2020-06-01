@@ -26,6 +26,7 @@ class Menu extends Phaser.Scene {
       this.load.image('muteGlow', 'assets/UI/Glow/MuteButtonGlow.PNG');
       this.load.image('unmuteGlow', 'assets/UI/Glow/UnmuteButtonGlow.PNG');
       this.load.image('creditsGlow', 'assets/UI/Glow/CreditsButtonGlow.PNG');
+      this.load.image('playagainGlow', 'assets/UI/Glow/PlayAgainButtonGlow.PNG');
 
       //screens
       this.load.image('mementomenu', './assets/FullScreen/MenuScreen.PNG');

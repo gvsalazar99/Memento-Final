@@ -25,11 +25,19 @@ let game = new Phaser.Game(config);
 
 var mute = false;
 
+
 //collection of mementos in each scene, meant to be erased at the beginning of each scene
 var mementoGroup = [];
 
+
 //this is the text that is positioned within the dialogue box!
 var boxText;
+
+
+// //resets current scene
+// function reset(current) {
+//     current.scene.start(current);
+// }
 
 //this method will add a glow when the object is hovered over with the mouse pointer
 //assumes that the regular and glow image have the same dimensions
@@ -46,6 +54,8 @@ function addGlow(scene, og, glowKey) {
         glow.visible = false;
     });
 }
+
+
 //this function types text into the dialoguebox
 function typeText(scene, str) {
     scene.continueButton.alpha = 0; //make continue button disappear

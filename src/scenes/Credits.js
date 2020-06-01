@@ -19,6 +19,7 @@ class Credits extends Phaser.Scene {
 		this.playagainbutton = this.add.sprite(385,game.config.height/3, 'playagainbutton').setScale(0.9,0.9).setOrigin(0);
 		this.playagainbutton.setInteractive();
 		this.playagainbutton.on('pointerdown',()=> this.scene.start('menuScene'))
+		addGlow(this, this.playagainbutton, 'playagainGlow');
 	
 
 		}, this);
