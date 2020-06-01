@@ -7,7 +7,7 @@ class Menu extends Phaser.Scene {
     preload() {
       //buttons
       this.load.image('playbutton', 'assets/UI/PlayButtonNew.PNG'); 
-      this.load.image('exitbutton', 'assets/UI/ExitButton.png'); 
+      //this.load.image('exitbutton', 'assets/UI/ExitButton.png'); 
 
       
       //dialogue boxes

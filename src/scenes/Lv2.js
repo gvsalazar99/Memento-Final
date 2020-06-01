@@ -41,16 +41,16 @@ class Lv2 extends Phaser.Scene {
 		let progressbar = this.add.sprite('progressbar');
 		progressbar= this.add.sprite(game.config.width/3.58,0, 'progressbar').setOrigin(0, 0).setScale(.35,.32);
 		
-		//exit button switches to level 3 
-		this.templevl3button = this.add.sprite(game.config.width/4,game.config.height/4, 'exitbutton').setScale(0.25,0.25).setOrigin(0);
-		this.templevl3button.setInteractive();
+		// //exit button switches to level 3 
+		// this.templevl3button = this.add.sprite(game.config.width/4,game.config.height/4, 'exitbutton').setScale(0.25,0.25).setOrigin(0);
+		// this.templevl3button.setInteractive();
 
-		//RESTART SCENE
-		this.templevl3button.on('pointerdown',()=> {
-			console.log('RESTARTING THE LEVEL'); 
-			this.scene.start('Level2'); 
-			this.music.stop();
-		});
+		// //RESTART SCENE
+		// this.templevl3button.on('pointerdown',()=> {
+		// 	console.log('RESTARTING THE LEVEL'); 
+		// 	this.scene.start('Level2'); 
+		// 	this.music.stop();
+		// });
 		//dialogue box art
 		this.dialogueBox = this.add.sprite(game.config.width/4.5, game.config.height/4.5, 'level2box').setOrigin(0).setScale(.4,.4);
 		this.dialogueBox.y = game.config.height/1.01 - this.dialogueBox.displayHeight;	

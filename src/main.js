@@ -15,7 +15,7 @@ let config = {
               
         }
     },
-   scene: [ Menu , Play, Credits, Lv1, cutscenemagnolia, Lv2, cutscenejellyfish, Lv3, cutsceneperson ] 
+   scene: [ Menu , Credits, Lv1, cutscenemagnolia, Lv2, cutscenejellyfish, Lv3, cutsceneperson ] 
 
    
 };
