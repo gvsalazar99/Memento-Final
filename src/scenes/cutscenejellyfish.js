@@ -8,7 +8,7 @@ class cutscenejellyfish extends Phaser.Scene {
 
     //text
     var style = { font: "14pt Courier", fill: "#00ff00", stroke: "#00ff00", wordWrap: { width: 570, useAdvancedWrap: true } };
-    boxText = this.add.text(game.config.height/2, game.config.height/2, '', { font: "14pt Courier", fill: "#00ff00", stroke: "#00ff00", wordWrap: { width: 570, useAdvancedWrap: true } });
+    boxText = this.add.text(game.config.height/2, game.config.height/2, '', style);
     boxText.setText('[CUT SCENE 2]');
     boxText.visible = true;
   
@@ -23,7 +23,7 @@ class cutscenejellyfish extends Phaser.Scene {
       },
         callbackScope: game
     });  
-
+    
     //create text for 1st level's chosen options
     this.seahorsesChoice = this.add.text(game.config.width/2, game.config.height/4, '', style);
     this.seaweedChoice = this.add.text(game.config.width/2, game.config.height/4 + 20, '', style);
