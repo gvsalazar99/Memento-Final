@@ -22,6 +22,7 @@ class memento extends Phaser.GameObjects.Sprite {
         this.enterKey = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
 
         this.on('pointerdown', (pointer, gameObject) => {
+            console.log(this.texture.key + ' clicked!');
             this.scene.dialogueBox.visible = true;
             this.scene.continueButton.alpha = 0;
             this.scene.selectedMemento = this;
@@ -40,16 +41,24 @@ class memento extends Phaser.GameObjects.Sprite {
         this.makeOptionsClickable(this.option1);
         this.makeOptionsClickable(this.option2);
         this.makeOptionsClickable(this.option3);
-    }
+    } 
 
     makeOptionsClickable(option) {
         //when option is clicked
         option.on('pointerdown', (pointer, gameObject) =>{
-            console.log('option clicked!');
-            this.option1.setText('');
-            this.option2.setText('');
-            this.option3.setText('');
-            this.scene.dialogueBox.visible = false;
+            console.log(option.text + ' clicked!');
+            //erase options
+            this.option1.visible = false;
+            this.option2.visible = false;
+            this.option3.visible = false;
+            this.scene.dialogueBox.visible = false; //erase box
+
+            mementoGroup.push(this);          //add memento to group
+            this.chosenOption = option.text; //save the chosen option
+            console.log('Mementos on the list:');
+            mementoGroup.forEach(memento => console.log(memento.texture.key));
+            console.log('Chosen options so far:');
+            mementoGroup.forEach(memento => console.log(memento.chosenOption));
         });
 
         //highlight player option when mouse hovers
