@@ -68,27 +68,30 @@ class Lv1 extends Phaser.Scene {
 
 		//clickable memento magnolia
 		this.magnolia = new memento(this, game.config.width*.84, game.config.height*.000000000000000001, 'magnolianew').setOrigin(0).setScale(.7999);
-		this.magnolia.text = ['I\'m a magnolia flower!',
+		this.magnolia.text = ['I watched this magnolia flower in wonder, seeing it take its time to flourish and grow upon the branches of my friend.  She only revealed her true colors, her growth, and progress, to those who properly cared for her.',
 							'...',
-							'.... what, do you like me or something? Wtf are you looking at?',
+							'.... I remember the [MagnoliaOption] I endured, and the continued effort I made to persevere.',
 							'...'];
+		this.magnolia.options = ['struggles', 'hardships', 'tough times'];
 		this.magnolia.makeInteractive();
 
 		//tree carving
 		this.carving = new memento(this, 10, 200, 'treecarving').setOrigin(0).setScale(.3);
-		this.carving.text = ['X+A, a romantic display of affection',
-			'A contract ripped into the bark as a demonstration',
-			'After the guilty often return to the crime scene',
-			'Then visits stop & the gashes fade to scars to memory',
-			'Sometimes we hurt each other and lose a shared, beloved sentiment'];
+		this.carving.text = ['X+A were carved into my bark years ago, yet I struggled for decades to recover from this wound. Their declaration of love marked me as property, but I would eventually learn that I belonged only to myself.',
+							'...',
+							'I remember how they set me back years in growth, but despite their disregard for my personal [CarvingOption] , I never gave up the effort to bloom my own flowers, and to be the best version of myself.',
+							'...'];
+							this.carving.options = ['trials', 'worries', 'battles']; 
 		this.carving.makeInteractive();
 
 		//squirrel
 		this.squirrel = new memento(this, 638, 340, 'squirrel').setOrigin(0).setScale(.64);
-		this.squirrel.text = ['[Squirrel sounds]', 
+		this.squirrel.text = ['This squirrel often came by and took fallen goods from my branches, even going so far as to take what had not yet fallen.  I secretly feared that once I bloomed my magnolias, it would take them from me too.', 
 							'...',
-							'[Squirrel sounds intensify]',
+							'Perhaps I struggled to grow my flowers during this time for fear of loss. I hoped and prayed the squirrel would [SquirrelOption] me, but during my long life, I eventually learned that even with setbacks, I would always find the strength to recover.',
 							'...'];
+							this.squirrel.options = ['ignore', 'forget', 'overlook']; 
+
 		this.squirrel.makeInteractive();
 
 		//text
@@ -99,17 +102,23 @@ class Lv1 extends Phaser.Scene {
 		
 		//butterfly
 		this.butterfly = new memento(this, game.config.width*.0455, game.config.height*.5, 'butterflysmall').setOrigin(0).setScale(.8);
-		this.butterfly.text = ['[oink, oink]',
+		this.butterfly.text = ['In my lifetime, I housed, fed, and befriended generations of this butterfly family. These friends of mine never took more than they needed, though I always tried to offer them an abundance.',
 							'...',
-							'[oinking intensifies',
+							'They all left me eventually, but I knew we needed different things, and I understood it was what they required in order to grow.  In my loneliest moments, I was able to [ButterflyOption] , knowing they would always come back to visit their old friend.',
 							'...'];
+							this.butterfly.options = ['persevere', 'overcome', 'remain strong']; 
+
+
 		this.butterfly.makeInteractive();
+		
 		//girl
 		this.girl = new memento(this, game.config.width*.44, game.config.height*.299, 'girlsmall').setOrigin(0).setScale(.87);
-		this.girl.text = ['\"Stranger danger!\"',
+		this.girl.text = ['I remember how little Maya was when her family first moved into the house I was rooted beside.  At this age, she would always climb my branches and play pretend in my leaves.  As she got older, she began to read books in the shade I offered, and fall peacefully asleep at my roots.',
 						'...',
-						'I\"m getting my Daddy!',
+						'She grew to be strong, intelligent, and beautiful. Her company healed me, and her transformation inspired me.  She was a girl with [GirlOption]',
 						'...'];
+						this.girl.options = ['power', 'vigor', 'passion']; 
+
 		this.girl.makeInteractive();
 	
 		this.selectedMemento; //current memento being interacted with

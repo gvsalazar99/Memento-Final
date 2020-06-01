@@ -6,7 +6,7 @@ class memento extends Phaser.GameObjects.Sprite {
         this.setInteractive();    //it is clickable!
         this.text = null;         //memento's description to be displayed!
         this.options = null;      //text options for player to choose from
-        this.options = ['[OPTION 1]', '[OPTION 2]', '[OPTION 3]']; //temp file options
+        this.options = ['[OPTION]', '[OPTION 2]', '[OPTION 3]']; //temp file options
         this.continueCount = 0; //how many continues have been used when interacting with the memento
         this.chosenOption;
     }
@@ -34,9 +34,9 @@ class memento extends Phaser.GameObjects.Sprite {
         boxText.setText(''); //erase current text
 
         //typeText(this.scene, '[OPTION 1]\n[OPTION 2]\n[OPTION 3]');
-        this.option1 = this.scene.add.text(410, this.scene.dialogueBox.y + 15, this.options[0], { font: "15pt Courier", fill: "#000000", stroke: "#000000", strokeThickness: 1, wordWrap: { width: 570, useAdvancedWrap: true } }).setInteractive();
-        this.option2 = this.scene.add.text(410, this.scene.dialogueBox.y + 45, this.options[1], { font: "15pt Courier", fill: "#000000", stroke: "#000000", strokeThickness: 1, wordWrap: { width: 570, useAdvancedWrap: true } }).setInteractive();
-        this.option3 = this.scene.add.text(410, this.scene.dialogueBox.y + 75, this.options[2], { font: "15pt Courier", fill: "#000000", stroke: "#000000", strokeThickness: 1, wordWrap: { width: 570, useAdvancedWrap: true } }).setInteractive();
+        this.option1 = this.scene.add.text(430, this.scene.dialogueBox.y + 15, this.options[0], { font: "14pt Courier", fill: "#000000", stroke: "#000000", wordWrap: { width: 570, useAdvancedWrap: true } }).setInteractive();
+        this.option2 = this.scene.add.text(430, this.scene.dialogueBox.y + 45, this.options[1], { font: "14pt Courier", fill: "#000000", stroke: "#000000", wordWrap: { width: 570, useAdvancedWrap: true } }).setInteractive();
+        this.option3 = this.scene.add.text(430, this.scene.dialogueBox.y + 75, this.options[2], { font: "14pt Courier", fill: "#000000", stroke: "#000000", wordWrap: { width: 570, useAdvancedWrap: true } }).setInteractive();
         this.makeOptionsClickable(this.option1);
         this.makeOptionsClickable(this.option2);
         this.makeOptionsClickable(this.option3);
