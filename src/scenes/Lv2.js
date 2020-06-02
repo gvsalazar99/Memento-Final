@@ -4,22 +4,22 @@ class Lv2 extends Phaser.Scene {
 	}
 
 	preload() {
-		this.load.image('level2box', 'assets/TextBoxes/LevelTwoTextBox.PNG');
-		this.load.image('leveltwo', 'assets/Fullscreen/LevelTwoBackground.png');
-		this.load.audio('level2music', 'assets/audio/bensound-beyondtheline.mp3');
+		this.load.image('level2box', './assets/TextBoxes/LevelTwoTextBox.PNG');
+		this.load.image('leveltwo', './assets/Fullscreen/LevelTwoBackground.png');
+		this.load.audio('level2music', './assets/audio/bensound-beyondtheline.mp3');
 
 		//mementos for level2 (temp)
-		this.load.image('seahorses', 'assets/mementos/twoseahorses.png');
-		this.load.image('seaweed', 'assets/mementos/seaweed.png');
-		this.load.image('shell', 'assets/mementos/shell.png');
-		this.load.image('starfish', 'assets/mementos/starfish.png');
-		 this.load.image('fish', 'assets/mementos/fishsmall.png');
+		this.load.image('seahorses', './assets/mementos/twoseahorses.png');
+		this.load.image('seaweed', './assets/mementos/seaweed.png');
+		this.load.image('shell', './assets/mementos/shell.png');
+		this.load.image('starfish', './assets/mementos/starfish.png');
+		 this.load.image('fish', './assets/mementos/fishsmall.png');
 		//memento glows
-		this.load.image('seahorsesGlow', 'assets/mementos/glow/twoseahorseswglow.png');
-		this.load.image('seaweedGlow', 'assets/mementos/glow/seaweedwglow.png');
-		this.load.image('shellGlow', 'assets/mementos/glow/shellwglow.png');
-		this.load.image('starfishGlow', 'assets/mementos/glow/starfishwglow.png');
-		this.load.image('fishGlow', 'assets/mementos/glow/fishsmallwglow.png');
+		this.load.image('seahorsesGlow', './assets/mementos/glow/twoseahorseswglow.png');
+		this.load.image('seaweedGlow', './assets/mementos/glow/seaweedwglow.png');
+		this.load.image('shellGlow', './assets/mementos/glow/shellwglow.png');
+		this.load.image('starfishGlow', './assets/mementos/glow/starfishwglow.png');
+		this.load.image('fishGlow', './assets/mementos/glow/fishsmallwglow.png');
 	}
 
 	create() {

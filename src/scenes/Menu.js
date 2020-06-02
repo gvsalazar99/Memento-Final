@@ -22,11 +22,11 @@ class Menu extends Phaser.Scene {
       this.load.image('unmutebutton', './assets/UI/UnmuteButton.PNG');
 
       //button glows
-      this.load.image('playGlow', 'assets/UI/Glow/PlayButtonGlow.PNG');
-      this.load.image('muteGlow', 'assets/UI/Glow/MuteButtonGlow.PNG');
-      this.load.image('unmuteGlow', 'assets/UI/Glow/UnmuteButtonGlow.PNG');
-      this.load.image('creditsGlow', 'assets/UI/Glow/CreditsButtonGlow.PNG');
-      this.load.image('playagainGlow', 'assets/UI/Glow/PlayAgainButtonGlow.PNG');
+      this.load.image('playGlow', './assets/UI/Glow/PlayButtonGlow.PNG');
+      this.load.image('muteGlow', './assets/UI/Glow/MuteButtonGlow.PNG');
+      this.load.image('unmuteGlow', './assets/UI/Glow/UnmuteButtonGlow.PNG');
+      this.load.image('creditsGlow', './assets/UI/Glow/CreditsButtonGlow.PNG');
+      this.load.image('playagainGlow', './assets/UI/Glow/PlayAgainButtonGlow.PNG');
 
       //screens
       this.load.image('mementomenu', './assets/FullScreen/MenuScreen.PNG');
