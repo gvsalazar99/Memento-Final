@@ -111,7 +111,7 @@ class Menu extends Phaser.Scene {
 
 
       
-      
+      console.log(this);
 
       }, this);
   
@@ -128,6 +128,7 @@ class Menu extends Phaser.Scene {
 
 
     update() {
+      //this.creditsButton.rotation += .5;
 
     }
 
