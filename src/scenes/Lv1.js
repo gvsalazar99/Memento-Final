@@ -84,11 +84,12 @@ class Lv1 extends Phaser.Scene {
 			}
 		});
 
-
+	
+		
 		//Welcoming text
 		boxText = this.add.text(430, this.dialogueBox.y + 15, '', { font: "14pt Courier", fill: "#000000", stroke: "#000000", wordWrap: { width: 570, useAdvancedWrap: true } });
 		boxText.visible = true;
-		typeText(this, 'I am your first reincarnation, the magnolia tree. Take a look around and I will tell you of the life I live');		
+		typeText(this, 'I am your first reincarnation, the magnolia tree. Take a look around and I will tell you of the life I live.');		
 		
 
 		//clickable memento magnolia
@@ -97,7 +98,7 @@ class Lv1 extends Phaser.Scene {
 		addGlow(this, this.magnolia, 'magnoliaGlow');
 		this.magnolia.text = ['I watched this magnolia flower in wonder, seeing it take its time to flourish and grow upon the branches of my friend.  She only revealed her true colors, her growth, and progress, to those who properly cared for her.',
 							'...',
-							'.... I remember the [MagnoliaOption] I endured, and the continued effort I made to persevere.',
+							'.... I remember the ____________ I endured, and the continued effort I made to persevere.',
 							'...'];
 		this.magnolia.options = ['struggles', 'hardships', 'tough times'];
 		
@@ -109,7 +110,7 @@ class Lv1 extends Phaser.Scene {
 		addGlow(this, this.carving, 'carvingGlow');
 		this.carving.text = ['X+A were carved into my bark years ago, yet I struggled for decades to recover from this wound. Their declaration of love marked me as property, but I would eventually learn that I belonged only to myself.',
 							'...',
-							'I remember how they set me back years in growth, but despite their disregard for my personal [CarvingOption] , I never gave up the effort to bloom my own flowers, and to be the best version of myself.',
+							'I remember how they set me back years in growth, but despite their disregard for my personal ____________ , I never gave up the effort to bloom my own flowers, and to be the best version of myself.',
 							'...'];
 		this.carving.options = ['trials', 'worries', 'battles']; 
 		
@@ -120,7 +121,7 @@ class Lv1 extends Phaser.Scene {
 		addGlow(this, this.squirrel, 'squirrelGlow');
 		this.squirrel.text = ['This squirrel often came by and took fallen goods from my branches, even going so far as to take what had not yet fallen.  I secretly feared that once I bloomed my magnolias, it would take them from me too.', 
 							'...',
-							'Perhaps I struggled to grow my flowers during this time for fear of loss. I hoped and prayed the squirrel would [SquirrelOption] me, but during my long life, I eventually learned that even with setbacks, I would always find the strength to recover.',
+							'Perhaps I struggled to grow my flowers during this time for fear of loss. I hoped and prayed the squirrel would ____________ me, but during my long life, I eventually learned that even with setbacks, I would always find the strength to recover.',
 							'...'];
 		this.squirrel.options = ['ignore', 'forget', 'overlook']; 
 
@@ -131,7 +132,7 @@ class Lv1 extends Phaser.Scene {
 		addGlow(this, this.butterfly, 'butterflyGlow');
 		this.butterfly.text = ['In my lifetime, I housed, fed, and befriended generations of this butterfly family. These friends of mine never took more than they needed, though I always tried to offer them an abundance.',
 							'...',
-							'They all left me eventually, but I knew we needed different things, and I understood it was what they required in order to grow.  In my loneliest moments, I was able to [ButterflyOption] , knowing they would always come back to visit their old friend.',
+							'They all left me eventually, but I knew we needed different things, and I understood it was what they required in order to grow.  In my loneliest moments, I was able to ____________ , knowing they would always come back to visit their old friend.',
 							'...'];
 		this.butterfly.options = ['persevere', 'overcome', 'remain strong']; 
 
@@ -144,7 +145,7 @@ class Lv1 extends Phaser.Scene {
 		addGlow(this, this.girl, 'girlGlow');
 		this.girl.text = ['I remember how little Maya was when her family first moved into the house I was rooted beside.  At this age, she would always climb my branches and play pretend in my leaves.  As she got older, she began to read books in the shade I offered, and fall peacefully asleep at my roots.',
 						'...',
-						'She grew to be strong, intelligent, and beautiful. Her company healed me, and her transformation inspired me.  She was a girl with [GirlOption]',
+						'She grew to be strong, intelligent, and beautiful. Her company healed me, and her transformation inspired me.  She was a girl with ____________',
 						'...'];
 		this.girl.options = ['power', 'vigor', 'passion']; 
 

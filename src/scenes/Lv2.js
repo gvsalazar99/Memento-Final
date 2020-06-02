@@ -62,7 +62,7 @@ class Lv2 extends Phaser.Scene {
 		this.dialogueBox.y = game.config.height/1.01 - this.dialogueBox.displayHeight;	
 
 		//Welcoming text!
-		boxText = this.add.text(430, this.dialogueBox.y + 20, '', { font: "14pt Courier", fill: "#000000", stroke: "#000000", strokeThickness: 1, wordWrap: { width: 700, useAdvancedWrap: true } });
+		boxText = this.add.text(430, this.dialogueBox.y + 20, '', { font: "14pt Courier", fill: "#000000", stroke: "#000000", wordWrap: { width: 570, useAdvancedWrap: true } });
 		boxText.setText('Rule #2: Don\'t trust anything you\'re told');
 		boxText.visible = true;
 		console.log(boxText);
@@ -87,7 +87,7 @@ class Lv2 extends Phaser.Scene {
 		this.seahorses = new memento(this, 130, 150, 'seahorses').setOrigin(0);
 		this.seahorses.text = ['I remember how deeply I craved companionship in my youth, but how equally terrifying I found it.  I feared attachment, for the possibility of pain, shutting out the world around me for most of my life.',
 					'...',
-					'.... In trying to protect myself, I deprived myself of this pleasure in life for so long. Companionship, comfort, trust. I felt that if I let someone in, it was inevitable that they would [SeahorsesOption] me.  In time, and through courage, I was able to experience the joy of linking tails with a loved one.',
+					'.... In trying to protect myself, I deprived myself of this pleasure in life for so long. Companionship, comfort, trust. I felt that if I let someone in, it was inevitable that they would ____________ me.  In time, and through courage, I was able to experience the joy of linking tails with a loved one.',
 					'...'];
 		this.seahorses.options = ['lose', 'leave', 'fail'];
 		this.seahorses.makeInteractive();
@@ -97,7 +97,7 @@ class Lv2 extends Phaser.Scene {
 		this.seaweed = new memento(this, 700, 187, 'seaweed').setOrigin(0);
 		this.seaweed.text = ['In my youth, I spent many an afternoon, tail attached to the coral, watching the seaweed sway in the tide.  They were peaceful days, but never as fulfilling as I hoped.',
 					'...',
-					'....  Though I knew what I lacked was someone to share its beauty with, I kept that desire buried down deep, afraid to say it out loud.  It took a lot of self-reflection to realize that I [SeaweedOption] a bond like that.',
+					'....  Though I knew what I lacked was someone to share its beauty with, I kept that desire buried down deep, afraid to say it out loud.  It took a lot of self-reflection to realize that I ____________ a bond like that.',
 					'...'];
 		this.seaweed.options = ['deserve', 'merit', 'warrant'];
 		this.seaweed.makeInteractive();
@@ -107,7 +107,7 @@ class Lv2 extends Phaser.Scene {
 		this.shell = new memento(this, 811, 245, 'shell').setOrigin(0).setScale(.56,.56);
 		 this.shell.text = ['I used to idealize and romanticize the hermit crab’s life, thinking that if they could live such content lives of solitude, then so could I.',
 					'...',
-					'....  I was in for a surprise the day I learned that despite their name, hermit crabs actually travel with their friends.  They need socialization and companionship to feel whole. They want to be [HermitOption].',
+					'....  I was in for a surprise the day I learned that despite their name, hermit crabs actually travel with their friends.  They need socialization and companionship to feel whole. They want to be ____________.',
 					'...'];
 		this.shell.options = ['known', 'seed', 'loved'];
 		this.shell.makeInteractive();
@@ -117,7 +117,7 @@ class Lv2 extends Phaser.Scene {
 		this.fish = new memento(this, 500, 120, 'fish').setOrigin(0).setScale(.8,.8);;
 		this.fish.text = ['I remember thinking how incredulous it was that this school of fish was always together. I wondered how they could trust so many others. Cynically, I used to comfort myself in knowing that their bonds could not last forever.',
 					'...',
-					'....  It is shameful to think about those thoughts now after growing out of that negative mindset.  I know that they, like me, seek [FishOption].',
+					'....  It is shameful to think about those thoughts now after growing out of that negative mindset.  I know that they, like me, seek ____________.',
 					'...'];
 		this.fish.options = ['known', 'seed', 'loved'];
 		this.fish.makeInteractive();
@@ -127,7 +127,7 @@ class Lv2 extends Phaser.Scene {
 		this.starfish = new memento(this, 784, 68, 'starfish').setOrigin(0).setScale(.7,.7);
 		this.starfish.text = ['I remember when the starfish initiated conversation with me, noticing how I never swam with a partner, even though it was in my nature as a seahorse to do so.  She simply wanted to know if I was doing okay.',
 		'...',
-		'....  Her genuine concern for me touched my heart, and in time, I learned to let her in. She encouraged me to reach out and make other friends, acknowledging the [StarfishOption] it takes to let others in.',
+		'....  Her genuine concern for me touched my heart, and in time, I learned to let her in. She encouraged me to reach out and make other friends, acknowledging the ____________ it takes to let others in.',
 		'...'];
 		this.starfish.options = ['bravery', 'fearlessness','gutsiness'];
 		this.starfish.makeInteractive();

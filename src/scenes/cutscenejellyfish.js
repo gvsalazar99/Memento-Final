@@ -7,7 +7,7 @@ class cutscenejellyfish extends Phaser.Scene {
     console.log('We are in the cutscene!');    
 
     //text
-    var style = { font: "14pt Courier", fill: "#00ff00", stroke: "#00ff00", wordWrap: { width: 570, useAdvancedWrap: true } };
+    var style = { font: "14pt Courier", fill: "#00ff00", stroke: "#00ff00",strokeThickness: 1.5, wordWrap: { width: 570, useAdvancedWrap: true } };
     boxText = this.add.text(game.config.height/2, game.config.height/2, '', style);
     boxText.setText('[CUT SCENE 2]');
     boxText.visible = true;
@@ -31,12 +31,17 @@ class cutscenejellyfish extends Phaser.Scene {
     this.starfishChoice = this.add.text(game.config.width/2, game.config.height/4 + 60, '', style);
     this.fishChoice = this.add.text(game.config.width/2, game.config.height/4 + 80, '', style); 
 
+    //SEAHORSE HAIKU
+    // I won’t SeahorsesOption myself  (1 syl)
+    // To be HermitOption  takes StarfishOption  (1 syl, 3 syl)
+    // I SeaweedOption    that FishOption   (2 syl, 1 syl)
+
     //find chosen options for their respective memento
-    this.seahorsesChoice.setText('Seahorses -> ' + mementoGroup.find(mementos => mementos.texture.key == 'seahorses').chosenOption);
-    this.seaweedChoice.setText('Seaweed -> ' + mementoGroup.find(mementos => mementos.texture.key == 'seaweed').chosenOption);
-    this.shellChoice.setText('Shell -> ' + mementoGroup.find(mementos => mementos.texture.key == 'shell').chosenOption);
-    this.starfishChoice.setText('Starfish -> ' + mementoGroup.find(mementos => mementos.texture.key == 'starfish').chosenOption);
-    this.fishChoice.setText('Fish -> ' + mementoGroup.find(mementos => mementos.texture.key == 'fish').chosenOption);
+    this.seahorsesChoice.setText('I wont ' + mementoGroup.find(mementos => mementos.texture.key == 'seahorses' + 'myself').chosenOption);
+    this.shellChoice.setText('To be  ' + mementoGroup.find(mementos => mementos.texture.key == 'shell').chosenOption);
+    this.starfishChoice.setText(' takes ' + mementoGroup.find(mementos => mementos.texture.key == 'starfish').chosenOption);
+    this.seaweedChoice.setText('I  ' + mementoGroup.find(mementos => mementos.texture.key == 'seaweed').chosenOption);
+    this.fishChoice.setText('That ' + mementoGroup.find(mementos => mementos.texture.key == 'fish').chosenOption);
     
     
     //make all chosen options near invisible

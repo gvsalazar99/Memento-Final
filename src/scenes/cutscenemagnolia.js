@@ -10,7 +10,7 @@ class cutscenemagnolia extends Phaser.Scene {
   create() {
     console.log('We are in the cutscene!');    
 
-    var style = { font: "14pt Courier", fill: "#00ff00", stroke: "#00ff00", wordWrap: { width: 570, useAdvancedWrap: true } };
+    var style = { font: "16pt Courier", fill: "#00ff00", stroke: "#00ff00", strokeThickness: 1.5 , wordWrap: { width: 570, useAdvancedWrap: true } };
 		//text
 	 // boxText = this.add.text(game.config.height/2, game.config.height/2, '', { font: "14pt Courier", fill: "#00ff00", stroke: "#00ff00", wordWrap: { width: 570, useAdvancedWrap: true } });
     boxText = this.add.text(game.config.height/2, game.config.height/2, '', style );
@@ -49,12 +49,19 @@ class cutscenemagnolia extends Phaser.Scene {
     this.magnoliaChoice = this.add.text(game.config.width/2, game.config.height/4 + 60, '', style);
     this.girlChoice = this.add.text(game.config.width/2, game.config.height/4 + 80, '', style); 
 
+
+    //MAGNOLIA HAIKU
+    //Through MagnoliaOption, InitialsOption   (2 syl, 2 syl)
+    //I won’t SquirrelOption my GirlOption   (2 syl, 2 syl)
+    //I will ButterflyOption   (3 syl)
+
     //find chosen options for their respective memento
-    this.squirrelChoice.setText('Squirrel -> ' + mementoGroup.find(mementos => mementos.texture.key == 'squirrel').chosenOption);
-    this.carvingChoice.setText('Carving -> ' + mementoGroup.find(mementos => mementos.texture.key == 'treecarving').chosenOption);
-    this.butterflyChoice.setText('Butterfly -> ' + mementoGroup.find(mementos => mementos.texture.key == 'butterflysmall').chosenOption);
-    this.magnoliaChoice.setText('Magnolia -> ' + mementoGroup.find(mementos => mementos.texture.key == 'magnolianew').chosenOption);
-    this.girlChoice.setText('Girl -> ' + mementoGroup.find(mementos => mementos.texture.key == 'girlsmall').chosenOption);
+    this.magnoliaChoice.setText('Through  ' + mementoGroup.find(mementos => mementos.texture.key == 'magnolianew').chosenOption);
+    this.carvingChoice.setText('   ' + mementoGroup.find(mementos => mementos.texture.key == 'treecarving').chosenOption);
+    this.squirrelChoice.setText('I wont  ' + mementoGroup.find(mementos => mementos.texture.key == 'squirrel').chosenOption);
+    this.girlChoice.setText('  ' + mementoGroup.find(mementos => mementos.texture.key == 'girlsmall').chosenOption);
+    this.butterflyChoice.setText('I will  ' + mementoGroup.find(mementos => mementos.texture.key == 'butterflysmall').chosenOption);
+    
     
     
     //make all chosen options near invisible

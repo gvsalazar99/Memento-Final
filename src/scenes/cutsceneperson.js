@@ -13,6 +13,14 @@ class cutsceneperson extends Phaser.Scene {
     boxText.setText('[CUT SCENE 3]');
     boxText.visible = true;
   
+
+    // PERSON HAIKU
+    // Their PictureframeOption feels ConchaOption   (1 syl, 2 syl)
+    // For MenuOption you must DogOption   (1 syl, 3 syl)
+    // Keep their SignOption   (3 syl)
+    
+    
+
     this.secCount = 10;
     this.textTimer = this.time.addEvent({
       delay: 1000, //ms
