@@ -14,6 +14,7 @@ class Lv2 extends Phaser.Scene {
 		this.load.image('shell', './assets/mementos/shell.png');
 		this.load.image('starfish', './assets/mementos/starfish.png');
 		 this.load.image('fish', './assets/mementos/fishsmall.png');
+		 this.load.image('continuebutton', 'assets/TextBoxes/ContinueButton.png');
 		//memento glows
 		this.load.image('seahorsesGlow', './assets/mementos/glow/twoseahorseswglow.png');
 		this.load.image('seaweedGlow', './assets/mementos/glow/seaweedwglow.png');
@@ -46,6 +47,9 @@ class Lv2 extends Phaser.Scene {
 		//progressbar
 		let progressbar = this.add.sprite('progressbar');
 		progressbar= this.add.sprite(game.config.width/3.58,0, 'progressbar').setOrigin(0, 0).setScale(.35,.32);
+
+		//continue button
+		let continuebutton = this.add.sprite(game.config.width*.69, game.config.height*.91,'continuebutton').setOrigin(0).setScale(.45,.45);
 		
 		// //exit button switches to level 3 
 		// this.templevl3button = this.add.sprite(game.config.width/4,game.config.height/4, 'exitbutton').setScale(0.25,0.25).setOrigin(0);
@@ -63,7 +67,7 @@ class Lv2 extends Phaser.Scene {
 
 		//Welcoming text!
 		boxText = this.add.text(430, this.dialogueBox.y + 20, '', { font: "14pt Courier", fill: "#000000", stroke: "#000000", wordWrap: { width: 570, useAdvancedWrap: true } });
-		boxText.setText('Rule #2: Don\'t trust anything you\'re told');
+		boxText.setText('I am your 2nd reincarnation, the seahorse. Swim around and I will tell you of this life. Write your poem.');
 		boxText.visible = true;
 		console.log(boxText);
 

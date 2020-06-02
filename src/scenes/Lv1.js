@@ -18,6 +18,7 @@ class Lv1 extends Phaser.Scene {
 		this.load.image('girlGlow', 'assets/mementos/glow/girlsmallwglow.png');
 		//load text box art
 		this.load.image('level1box', 'assets/TextBoxes/LevelOneTextBox.PNG');
+		this.load.image('continuebutton', 'assets/TextBoxes/ContinueButton.png');
 		//load background
 		this.load.image('levelonenew', 'assets/FullScreen/LevelOneBackgroundResized.png');
 		//load background music
@@ -52,6 +53,7 @@ class Lv1 extends Phaser.Scene {
 		//progressbar
 		let progressbar = this.add.sprite('progressbar');
 		progressbar= this.add.sprite(game.config.width/3.58,0, 'progressbar').setOrigin(0, 0).setScale(.35,.32);
+
 		
 		// //THIS EXIT BUTTON FUNCTIONS AS A RESTART BUTTON  
 		// this.tempLevl2button = this.add.sprite(game.config.width/4,game.config.height/4, 'exitbutton').setScale(0.25,0.25).setOrigin(0);
@@ -67,6 +69,9 @@ class Lv1 extends Phaser.Scene {
 		//dialogue box art
 		this.dialogueBox = this.add.sprite(game.config.width/4.5, 0, 'level1box').setOrigin(0).setScale(.4,.4);
 		this.dialogueBox.y = game.config.height/1.01 - this.dialogueBox.displayHeight;
+
+		//continue button
+		let continuebutton = this.add.sprite(game.config.width*.69, game.config.height*.91,'continuebutton').setOrigin(0).setScale(.45,.45);
 
 
 		//create continue text prompt
