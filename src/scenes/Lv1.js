@@ -11,11 +11,11 @@ class Lv1 extends Phaser.Scene {
     	this.load.image('magnolianew', 'assets/mementos/glow/magnolianoglow.PNG');
 		this.load.image('girlsmall', 'assets/mementos/girlsmall.png');
 		//memento glows
-		this.load.image('carvingGlow', 'assets/mementos/glow/treecarvingwglow.png');
-		this.load.image('squirrelGlow', 'assets/mementos/glow/squirrelsmallwglow.png');
-		this.load.image('butterflyGlow', 'assets/mementos/glow/butterflyglow.png');
-		this.load.image('magnoliaGlow', 'assets/mementos/glow/magnoliaglow.png');
-		this.load.image('girlGlow', 'assets/mementos/glow/girlglow.png');
+		this.load.image('carvingGlow', 'assets/mementos/glow/treecarvingsmallglow.png');
+		this.load.image('squirrelGlow', 'assets/mementos/glow/squirrelsmallglow.png');
+		this.load.image('butterflyGlow', 'assets/mementos/glow/butterflysmallglow.png');
+		this.load.image('magnoliaGlow', 'assets/mementos/glow/magnoliawglow.png');
+		this.load.image('girlGlow', 'assets/mementos/glow/girlsmallwglow.png');
 		//load text box art
 		this.load.image('level1box', 'assets/TextBoxes/LevelOneTextBox.PNG');
 		//load background
