@@ -51,7 +51,7 @@ class Lv2 extends Phaser.Scene {
 		//create continue button
 		addContinue(this);
 
-		
+
 		// //exit button switches to level 3 
 		// this.templevl3button = this.add.sprite(game.config.width/4,game.config.height/4, 'exitbutton').setScale(0.25,0.25).setOrigin(0);
 		// this.templevl3button.setInteractive();
