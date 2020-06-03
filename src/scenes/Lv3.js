@@ -13,7 +13,7 @@ class Lv3 extends Phaser.Scene {
 		this.load.image('parenttemp', 'assets/mementos/parenttemp.png');
 		this.load.image('registertemp', 'assets/mementos/registertemp.png');
 		this.load.image('breadtemp', 'assets/mementos/breadtemp.png');
-		this.load.image('continuebutton', 'assets/TextBoxes/ContinueButton.png');
+		this.load.image('continuebutton', 'assets/TextBoxes/ContinueButton.PNG');
 
 	   
 	}

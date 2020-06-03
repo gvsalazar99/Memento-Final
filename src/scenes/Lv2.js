@@ -14,7 +14,7 @@ class Lv2 extends Phaser.Scene {
 		this.load.image('shell', './assets/mementos/shell.png');
 		this.load.image('starfish', './assets/mementos/starfish.png');
 		 this.load.image('fish', './assets/mementos/fishsmall.png');
-		 this.load.image('continuebutton', 'assets/TextBoxes/ContinueButton.png');
+		 this.load.image('continuebutton', 'assets/TextBoxes/ContinueButton.PNG');
 		//memento glows
 		this.load.image('seahorsesGlow', './assets/mementos/glow/twoseahorseswglow.png');
 		this.load.image('seaweedGlow', './assets/mementos/glow/seaweedwglow.png');

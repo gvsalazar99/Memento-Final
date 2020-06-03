@@ -18,7 +18,7 @@ class Lv1 extends Phaser.Scene {
 		this.load.image('girlGlow', 'assets/mementos/glow/girlsmallwglow.png');
 		//load text box art
 		this.load.image('level1box', 'assets/TextBoxes/LevelOneTextBox.PNG');
-		this.load.image('continuebutton', 'assets/TextBoxes/ContinueButton.png');
+		this.load.image('continuebutton', 'assets/TextBoxes/ContinueButton.PNG');
 		//load background
 		this.load.image('levelonenew', 'assets/FullScreen/LevelOneBackgroundResized.png');
 		//load background music
