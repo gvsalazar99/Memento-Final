@@ -40,6 +40,8 @@ class Lv1 extends Phaser.Scene {
 			}); 
 		} 
 
+		this.selectedMemento = null; //current memento being interacted with
+
 		//camera fade in n out 
 		this.cameras.main.once('camerafadeoutcomplete', function (camera) {
 			this.add.image(1260, 590, 'levelonenew').setOrigin(0, 0).setScale(.4,.4);;
@@ -139,9 +141,7 @@ class Lv1 extends Phaser.Scene {
 						'...'];
 		this.girl.options = ['power', 'vigor', 'passion']; 
 
-		
 	
-		this.selectedMemento; //current memento being interacted with
 
 		}, this);
   

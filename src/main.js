@@ -77,26 +77,43 @@ function addContinue(scene) {
 
 //this function types text into the dialoguebox
 function typeText(scene, str) {
+    let memento = null;
+    // if a memento has been clicked, remember which one it was when typeText() starts
+    if(scene.selectedMemento != null) {
+        memento = scene.selectedMemento; 
+    }
     continueButton.alpha = 0; //make continue button disappear
     boxText.setText('');
-
-    let currentChar = 0;
-    //console.log(this);
-    //console.log(Phaser.Scene.time);
+    let currentChar = 0;   
     this.textTimer = scene.time.addEvent({
         delay: 30, //ms
         repeat: str.length -1,
         callback: () => {
             console.log('typing!');
-            boxText.setText(boxText.text + str[currentChar]);
+            
+            //Keep typing if a new memento hasn't been clicked
+            if(memento != null){
+                if(memento.texture.key == scene.selectedMemento.texture.key) {
+                    boxText.setText(boxText.text + str[currentChar]);
+                }
+                else {
+                    this.textTimer.destroy();
+                }
+            }
+            //if no memento has been selected in the scene, then type text
+            //typeText is for levels' welcome text
+            else {
+                boxText.setText(boxText.text + str[currentChar]);
+            }
+
             currentChar++;
-            if(this.textTimer.getRepeatCount() == 0) { //finished printing
+            //finished printing
+            if(this.textTimer.getRepeatCount() == 0) {
                 console.log('done typing!');
                 if(scene.selectedMemento != null) {    //if printing text for a memento
                     //console.log(scene.selectedMemento.texture.key + '\'s continues used = ' + scene.selectedMemento.continueCount);
                    if(scene.selectedMemento.continueCount <= 1) { //options have not been displayed yet if displaying memento
                         continueButton.alpha = 1; //make continue button visible
-                        //scene.continueButton.visible = true;
                         scene.selectedMemento.continueCount ++;
                    }
                    else { 

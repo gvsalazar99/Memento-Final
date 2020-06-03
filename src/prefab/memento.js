@@ -8,7 +8,7 @@ class memento extends Phaser.GameObjects.Sprite {
         this.options = null;      //text options for player to choose from
         this.options = ['[OPTION]', '[OPTION 2]', '[OPTION 3]']; //temp file options
         this.continueCount = 0; //how many continues have been used when interacting with the memento
-        this.chosenOption;
+        this.chosenOption = null;
     }
 
     create() {    
@@ -23,10 +23,18 @@ class memento extends Phaser.GameObjects.Sprite {
 
         this.on('pointerdown', (pointer, gameObject) => {
             console.log(this.texture.key + ' clicked!');
+
             this.scene.dialogueBox.visible = true;
             continueButton.alpha = 0;
             this.scene.selectedMemento = this;
-            typeText(this.scene, this.text[0]+'\n\n'+this.text[1]);
+            if(this.chosenOption == null) {
+                this.continueCount = 0;
+                typeText(this.scene, this.text[0]+'\n\n'+this.text[1]);
+            }
+            else {
+                typeText(this.scene, 'I\'ve already remembered this');
+            }
+            
         });
     }
 
