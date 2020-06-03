@@ -24,14 +24,14 @@ class memento extends Phaser.GameObjects.Sprite {
         this.on('pointerdown', (pointer, gameObject) => {
             console.log(this.texture.key + ' clicked!');
             this.scene.dialogueBox.visible = true;
-            this.scene.continueButton.alpha = 0;
+            continueButton.alpha = 0;
             this.scene.selectedMemento = this;
             typeText(this.scene, this.text[0]+'\n\n'+this.text[1]);
         });
     }
 
     displayOptions() {
-        this.scene.continueButton.alpha = 0; //remove continue button
+        continueButton.alpha = 0; //remove continue button
         boxText.setText(''); //erase current text
 
         //typeText(this.scene, '[OPTION 1]\n[OPTION 2]\n[OPTION 3]');

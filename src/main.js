@@ -55,10 +55,29 @@ function addGlow(scene, og, glowKey) {
     });
 }
 
+//this function adds the continue button to the scene it is called in
+var continueButton;
+function addContinue(scene) {
+    continueButton = scene.add.sprite(game.config.width*.69, game.config.height*.91,'continuebutton').setOrigin(0).setScale(.45,.45);
+    continueButton.alpha = 0; 	
+    //this.continueButton.visible = false;
+    //this.continueON = false;
+    continueButton.setInteractive();
+    //define what happens when continue is clicked
+    continueButton.on('pointerdown', (pointer, gameObject) => {
+        //console.log('conditional met');
+        if(scene.selectedMemento.continueCount <=1) {
+            typeText(scene, scene.selectedMemento.text[2] + '\n\n' + scene.selectedMemento.text[3]);
+        }
+        else {
+            scene.selectedMemento.displayOptions();
+        }
+    });
+}
 
 //this function types text into the dialoguebox
 function typeText(scene, str) {
-    scene.continueButton.alpha = 0; //make continue button disappear
+    continueButton.alpha = 0; //make continue button disappear
     boxText.setText('');
 
     let currentChar = 0;
@@ -76,13 +95,14 @@ function typeText(scene, str) {
                 if(scene.selectedMemento != null) {    //if printing text for a memento
                     //console.log(scene.selectedMemento.texture.key + '\'s continues used = ' + scene.selectedMemento.continueCount);
                    if(scene.selectedMemento.continueCount <= 1) { //options have not been displayed yet if displaying memento
-                        scene.continueButton.alpha = 1; //make continue button visible
+                        continueButton.alpha = 1; //make continue button visible
+                        //scene.continueButton.visible = true;
                         scene.selectedMemento.continueCount ++;
                    }
                    else { 
                        //if 2 continues have been displayed, then options are being memento's options are on display
                        //and no continue is needed
-                       scene.continueButton.alpha = 0;
+                       continueButton.alpha = 0;
                    }
                 }
                 this.textTimer.destroy();

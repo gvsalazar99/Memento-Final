@@ -18,7 +18,7 @@ class Lv1 extends Phaser.Scene {
 		this.load.image('girlGlow', 'assets/mementos/glow/girlsmallwglow.png');
 		//load text box art
 		this.load.image('level1box', 'assets/TextBoxes/LevelOneTextBox.PNG');
-		this.load.image('continuebutton', 'assets/TextBoxes/ContinueButton.png');
+		this.load.image('continuebutton', 'assets/TextBoxes/ContinueButton.PNG');
 		//load background
 		this.load.image('levelonenew', 'assets/FullScreen/LevelOneBackgroundResized.png');
 		//load background music
@@ -70,24 +70,9 @@ class Lv1 extends Phaser.Scene {
 		this.dialogueBox = this.add.sprite(game.config.width/4.5, 0, 'level1box').setOrigin(0).setScale(.4,.4);
 		this.dialogueBox.y = game.config.height/1.01 - this.dialogueBox.displayHeight;
 
-		//continue button
-		let continuebutton = this.add.sprite(game.config.width*.69, game.config.height*.91,'continuebutton').setOrigin(0).setScale(.45,.45);
-
-
-		//create continue text prompt
-		this.continueButton = this.add.text(720, 555, '[CLICK TO CONTINUE]', { font: "15pt Courier", fill: "#ff0000", stroke: "#ff0000"});
-		this.continueButton.alpha = 0; 	
-		//this.continueON = false;
-		this.continueButton.setInteractive();
-		this.continueButton.on('pointerdown', (pointer, gameObject) => {
-			//console.log('conditional met');
-			if(this.selectedMemento.continueCount <=1) {
-				typeText(this, this.selectedMemento.text[2] + '\n\n' + this.selectedMemento.text[3]);
-			}
-			else {
-				this.selectedMemento.displayOptions();
-			}
-		});
+		
+		//create continue button
+		addContinue(this);
 
 	
 		
