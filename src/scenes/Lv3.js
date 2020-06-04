@@ -16,6 +16,7 @@ class Lv3 extends Phaser.Scene {
 		this.load.image('continuebutton', 'assets/TextBoxes/ContinueButton.PNG');
 		//load progress bar 
 		this.load.image('progressbar', 'assets/UI/progressBar/BallAndBar.PNG');
+		this.load.image('progressbarlong', 'assets/UI/progressBar/KarmaBar.PNG');
 		//load x button
 		this.load.image('xbutton', 'assets/TextBoxes/xbutton.png');
 
@@ -49,6 +50,9 @@ class Lv3 extends Phaser.Scene {
 		this.dialogueBox = this.add.sprite(game.config.width/4.5, 0, 'level3box').setOrigin(0).setScale(.4,.4);
 		this.dialogueBox.y = game.config.height/1.01 - this.dialogueBox.displayHeight;
 
+		//create x button
+		let xbutton = this.add.sprite('xbutton');
+		xbutton= this.add.sprite(game.config.width*.74,game.config.height*.743, 'xbutton').setOrigin(0, 0).setScale(.25,.25);
 		
 		// //exit button switches scenes to Credit (end scene)  
 		// this.tempcreditsbutton = this.add.sprite(game.config.width/4,game.config.height/4, 'exitbutton').setScale(0.25,0.25).setOrigin(0);
@@ -116,7 +120,9 @@ class Lv3 extends Phaser.Scene {
 
 		//progressbar
 		let progressbar = this.add.sprite('progressbar');
-		progressbar= this.add.sprite(game.config.width/3.58,0, 'progressbar').setOrigin(0, 0).setScale(.35,.32);
+		//progressbar= this.add.sprite(game.config.width/3.58,0, 'progressbar').setOrigin(0, 0).setScale(.35,.32); //this is when its on top
+		progressbar= this.add.sprite(game.config.width*.3, game.config.height*.93, 'progressbarlong').setOrigin(0, 0).setScale(.35,.2); //this is when its at bottom 
+
 
 		//create continue text prompt
 		this.continueButton = this.add.text(720, 555, '[CLICK TO CONTINUE]', { font: "15pt Courier", fill: "#ff0000", stroke: "#ff0000", strokeThickness: 1 });

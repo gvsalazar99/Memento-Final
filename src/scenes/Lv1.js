@@ -24,8 +24,6 @@ class Lv1 extends Phaser.Scene {
 		//load progress bar 
 		this.load.image('progressbar', 'assets/UI/progressBar/BallAndBar.PNG');
 		this.load.image('progressbarlong', 'assets/UI/progressBar/KarmaBar.PNG');
-
-
 		//load background
 		this.load.image('levelonenew', 'assets/FullScreen/LevelOneBackgroundResized.png');
 		//load background music
@@ -89,13 +87,13 @@ class Lv1 extends Phaser.Scene {
 		// });
 
 		//dialogue box art
-		this.dialogueBox = this.add.sprite(game.config.width/4.5, 0, 'level1box').setOrigin(0).setScale(.4,.4);
-		this.dialogueBox.y = game.config.height/1.01 - this.dialogueBox.displayHeight;
+		this.dialogueBox = this.add.sprite(game.config.width/3.5, game.config.height*.2, 'level1box').setOrigin(0).setScale(.32,.32);
+		this.dialogueBox.y = game.config.height/1.07 - this.dialogueBox.displayHeight;
 
 		//progressbar
 		let progressbar = this.add.sprite('progressbar');
 		//progressbar= this.add.sprite(game.config.width/3.58,0, 'progressbar').setOrigin(0, 0).setScale(.35,.32); //this is when its on top
-		progressbar= this.add.sprite(game.config.width*.34, game.config.height*.93, 'progressbarlong').setOrigin(0, 0).setScale(.35,.2); //this is when its at bottom 
+		progressbar= this.add.sprite(game.config.width*.3, game.config.height*.93, 'progressbarlong').setOrigin(0, 0).setScale(.35,.2); //this is when its at bottom 
 
 		
 		//create continue button
@@ -103,11 +101,11 @@ class Lv1 extends Phaser.Scene {
 
 		//create x button
 		let xbutton = this.add.sprite('xbutton');
-		xbutton= this.add.sprite(game.config.width*.787,game.config.height*.755, 'xbutton').setOrigin(0, 0).setScale(.35,.32);
+		xbutton= this.add.sprite(game.config.width*.74,game.config.height*.743, 'xbutton').setOrigin(0, 0).setScale(.25,.25);
 	
 		
 		//Welcoming text
-		boxText = this.add.text(430, this.dialogueBox.y + 15, '', { font: "16pt Baskerville", fill: "#000000", stroke: "#000000", wordWrap: { width: 570, useAdvancedWrap: true } });
+		boxText = this.add.text(480, this.dialogueBox.y + 15, '', { font: "12pt Baskerville", fill: "#000000", stroke: "#000000", wordWrap: { width: 450, useAdvancedWrap: true } });
 		boxText.visible = true;
 		typeText(this, 'I am your first reincarnation, the magnolia tree. Take a look around and I will tell you of the life I live.');		
 		
@@ -125,7 +123,6 @@ class Lv1 extends Phaser.Scene {
 			this.flowersound.play();
 	});
 
-		
 		
 		//tree carving
 		this.carving = new memento(this, 10, 200, 'treecarving').setOrigin(0).setScale(.3);

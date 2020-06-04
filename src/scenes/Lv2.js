@@ -14,8 +14,9 @@ class Lv2 extends Phaser.Scene {
 		this.load.image('shell', './assets/mementos/shell.png');
 		this.load.image('starfish', './assets/mementos/starfish.png');
 		 this.load.image('fish', './assets/mementos/fishsmall.png');
-		 //load progress bar 
+		//load progress bar 
 		this.load.image('progressbar', 'assets/UI/progressBar/BallAndBar.PNG');
+		this.load.image('progressbarlong', 'assets/UI/progressBar/KarmaBar.PNG');
 		//load x button
 		this.load.image('xbutton', 'assets/TextBoxes/xbutton.png');
 		//memento glows
@@ -65,7 +66,12 @@ class Lv2 extends Phaser.Scene {
 	
 		//progressbar
 		let progressbar = this.add.sprite('progressbar');
-		progressbar= this.add.sprite(game.config.width/3.58,0, 'progressbar').setOrigin(0, 0).setScale(.35,.32);
+		//progressbar= this.add.sprite(game.config.width/3.58,0, 'progressbar').setOrigin(0, 0).setScale(.35,.32); //this is when its on top
+		progressbar= this.add.sprite(game.config.width*.3, game.config.height*.93, 'progressbarlong').setOrigin(0, 0).setScale(.35,.2); //this is when its at bottom 
+
+		//create x button
+		let xbutton = this.add.sprite('xbutton');
+		xbutton= this.add.sprite(game.config.width*.74,game.config.height*.743, 'xbutton').setOrigin(0, 0).setScale(.25,.25);
 
 		//create continue button
 		addContinue(this);

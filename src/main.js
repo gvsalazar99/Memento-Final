@@ -61,7 +61,7 @@ function addGlow(scene, og, glowKey) {
 //this function adds the continue button to the scene it is called in
 var continueButton;
 function addContinue(scene) {
-    continueButton = scene.add.sprite(game.config.width*.69, game.config.height*.92,'continuebutton').setOrigin(0).setScale(.45,.45);
+    continueButton = scene.add.sprite(game.config.width*.66, game.config.height*.88,'continuebutton').setOrigin(0).setScale(.35,.35);
     continueButton.alpha = 0; 	
     //this.continueButton.visible = false;
     //this.continueON = false;
