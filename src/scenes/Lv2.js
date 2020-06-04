@@ -24,6 +24,14 @@ class Lv2 extends Phaser.Scene {
 		this.load.image('shellGlow', './assets/mementos/glow/shellwglow.png');
 		this.load.image('starfishGlow', './assets/mementos/glow/starfishwglow.png');
 		this.load.image('fishGlow', './assets/mementos/glow/fishsmallwglow.png');
+		//loud memento sounds
+		this.load.audio('seahorsesound', './assets/audio/seahorsesound.mp3');
+		this.load.audio('fishsound', './assets/audio/fishsound.mp3');
+		this.load.audio('starfishsound', './assets/audio/starfishsound.mp3');
+		this.load.audio('seaweedsound', './assets/audio/seaweedsound.mp3');
+		this.load.audio('shellsound', './assets/audio/shellsound.mp3');
+
+
 	}
 
 	create() {
@@ -46,6 +54,14 @@ class Lv2 extends Phaser.Scene {
 
 		//create background
 		let background = this.add.sprite(0,0, 'leveltwo').setOrigin(0, 0);
+
+		//create sound effects for mementos 
+		this.seahorsesound = this.sound.add('seahorsesound');
+		this.fishsound = this.sound.add('fishsound');
+		this.starfishsound = this.sound.add('starfishsound');
+		this.seaweedsound = this.sound.add('seaweedsound');
+		this.shellsound = this.sound.add('shellsound');
+
 	
 		//progressbar
 		let progressbar = this.add.sprite('progressbar');
@@ -100,6 +116,9 @@ class Lv2 extends Phaser.Scene {
 		this.seahorses.options = ['lose', 'leave', 'fail'];
 		this.seahorses.makeInteractive();
 		addGlow(this, this.seahorses, 'seahorsesGlow');
+		this.seahorses.on('pointerdown',()=> {
+			this.seahorsesound.play();
+	});
 
 		//clickable seaweed
 		this.seaweed = new memento(this, 700, 187, 'seaweed').setOrigin(0);
@@ -110,6 +129,9 @@ class Lv2 extends Phaser.Scene {
 		this.seaweed.options = ['deserve', 'merit', 'warrant'];
 		this.seaweed.makeInteractive();
 		addGlow(this, this.seaweed, 'seaweedGlow');
+		this.seaweed.on('pointerdown',()=> {
+			this.seaweedsound.play();
+	});
 
 		//clickable shell
 		this.shell = new memento(this, 811, 245, 'shell').setOrigin(0).setScale(.56,.56);
@@ -120,6 +142,9 @@ class Lv2 extends Phaser.Scene {
 		this.shell.options = ['known', 'seed', 'loved'];
 		this.shell.makeInteractive();
 		addGlow(this, this.shell, 'shellGlow');
+		this.shell.on('pointerdown',()=> {
+			this.shellsound.play();
+	});
 
 		//clickable fish
 		this.fish = new memento(this, 500, 120, 'fish').setOrigin(0).setScale(.8,.8);;
@@ -130,6 +155,10 @@ class Lv2 extends Phaser.Scene {
 		this.fish.options = ['known', 'seed', 'loved'];
 		this.fish.makeInteractive();
 		addGlow(this, this.fish, 'fishGlow');
+		this.fish.on('pointerdown',()=> {
+			this.fishsound.play();
+	});
+
 
 		//clickable starfish
 		this.starfish = new memento(this, 784, 68, 'starfish').setOrigin(0).setScale(.7,.7);
@@ -140,6 +169,9 @@ class Lv2 extends Phaser.Scene {
 		this.starfish.options = ['bravery', 'fearlessness','gutsiness'];
 		this.starfish.makeInteractive();
 		addGlow(this, this.starfish, 'starfishGlow');
+		this.starfish.on('pointerdown',()=> {
+			this.starfishsound.play();
+	});
 
 	}, this);
   

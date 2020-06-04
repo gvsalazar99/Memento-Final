@@ -1,5 +1,8 @@
 //https://hannemann.itch.io/ui-button-pack-free
 //https://www.bensound.com/royalty-free-music/acoustic-folk
+//http://soundbible.com/1976-Fast-Heel-Walk.html
+//https://www.freesoundeffects.com/searches/chatter/
+
 
 let config = {
     type: Phaser.WebGL,

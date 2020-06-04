@@ -99,10 +99,6 @@ class Lv1 extends Phaser.Scene {
 		//create x button
 		let xbutton = this.add.sprite('xbutton');
 		xbutton= this.add.sprite(game.config.width*.787,game.config.height*.755, 'xbutton').setOrigin(0, 0).setScale(.35,.32);
-
-
-
-
 	
 		
 		//Welcoming text
