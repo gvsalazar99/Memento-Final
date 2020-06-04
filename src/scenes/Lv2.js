@@ -86,7 +86,7 @@ class Lv2 extends Phaser.Scene {
 		this.dialogueBox.y = game.config.height/1.01 - this.dialogueBox.displayHeight;	
 
 		//Welcoming text!
-		boxText = this.add.text(430, this.dialogueBox.y + 20, '', { font: "14pt Courier", fill: "#000000", stroke: "#000000", wordWrap: { width: 570, useAdvancedWrap: true } });
+		boxText = this.add.text(430, this.dialogueBox.y + 20, '', { font: "16pt Baskerville", fill: "#000000", stroke: "#000000", wordWrap: { width: 570, useAdvancedWrap: true } });
 		boxText.setText('I am your 2nd reincarnation, the seahorse. Swim around and I will tell you of this life. Write your poem.');
 		boxText.visible = true;
 		console.log(boxText);

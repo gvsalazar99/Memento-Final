@@ -61,7 +61,7 @@ class Lv3 extends Phaser.Scene {
 		// });
 
 		//text
-		boxText = this.add.text(430, this.dialogueBox.y + 15, '', {font: "14pt Courier", fill: "#000000", stroke: "#000000", wordWrap: { width: 570, useAdvancedWrap: true } });
+		boxText = this.add.text(430, this.dialogueBox.y + 15, '', {font: "16pt Baskerville", fill: "#000000", stroke: "#000000", wordWrap: { width: 570, useAdvancedWrap: true } });
 		boxText.setText('YOU\'VE MADE IT TO THE LAST REINCARNATION');
 		boxText.visible = true;
 
