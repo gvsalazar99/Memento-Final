@@ -33,7 +33,9 @@ class Menu extends Phaser.Scene {
       this.load.image('credits', './assets/FullScreen/EndScreen (1).PNG');
 
       //sounds
-      this.load.audio('mouseclick', './assets/audio/mouseclick.mp3');
+      this.load.audio('mouseclick', './assets/audio/shortmouseclick.mp3');
+      this.load.audio('turningpage', './assets/audio/turningpage.mp3');
+
 
     }
 
@@ -42,6 +44,7 @@ class Menu extends Phaser.Scene {
     create() {
       //create sound effect
       this.clickSFX = this.sound.add('mouseclick');
+      this.turningpage = this.sound.add('turningpage');
 
 
       //camera fade in n out

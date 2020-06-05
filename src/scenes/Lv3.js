@@ -40,6 +40,8 @@ class Lv3 extends Phaser.Scene {
 		this.music = this.sound.add('level3music');
 		this.music = this.sound.add('level2music');
 		this.clickSFX = this.sound.add('mouseclick');
+		this.turningpage = this.sound.add('turningpage');
+
 
 		 //play music if unmuted
 		 if(mute == false) { 

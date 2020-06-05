@@ -50,6 +50,8 @@ class Lv1 extends Phaser.Scene {
 		 //get audio ready
 		this.music = this.sound.add('level1music');
 		this.clickSFX = this.sound.add('mouseclick');
+		this.turningpage = this.sound.add('turningpage');
+
 
 		 //play music if unmuted
 		 if(mute == false) { 
