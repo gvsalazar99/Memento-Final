@@ -25,6 +25,15 @@ class Lv2 extends Phaser.Scene {
 		this.load.image('shellGlow', './assets/mementos/glow/shellwglow.png');
 		this.load.image('starfishGlow', './assets/mementos/glow/starfishwglow.png');
 		this.load.image('fishGlow', './assets/mementos/glow/fishsmallwglow.png');
+		//load progress bar 
+		this.load.image('progressbar', 'assets/UI/progressBar/BallAndBar.PNG');
+		this.load.image('progressbarlong', 'assets/UI/progressBar/KarmaBar.PNG');
+		this.load.image('progressBall', 'assets/UI/progressBar/KarmaBall.PNG');
+		this.load.image('progress1', 'assets/UI/progressBar/Progress1.PNG');
+		this.load.image('progress2', 'assets/UI/progressBar/Progress4.PNG');
+		this.load.image('progress3', 'assets/UI/progressBar/Progress7.PNG');
+		this.load.image('progress4', 'assets/UI/progressBar/Progress10.PNG');
+		this.load.image('progress5', 'assets/UI/progressBar/Progress13.PNG')
 		//loud memento sounds
 		this.load.audio('seahorsesound', './assets/audio/seahorsesound.mp3');
 		this.load.audio('fishsound', './assets/audio/fishsound.mp3');
@@ -65,18 +74,6 @@ class Lv2 extends Phaser.Scene {
 		this.seaweedsound = this.sound.add('seaweedsound');
 		this.shellsound = this.sound.add('shellsound');
 
-	
-		//progressbar
-		let progressbar = this.add.sprite('progressbar');
-		//progressbar= this.add.sprite(game.config.width/3.58,0, 'progressbar').setOrigin(0, 0).setScale(.35,.32); //this is when its on top
-		progressbar= this.add.sprite(game.config.width*.3, game.config.height*.93, 'progressbarlong').setOrigin(0, 0).setScale(.35,.2); //this is when its at bottom 
-
-		//create x button
-		let xbutton = this.add.sprite('xbutton');
-		xbutton= this.add.sprite(game.config.width*.74,game.config.height*.743, 'xbutton').setOrigin(0, 0).setScale(.25,.25);
-
-		//create continue button
-		addContinue(this);
 
 
 		// //exit button switches to level 3 
@@ -91,14 +88,42 @@ class Lv2 extends Phaser.Scene {
 		// });
 		
 		//dialogue box art
-		this.dialogueBox = this.add.sprite(game.config.width/4.5, game.config.height/4.5, 'level2box').setOrigin(0).setScale(.4,.4);
-		this.dialogueBox.y = game.config.height/1.01 - this.dialogueBox.displayHeight;	
+		this.dialogueBox = this.add.sprite(game.config.width/3.5, game.config.height*.2, 'level2box').setOrigin(0).setScale(.32,.32);
+		this.dialogueBox.y = game.config.height/1.07 - this.dialogueBox.displayHeight;	
+
+		//create x button
+		let xbutton = this.add.sprite('xbutton');
+		xbutton= this.add.sprite(game.config.width*.74,game.config.height*.743, 'xbutton').setOrigin(0, 0).setScale(.25,.25);
+
+		//create continue button
+		addContinue(this);
 
 		//Welcoming text!
-		boxText = this.add.text(430, this.dialogueBox.y + 20, '', { font: "16pt Baskerville", fill: "#000000", stroke: "#000000", wordWrap: { width: 570, useAdvancedWrap: true } });
+		boxText = this.add.text(480, this.dialogueBox.y + 15, '', { font: "12pt Baskerville", fill: "#000000", stroke: "#000000", wordWrap: { width: 450, useAdvancedWrap: true } });
 		boxText.setText('I am your 2nd reincarnation, the seahorse. Swim around and I will tell you of this life. Write your poem.');
 		boxText.visible = true;
 		console.log(boxText);
+
+		//progressbar
+		//let progressbar = this.add.sprite('progressbar');
+		//progressbar= this.add.sprite(game.config.width/3.58,0, 'progressbar').setOrigin(0, 0).setScale(.35,.32); //this is when its on top
+		let progressbar= this.add.sprite(game.config.width*.3, game.config.height*.93, 'progressbarlong').setOrigin(0, 0).setScale(.35,.2); //this is when its at bottom 
+		//color bar
+		this.progress1= this.add.sprite(game.config.width*.3, game.config.height*.92, 'progress1').setOrigin(0, 0).setScale(.35,.2);
+		this.progress1.visible = false;
+		this.progress2= this.add.sprite(game.config.width*.3, game.config.height*.92, 'progress2').setOrigin(0, 0).setScale(.35,.2);
+		this.progress2.visible = false;
+		this.progress3= this.add.sprite(game.config.width*.3, game.config.height*.92, 'progress3').setOrigin(0, 0).setScale(.35,.2);
+		this.progress3.visible = false;
+		this.progress4= this.add.sprite(game.config.width*.3, game.config.height*.92, 'progress4').setOrigin(0, 0).setScale(.35,.2);
+		this.progress4.visible = false;
+		this.progress5= this.add.sprite(game.config.width*.3, game.config.height*.92, 'progress5').setOrigin(0, 0).setScale(.35,.2);
+		this.progress5.visible = false;
+		//little ball for the progress bar!
+		this.progressBall = this.add.sprite(366, 538, 'progressBall').setOrigin(0).setScale(.35, .2);
+		this.progressBall.visible = true;
+		//this.progressBall.texture.key = 'progressBall';
+		//this.progressBall.setInteractive();
 
 
 		// //create continue text prompt

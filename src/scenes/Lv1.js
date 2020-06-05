@@ -131,7 +131,7 @@ class Lv1 extends Phaser.Scene {
 		let xbutton = this.add.sprite('xbutton');
 		xbutton= this.add.sprite(game.config.width*.74,game.config.height*.743, 'xbutton').setOrigin(0, 0).setScale(.25,.25);
 	
-		
+
 		//Welcoming text
 		boxText = this.add.text(480, this.dialogueBox.y + 15, '', { font: "12pt Baskerville", fill: "#000000", stroke: "#000000", wordWrap: { width: 450, useAdvancedWrap: true } });
 		boxText.visible = true;
