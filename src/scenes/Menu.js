@@ -101,7 +101,7 @@ class Menu extends Phaser.Scene {
       //credits button
       this.creditsButton = this.add.sprite(900,game.config.height*.7, 'creditsbutton').setScale(1).setOrigin(0);
       this.creditsButton.setInteractive();
-      //when crdits button is clicked
+      //when credits button is clicked
       this.creditsButton.on('pointerdown',()=> {
         this.clickSFX.play();
         this.scene.start('Credits');
