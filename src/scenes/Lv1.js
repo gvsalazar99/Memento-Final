@@ -113,7 +113,7 @@ class Lv1 extends Phaser.Scene {
 		this.progress5= this.add.sprite(game.config.width*.3, game.config.height*.92, 'progress5').setOrigin(0, 0).setScale(.35,.2);
 		this.progress5.visible = false;
 		//little ball for the progress bar!
-		this.progressBall = this.add.sprite(366, 538, 'progressBall').setOrigin(0).setScale(.35, .2);
+		this.progressBall = this.add.sprite(366, 538, 'progressBall').setOrigin(0).setScale(.2, .2);
 		this.progressBall.visible = true;
 		//this.progressBall.texture.key = 'progressBall';
 		//this.progressBall.setInteractive();
