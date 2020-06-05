@@ -225,7 +225,7 @@ class Lv1 extends Phaser.Scene {
 	}
 	//end of create()
 		
-	update() 
+	update() {
 		//console.log('Ball: (' + this.progressBall.x + ', ' + this.progressBall.y + ')');
 		this.checkProgressBar();
 
