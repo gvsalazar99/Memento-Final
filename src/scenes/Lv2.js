@@ -62,6 +62,7 @@ class Lv2 extends Phaser.Scene {
 		// 	this.scene.start('Level2'); 
 		// 	this.music.stop();
 		// });
+		
 		//dialogue box art
 		this.dialogueBox = this.add.sprite(game.config.width/4.5, game.config.height/4.5, 'level2box').setOrigin(0).setScale(.4,.4);
 		this.dialogueBox.y = game.config.height/1.01 - this.dialogueBox.displayHeight;	
