@@ -99,18 +99,20 @@ function typeText(scene, str) {
             if(memento != null){
                 if(memento.texture.key == scene.selectedMemento.texture.key) {
                     boxText.setText(boxText.text + str[currentChar]);
+                    currentChar++;
                 }
                 else {
-                    this.textTimer.destroy();
+                    this.textTimer.destroy(); //new memento has been clicked
                 }
             }
-            //if no memento has been selected in the scene, then type text
+            //if no memento has been selected in the scene AT ALL, then type text
             //typeText is for levels' welcome text
             else {
                 boxText.setText(boxText.text + str[currentChar]);
+                currentChar++;
             }
 
-            currentChar++;
+            
             //finished printing
             if(this.textTimer.getRepeatCount() == 0) {
                 console.log('done typing!');

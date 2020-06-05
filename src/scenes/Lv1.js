@@ -225,7 +225,7 @@ class Lv1 extends Phaser.Scene {
 	}
 	//end of create()
 		
-	update() {console.log(this.progressBall);
+	update() 
 		//console.log('Ball: (' + this.progressBall.x + ', ' + this.progressBall.y + ')');
 		this.checkProgressBar();
 
@@ -257,6 +257,7 @@ class Lv1 extends Phaser.Scene {
 	
 	}
 
+//this function updates the progress bar by checking how many memento's have had options chosen
 	checkProgressBar() {
 		let optionsCount = mementoGroup.length;
 
