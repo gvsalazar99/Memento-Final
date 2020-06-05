@@ -62,6 +62,7 @@ class memento extends Phaser.GameObjects.Sprite {
             this.option3.visible = false;
             this.scene.dialogueBox.visible = false; //erase box
 
+            //save player action!
             mementoGroup.push(this);          //add memento to group
             this.chosenOption = option.text; //save the chosen option
             console.log('Mementos on the list:');

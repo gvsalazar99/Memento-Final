@@ -101,20 +101,20 @@ class Lv2 extends Phaser.Scene {
 		console.log(boxText);
 
 
-		//create continue text prompt
-		this.continueButton = this.add.text(720, 555, '[CLICK TO CONTINUE]', { font: "15pt Courier", fill: "#ff0000", stroke: "#ff0000", strokeThickness: 1 });
-		this.continueButton.alpha = 0; 	
-		this.continueON = false;
-		this.continueButton.setInteractive();
-		this.continueButton.on('pointerdown', (pointer, gameObject) => {
-			console.log('conditional met');
-			if(this.selectedMemento.continueCount <=1) {
-				typeText(this, this.selectedMemento.text[2] + '\n\n' + this.selectedMemento.text[3]);
-			}
-			else {
-				this.selectedMemento.displayOptions();
-			}
-		}); 
+		// //create continue text prompt
+		// this.continueButton = this.add.text(720, 555, '[CLICK TO CONTINUE]', { font: "15pt Courier", fill: "#ff0000", stroke: "#ff0000", strokeThickness: 1 });
+		// this.continueButton.alpha = 0; 	
+		// this.continueON = false;
+		// this.continueButton.setInteractive();
+		// this.continueButton.on('pointerdown', (pointer, gameObject) => {
+		// 	console.log('conditional met');
+		// 	if(this.selectedMemento.continueCount <=1) {
+		// 		typeText(this, this.selectedMemento.text[2] + '\n\n' + this.selectedMemento.text[3]);
+		// 	}
+		// 	else {
+		// 		this.selectedMemento.displayOptions();
+		// 	}
+		// }); 
 
 		//clickable seahorses
 		this.seahorses = new memento(this, 130, 150, 'seahorses').setOrigin(0);
@@ -200,7 +200,11 @@ class Lv2 extends Phaser.Scene {
 		}
 		// console.log(boxText._text != 'Rule #2: Don\'t trust anything you\'re told');
 		// boxText._text != 'Rule #2: Don\'t trust anything you\'re told' ? this.memento.alpha = 0 : this.memento.alpha = 1;
-		
+		var enterKey= this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
+		if(Phaser.Input.Keyboard.JustDown(enterKey)) {
+			this.music.stop();
+			this.scene.start('Level3');
+		}
 	}
 }
 

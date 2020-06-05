@@ -126,20 +126,20 @@ class Lv3 extends Phaser.Scene {
 		progressbar= this.add.sprite(game.config.width*.3, game.config.height*.93, 'progressbarlong').setOrigin(0, 0).setScale(.35,.2); //this is when its at bottom 
 
 
-		//create continue text prompt
-		this.continueButton = this.add.text(720, 555, '[CLICK TO CONTINUE]', { font: "15pt Courier", fill: "#ff0000", stroke: "#ff0000", strokeThickness: 1 });
-		this.continueButton.alpha = 0; 	
-		this.continueON = false;
-		this.continueButton.setInteractive();
-		this.continueButton.on('pointerdown', (pointer, gameObject) => {
-			console.log('conditional met');
-			if(this.selectedMemento.continueCount <=1) {
-				typeText(this, this.selectedMemento.text[2] + '\n\n' + this.selectedMemento.text[3]);
-			}
-			else {
-				this.selectedMemento.displayOptions();
-			}
-		});		
+	// 	//create continue text prompt
+	// 	this.continueButton = this.add.text(720, 555, '[CLICK TO CONTINUE]', { font: "15pt Courier", fill: "#ff0000", stroke: "#ff0000", strokeThickness: 1 });
+	// 	this.continueButton.alpha = 0; 	
+	// 	this.continueON = false;
+	// 	this.continueButton.setInteractive();
+	// 	this.continueButton.on('pointerdown', (pointer, gameObject) => {
+	// 		console.log('conditional met');
+	// 		if(this.selectedMemento.continueCount <=1) {
+	// 			typeText(this, this.selectedMemento.text[2] + '\n\n' + this.selectedMemento.text[3]);
+	// 		}
+	// 		else {
+	// 			this.selectedMemento.displayOptions();
+	// 		}
+	// 	});		
 
 	}, this);
   

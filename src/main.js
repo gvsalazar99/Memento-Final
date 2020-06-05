@@ -102,7 +102,8 @@ function typeText(scene, str) {
                     currentChar++;
                 }
                 else {
-                    this.textTimer.destroy(); //new memento has been clicked
+                    //new memento has been clicked
+                    //this.textTimer.destroy(); 
                 }
             }
             //if no memento has been selected in the scene AT ALL, then type text
@@ -119,6 +120,7 @@ function typeText(scene, str) {
                 if(scene.selectedMemento != null) {    //if printing text for a memento
                     //console.log(scene.selectedMemento.texture.key + '\'s continues used = ' + scene.selectedMemento.continueCount);
                    if(scene.selectedMemento.continueCount <= 1) { //options have not been displayed yet if displaying memento
+                        console.log('MADE CONTINUE BUTTON VISIBLE');
                         continueButton.alpha = 1; //make continue button visible
                         scene.selectedMemento.continueCount ++;
                    }

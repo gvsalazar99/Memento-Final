@@ -237,21 +237,25 @@ class Lv1 extends Phaser.Scene {
 		}
 
 		var pointer = this.input.activePointer;
-		var enterKey= this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
-		console.log('x: ' + pointer.x + '\ny: ' + pointer.y);
+		
+		//console.log('x: ' + pointer.x + '\ny: ' + pointer.y);
 
 		//continue text
 
-		if(Phaser.Input.Keyboard.JustDown(enterKey) && this.continueButton.alpha == 1) {
-			console.log('conditional met');
-			if(this.selectedMemento.continueCount <=1) {
-				typeText(this, this.selectedMemento.text[2] + '\n\n' + this.selectedMemento.text[3]);
-			}
-			else {
-				this.selectedMemento.displayOptions();
-			}
+		// if(Phaser.Input.Keyboard.JustDown(enterKey) && this.continueButton.alpha == 1) {
+		// 	console.log('conditional met');
+		// 	if(this.selectedMemento.continueCount <=1) {
+		// 		typeText(this, this.selectedMemento.text[2] + '\n\n' + this.selectedMemento.text[3]);
+		// 	}
+		// 	else {
+		// 		this.selectedMemento.displayOptions();
+		// 	}
+		// }
+		var enterKey= this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
+		if(Phaser.Input.Keyboard.JustDown(enterKey)) {
+			this.music.stop();
+			this.scene.start('Level2');
 		}
-
 	
 	
 	
