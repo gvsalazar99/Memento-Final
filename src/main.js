@@ -69,6 +69,7 @@ function addContinue(scene) {
     //define what happens when continue is clicked
     continueButton.on('pointerdown', (pointer, gameObject) => {
         //console.log('conditional met');
+        scene.clickSFX.play();
         if(scene.selectedMemento.continueCount <=1) {
             typeText(scene, scene.selectedMemento.text[2] + '\n\n' + scene.selectedMemento.text[3]);
         }

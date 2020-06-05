@@ -24,6 +24,12 @@ class Lv1 extends Phaser.Scene {
 		//load progress bar 
 		this.load.image('progressbar', 'assets/UI/progressBar/BallAndBar.PNG');
 		this.load.image('progressbarlong', 'assets/UI/progressBar/KarmaBar.PNG');
+		this.load.image('progressBall', 'assets/UI/progressBar/KarmaBall.PNG');
+		this.load.image('progress1', 'assets/UI/progressBar/Progress1.PNG');
+		this.load.image('progress2', 'assets/UI/progressBar/Progress4.PNG');
+		this.load.image('progress3', 'assets/UI/progressBar/Progress7.PNG');
+		this.load.image('progress4', 'assets/UI/progressBar/Progress10.PNG');
+		this.load.image('progress5', 'assets/UI/progressBar/Progress13.PNG')
 		//load background
 		this.load.image('levelonenew', 'assets/FullScreen/LevelOneBackgroundResized.png');
 		//load background music
@@ -41,8 +47,9 @@ class Lv1 extends Phaser.Scene {
 	create() {
 		mementoGroup = []; //reset collection of mementos
 
-		 //get music ready
-		 this.music = this.sound.add('level1music');
+		 //get audio ready
+		this.music = this.sound.add('level1music');
+		this.clickSFX = this.sound.add('mouseclick');
 
 		 //play music if unmuted
 		 if(mute == false) { 
@@ -91,11 +98,32 @@ class Lv1 extends Phaser.Scene {
 		this.dialogueBox.y = game.config.height/1.07 - this.dialogueBox.displayHeight;
 
 		//progressbar
-		let progressbar = this.add.sprite('progressbar');
+		//let progressbar = this.add.sprite('progressbar');
 		//progressbar= this.add.sprite(game.config.width/3.58,0, 'progressbar').setOrigin(0, 0).setScale(.35,.32); //this is when its on top
-		progressbar= this.add.sprite(game.config.width*.3, game.config.height*.93, 'progressbarlong').setOrigin(0, 0).setScale(.35,.2); //this is when its at bottom 
-
+		let progressbar= this.add.sprite(game.config.width*.3, game.config.height*.93, 'progressbarlong').setOrigin(0, 0).setScale(.35,.2); //this is when its at bottom 
+		//color bar
+		this.progress1= this.add.sprite(game.config.width*.3, game.config.height*.92, 'progress1').setOrigin(0, 0).setScale(.35,.2);
+		this.progress1.visible = false;
+		this.progress2= this.add.sprite(game.config.width*.3, game.config.height*.92, 'progress2').setOrigin(0, 0).setScale(.35,.2);
+		this.progress2.visible = false;
+		this.progress3= this.add.sprite(game.config.width*.3, game.config.height*.92, 'progress3').setOrigin(0, 0).setScale(.35,.2);
+		this.progress3.visible = false;
+		this.progress4= this.add.sprite(game.config.width*.3, game.config.height*.92, 'progress4').setOrigin(0, 0).setScale(.35,.2);
+		this.progress4.visible = false;
+		this.progress5= this.add.sprite(game.config.width*.3, game.config.height*.92, 'progress5').setOrigin(0, 0).setScale(.35,.2);
+		this.progress5.visible = false;
+		//little ball for the progress bar!
+		this.progressBall = this.add.sprite(366, 538, 'progressBall').setOrigin(0).setScale(.35, .2);
+		this.progressBall.visible = true;
+		//this.progressBall.texture.key = 'progressBall';
+		//this.progressBall.setInteractive();
 		
+		// this.input.setDraggable(this.progressBall);
+		// this.input.on('drag', function (pointer, gameObject, dragX, dragY) {
+		// 	gameObject.x = dragX;
+		// 	gameObject.y = dragY;
+		// });
+
 		//create continue button
 		addContinue(this);
 
@@ -197,7 +225,10 @@ class Lv1 extends Phaser.Scene {
 	}
 	//end of create()
 		
-	update() {
+	update() {console.log(this.progressBall);
+		//console.log('Ball: (' + this.progressBall.x + ', ' + this.progressBall.y + ')');
+		this.checkProgressBar();
+
 		//switch to cut scene when all options have been chosen from mementos
 		if(mementoGroup.length >= 5) {
 			console.log('Switching scenes!'); 
@@ -207,7 +238,7 @@ class Lv1 extends Phaser.Scene {
 
 		var pointer = this.input.activePointer;
 		var enterKey= this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
-		//console.log('x: ' + pointer.x + '\ny: ' + pointer.y);
+		console.log('x: ' + pointer.x + '\ny: ' + pointer.y);
 
 		//continue text
 
@@ -224,6 +255,30 @@ class Lv1 extends Phaser.Scene {
 	
 	
 	
+	}
+
+	checkProgressBar() {
+		let optionsCount = mementoGroup.length;
+
+		if (optionsCount == 1) {
+			this.progress1.visible = true;
+			this.progressBall.x = 401;
+		}
+		else if (optionsCount == 2) {
+			this.progress1.visible = false;
+			this.progress2.visible = true;
+			this.progressBall.x = 503;
+		}
+		else if (optionsCount == 3) {
+			this.progress2.visible = false;
+			this.progress3.visible = true;
+			this.progressBall.x = 606;
+		}
+		else if (optionsCount == 4) {
+			this.progress3.visible = false;
+			this.progress4.visible = true;
+			this.progressBall.x = 735;
+		}
 	}
 
 //closes .Scene

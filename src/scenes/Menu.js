@@ -35,9 +35,6 @@ class Menu extends Phaser.Scene {
       //sounds
       this.load.audio('mouseclick', './assets/audio/mouseclick.mp3');
 
-      //progress bar
-      this.load.image('progressbar', './assets/UI/BallAndBar.PNG');
-
     }
 
 

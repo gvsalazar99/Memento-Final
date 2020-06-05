@@ -23,6 +23,7 @@ class memento extends Phaser.GameObjects.Sprite {
 
         this.on('pointerdown', (pointer, gameObject) => {
             console.log(this.texture.key + ' clicked!');
+            this.scene.clickSFX.play();
 
             this.scene.dialogueBox.visible = true;
             continueButton.alpha = 0;
