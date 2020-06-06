@@ -28,6 +28,8 @@ class Lv3 extends Phaser.Scene {
 		this.load.image('progress3', 'assets/UI/progressBar/Progress7.PNG');
 		this.load.image('progress4', 'assets/UI/progressBar/Progress10.PNG');
 		this.load.image('progress5', 'assets/UI/progressBar/Progress13.PNG')
+		//load background
+		this.load.image('level3background', 'assets/FullScreen/LevelThreeBackground.png');
 
 	   
 	}
@@ -44,7 +46,7 @@ class Lv3 extends Phaser.Scene {
 		this.clickSFX = this.sound.add('mouseclick');
 		this.turningpage = this.sound.add('turningpage');
 
-
+		
 		 //play music if unmuted
 		 if(mute == false) { 
 			this.music.play({ 
@@ -59,7 +61,7 @@ class Lv3 extends Phaser.Scene {
 			camera.fadeIn(1000, 0,0,0);	
 
 
-
+			let level3background = this.add.sprite(0,0, 'level3background').setOrigin(0, 0);
 
 		//dialogue box art
 		this.dialogueBox = this.add.sprite(game.config.width/3.5, 0, 'level3box').setOrigin(0).setScale(.32,.32);
