@@ -186,12 +186,12 @@ class Lv2 extends Phaser.Scene {
 	});
 
 		//clickable fish
-		this.fish = new memento(this, 500, 120, 'fish').setOrigin(0).setScale(.8,.8);;
+		this.fish = new memento(this, 500, 120, 'fish').setOrigin(0).setScale(.8,.8);
 		this.fish.text = ['I remember thinking how incredulous it was that this school of fish was always together. I wondered how they could trust so many others. Cynically, I used to comfort myself in knowing that their bonds could not last forever.',
 					'...',
 					'....  It is shameful to think about those thoughts now after growing out of that negative mindset.  I know that they, like me, seek ____________.',
 					'...'];
-		this.fish.options = ['known', 'seed', 'loved'];
+		this.fish.options = ['love', 'warmth', 'light'];
 		this.fish.makeInteractive();
 		addGlow(this, this.fish, 'fishGlow');
 		this.fish.on('pointerdown',()=> {
