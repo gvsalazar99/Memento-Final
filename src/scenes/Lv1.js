@@ -99,6 +99,19 @@ class Lv1 extends Phaser.Scene {
 		// 	this.music.stop();
 		// });
 
+		//squirrel
+		this.squirrel = new memento(this, 638, 340, 'squirrel').setOrigin(0).setScale(.64);
+		addGlow(this, this.squirrel, 'squirrelGlow');
+		this.squirrel.makeInteractive();
+		this.squirrel.text = ['This squirrel often came by and took fallen goods from my branches, even going so far as to take what had not yet fallen.  I secretly feared that once I bloomed my magnolias, it would take them from me too.', 
+							'...',
+							'Perhaps I struggled to grow my flowers during this time for fear of loss. I hoped and prayed the squirrel would ____________ me, but during my long life, I eventually learned that even with setbacks, I would always find the strength to recover.',
+							'...'];
+		this.squirrel.options = ['ignore', 'forget', 'overlook']; 
+		this.squirrel.on('pointerdown',()=> {
+		this.squirrelsound.play();
+	});
+	
 		//create dialogue box art
 		this.dialogueBox = this.add.sprite(game.config.width/3.5, game.config.height*.2, 'level1box').setOrigin(0).setScale(.32,.32);
 		this.dialogueBox.y = game.config.height/1.07 - this.dialogueBox.displayHeight;
@@ -161,18 +174,6 @@ class Lv1 extends Phaser.Scene {
 		this.woodsound.play();
 	});
 
-		//squirrel
-		this.squirrel = new memento(this, 638, 340, 'squirrel').setOrigin(0).setScale(.64);
-		addGlow(this, this.squirrel, 'squirrelGlow');
-		this.squirrel.makeInteractive();
-		this.squirrel.text = ['This squirrel often came by and took fallen goods from my branches, even going so far as to take what had not yet fallen.  I secretly feared that once I bloomed my magnolias, it would take them from me too.', 
-							'...',
-							'Perhaps I struggled to grow my flowers during this time for fear of loss. I hoped and prayed the squirrel would ____________ me, but during my long life, I eventually learned that even with setbacks, I would always find the strength to recover.',
-							'...'];
-		this.squirrel.options = ['ignore', 'forget', 'overlook']; 
-		this.squirrel.on('pointerdown',()=> {
-		this.squirrelsound.play();
-	});
 		
 
 		//butterfly
