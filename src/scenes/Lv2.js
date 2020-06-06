@@ -37,6 +37,8 @@ class Lv2 extends Phaser.Scene {
 
 	create() {
 		mementoGroup = []; //reset collection of mementos
+		this.previousMemento = null; //memento that was selected before the current
+		this.selectedMemento = null; //current memento being interacted with
 
 		//create audio
 		this.music = this.sound.add('level2music');
@@ -72,9 +74,8 @@ class Lv2 extends Phaser.Scene {
 		progressbar= this.add.sprite(game.config.width*.3, game.config.height*.93, 'progressbarlong').setOrigin(0, 0).setScale(.35,.2); //this is when its at bottom 
 
 		//create x button
-		let xbutton = this.add.sprite('xbutton');
-		xbutton= this.add.sprite(game.config.width*.74,game.config.height*.743, 'xbutton').setOrigin(0, 0).setScale(.25,.25);
-
+		addXButton(this);
+		
 		//create continue button
 		addContinue(this);
 

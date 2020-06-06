@@ -59,6 +59,7 @@ class Lv1 extends Phaser.Scene {
 			}); 
 		} 
 
+		this.previousMemento = null; //memento that was selected before the current
 		this.selectedMemento = null; //current memento being interacted with
 
 		//camera fade in n out 
@@ -115,21 +116,15 @@ class Lv1 extends Phaser.Scene {
 		//little ball for the progress bar!
 		this.progressBall = this.add.sprite(366, 538, 'progressBall').setOrigin(0).setScale(.35, .2);
 		this.progressBall.visible = true;
-		//this.progressBall.texture.key = 'progressBall';
-		//this.progressBall.setInteractive();
-		
-		// this.input.setDraggable(this.progressBall);
-		// this.input.on('drag', function (pointer, gameObject, dragX, dragY) {
-		// 	gameObject.x = dragX;
-		// 	gameObject.y = dragY;
-		// });
+
 
 		//create continue button
 		addContinue(this);
 
 		//create x button
-		let xbutton = this.add.sprite('xbutton');
-		xbutton= this.add.sprite(game.config.width*.74,game.config.height*.743, 'xbutton').setOrigin(0, 0).setScale(.25,.25);
+		addXButton(this);
+		// xbutton = this.add.sprite('xbutton');
+		// xbutton= this.add.sprite(game.config.width*.74,game.config.height*.743, 'xbutton').setOrigin(0, 0).setScale(.25,.25);
 	
 		
 		//Welcoming text

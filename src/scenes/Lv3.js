@@ -26,6 +26,8 @@ class Lv3 extends Phaser.Scene {
 
 	create() {
 		mementoGroup = []; //reset collection of mementos
+		this.previousMemento = null; //memento that was selected before the current
+		this.selectedMemento = null; //current memento being interacted with
 
 		//create music
 		this.music = this.sound.add('level3music');
@@ -53,18 +55,7 @@ class Lv3 extends Phaser.Scene {
 		this.dialogueBox.y = game.config.height/1.01 - this.dialogueBox.displayHeight;
 
 		//create x button
-		let xbutton = this.add.sprite('xbutton');
-		xbutton= this.add.sprite(game.config.width*.74,game.config.height*.743, 'xbutton').setOrigin(0, 0).setScale(.25,.25);
-		
-		// //exit button switches scenes to Credit (end scene)  
-		// this.tempcreditsbutton = this.add.sprite(game.config.width/4,game.config.height/4, 'exitbutton').setScale(0.25,0.25).setOrigin(0);
-		// this.tempcreditsbutton.setInteractive();
-		// //RESTART SCENE
-		// this.tempcreditsbutton.on('pointerdown',()=> {
-		// 	console.log('RESTARTING THE LEVEL'); 
-		// 	this.scene.start('Level3'); 
-		// 	this.music.stop();
-		// });
+		addXButton(this);	
 
 		//text
 		boxText = this.add.text(430, this.dialogueBox.y + 15, '', {font: "16pt Baskerville", fill: "#000000", stroke: "#000000", wordWrap: { width: 570, useAdvancedWrap: true } });
