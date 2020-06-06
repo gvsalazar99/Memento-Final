@@ -13,9 +13,14 @@ class memento extends Phaser.GameObjects.Sprite {
 
     create() {    
     //    gameObject.setInteractive({
-    //         cursor:'url(assets/butterflysmall.cur), pointer'
+    //         cursor:'url(assets/UI/PlayButtonNew.PNG), pointer'
     //     });
- 
+
+    //custom mouse (doesnt work)
+    //this.input.setDefaultCursor('url(assets/UI/PlayButtonNew.PNG), pointer');
+
+   
+
     }
     makeInteractive() {
         

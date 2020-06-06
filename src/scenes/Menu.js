@@ -128,9 +128,8 @@ class Menu extends Phaser.Scene {
       
   
       this.cameras.main.fadeOut(1000, 0,0,0);
-    //custom mouse (doesnt work)
-    this.input.setDefaultCursor('./assets/butterflysmall.cur), pointer');
   
+    
     }
 
    
