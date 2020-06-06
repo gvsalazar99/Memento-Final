@@ -46,6 +46,8 @@ class Lv2 extends Phaser.Scene {
 
 	create() {
 		mementoGroup = []; //reset collection of mementos
+		this.previousMemento = null; //memento that was selected before the current
+		this.selectedMemento = null; //current memento being interacted with
 
 		//create audio
 		this.music = this.sound.add('level2music');
@@ -76,6 +78,9 @@ class Lv2 extends Phaser.Scene {
 		this.seaweedsound = this.sound.add('seaweedsound');
 		this.shellsound = this.sound.add('shellsound');
 
+	
+
+
 
 
 		// //exit button switches to level 3 
@@ -93,21 +98,19 @@ class Lv2 extends Phaser.Scene {
 		this.dialogueBox = this.add.sprite(game.config.width/3.5, game.config.height*.2, 'level2box').setOrigin(0).setScale(.32,.32);
 		this.dialogueBox.y = game.config.height/1.07 - this.dialogueBox.displayHeight;	
 
-		//create x button
-		let xbutton = this.add.sprite('xbutton');
-		xbutton= this.add.sprite(game.config.width*.74,game.config.height*.743, 'xbutton').setOrigin(0, 0).setScale(.25,.25);
-
 		//create continue button
 		addContinue(this);
 
+		//create x button
+		addXButton(this);		
+
 		//Welcoming text!
 		boxText = this.add.text(480, this.dialogueBox.y + 15, '', { font: "12pt Baskerville", fill: "#000000", stroke: "#000000", wordWrap: { width: 450, useAdvancedWrap: true } });
-		boxText.setText('I am your 2nd reincarnation, the seahorse. Swim around and I will tell you of this life. Write your poem.');
+		boxText.setText('Yet again, a familiarity coupled with confusion. I need to explore my surroundings, and do what I can to remember.');
 		boxText.visible = true;
 		console.log(boxText);
 
 		//progressbar
-		//let progressbar = this.add.sprite('progressbar');
 		//progressbar= this.add.sprite(game.config.width/3.58,0, 'progressbar').setOrigin(0, 0).setScale(.35,.32); //this is when its on top
 		let progressbar= this.add.sprite(game.config.width*.3, game.config.height*.93, 'progressbarlong').setOrigin(0, 0).setScale(.35,.2); //this is when its at bottom 
 		//color bar
@@ -231,6 +234,31 @@ class Lv2 extends Phaser.Scene {
 		if(Phaser.Input.Keyboard.JustDown(enterKey)) {
 			this.music.stop();
 			this.scene.start('Level3');
+		}
+		this.checkProgressBar();
+	}
+
+	checkProgressBar() {
+		let optionsCount = mementoGroup.length;
+
+		if (optionsCount == 1) {
+			this.progress1.visible = true;
+			this.progressBall.x = 401;
+		}
+		else if (optionsCount == 2) {
+			this.progress1.visible = false;
+			this.progress2.visible = true;
+			this.progressBall.x = 503;
+		}
+		else if (optionsCount == 3) {
+			this.progress2.visible = false;
+			this.progress3.visible = true;
+			this.progressBall.x = 606;
+		}
+		else if (optionsCount == 4) {
+			this.progress3.visible = false;
+			this.progress4.visible = true;
+			this.progressBall.x = 735;
 		}
 	}
 }

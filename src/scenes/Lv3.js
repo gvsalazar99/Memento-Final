@@ -35,6 +35,8 @@ class Lv3 extends Phaser.Scene {
 
 	create() {
 		mementoGroup = []; //reset collection of mementos
+		this.previousMemento = null; //memento that was selected before the current
+		this.selectedMemento = null; //current memento being interacted with
 
 		//create music
 		this.music = this.sound.add('level3music');
@@ -63,19 +65,6 @@ class Lv3 extends Phaser.Scene {
 		this.dialogueBox = this.add.sprite(game.config.width/3.5, 0, 'level3box').setOrigin(0).setScale(.32,.32);
 		this.dialogueBox.y = game.config.height/1.07 - this.dialogueBox.displayHeight;
 
-		//create x button
-		let xbutton = this.add.sprite('xbutton');
-		xbutton= this.add.sprite(game.config.width*.74,game.config.height*.743, 'xbutton').setOrigin(0, 0).setScale(.25,.25);
-		
-		// //exit button switches scenes to Credit (end scene)  
-		// this.tempcreditsbutton = this.add.sprite(game.config.width/4,game.config.height/4, 'exitbutton').setScale(0.25,0.25).setOrigin(0);
-		// this.tempcreditsbutton.setInteractive();
-		// //RESTART SCENE
-		// this.tempcreditsbutton.on('pointerdown',()=> {
-		// 	console.log('RESTARTING THE LEVEL'); 
-		// 	this.scene.start('Level3'); 
-		// 	this.music.stop();
-		// });
 
 		//text
 		boxText = this.add.text(480, this.dialogueBox.y + 15, '', {font: "12pt Baskerville", fill: "#000000", stroke: "#000000", wordWrap: { width: 450, useAdvancedWrap: true } });
@@ -84,6 +73,9 @@ class Lv3 extends Phaser.Scene {
 
 		//create continue button
 		addContinue(this);
+
+		//create x button
+		addXButton(this);	
 
 		//clickable picture of family
 		this.picture= new memento(this, game.config.width*.75, game.config.height*.25, 'catbed').setOrigin(0).setScale(.3);
@@ -182,6 +174,30 @@ class Lv3 extends Phaser.Scene {
 			this.scene.start('Credits'); 
 			this.music.stop();
 		}	
-		//boxText._text == 'Oh, c\'mon, no need to throw a fit!' ? this.memento.angle = 135 : this.memento.angle = 0;
+		this.checkProgressBar();
+	}
+
+	checkProgressBar() {
+		let optionsCount = mementoGroup.length;
+
+		if (optionsCount == 1) {
+			this.progress1.visible = true;
+			this.progressBall.x = 401;
+		}
+		else if (optionsCount == 2) {
+			this.progress1.visible = false;
+			this.progress2.visible = true;
+			this.progressBall.x = 503;
+		}
+		else if (optionsCount == 3) {
+			this.progress2.visible = false;
+			this.progress3.visible = true;
+			this.progressBall.x = 606;
+		}
+		else if (optionsCount == 4) {
+			this.progress3.visible = false;
+			this.progress4.visible = true;
+			this.progressBall.x = 735;
+		}
 	}
 }

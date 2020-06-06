@@ -23,21 +23,31 @@ class memento extends Phaser.GameObjects.Sprite {
 
     }
     makeInteractive() {
-        
-        this.enterKey = this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
 
         this.on('pointerdown', (pointer, gameObject) => {
             console.log(this.texture.key + ' clicked!');
             this.scene.clickSFX.play();
 
-            this.scene.dialogueBox.visible = true;
-            continueButton.alpha = 0;
+            //assign memento selected before this to previousMemento
+            //and this memento to selectedMemento 
+            this.scene.previousMemento = this.scene.selectedMemento;
             this.scene.selectedMemento = this;
+
+            //double check no left over options are being displayed
+            if(this.scene.previousMemento != null && this.scene.previousMemento.continueCount >= 2) {
+                this.scene.previousMemento.eraseOptions();
+            }
+
+            this.scene.dialogueBox.visible = true;
+            xbutton.visible = true;
+            continueButton.alpha = 0;
+            
             if(this.chosenOption == null) {
                 this.continueCount = 0;
                 typeText(this.scene, this.text[0]+'\n\n'+this.text[1]);
             }
             else {
+                //player has already chosen an option from this memento 
                 typeText(this.scene, 'I\'ve already remembered this');
             }
             
@@ -62,10 +72,12 @@ class memento extends Phaser.GameObjects.Sprite {
         option.on('pointerdown', (pointer, gameObject) =>{
             console.log(option.text + ' clicked!');
             //erase options
-            this.option1.visible = false;
-            this.option2.visible = false;
-            this.option3.visible = false;
+            // this.option1.visible = false;
+            // this.option2.visible = false;
+            // this.option3.visible = false;
+            this.eraseOptions();
             this.scene.dialogueBox.visible = false; //erase box
+            xbutton.visible = false;
 
             //save player action!
             mementoGroup.push(this);          //add memento to group
@@ -89,6 +101,11 @@ class memento extends Phaser.GameObjects.Sprite {
         });
     }
 
+    eraseOptions() {
+        this.option1.visible = false;
+        this.option2.visible = false;
+        this.option3.visible = false;
+    }
     update() {
         
     }

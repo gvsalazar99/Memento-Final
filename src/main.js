@@ -38,11 +38,6 @@ var mementoGroup = [];
 var boxText;
 
 
-// //resets current scene
-// function reset(current) {
-//     current.scene.start(current);
-// }
-
 //this method will add a glow when the object is hovered over with the mouse pointer
 //assumes that the regular and glow image have the same dimensions
 function addGlow(scene, og, glowKey) {
@@ -58,6 +53,7 @@ function addGlow(scene, og, glowKey) {
         glow.visible = false;
     });
 }
+
 
 //this function adds the continue button to the scene it is called in
 var continueButton;
@@ -80,6 +76,31 @@ function addContinue(scene) {
     });
 }
 
+
+//this function adds the x button to chat boxes in their respective scene
+var xbutton;
+var xClicked = false;
+function addXButton(scene) {
+    xbutton = scene.add.sprite(game.config.width*.74, game.config.height*.743, 'xbutton').setOrigin(0).setScale(.25,.25).setInteractive();
+    xbutton.on('pointerdown', (pointer, gameObject) => {
+        xClicked = true;
+        eraseDialogueBox(scene);
+    });
+}
+
+
+//this function erases the textBox, continue button, x button, and option text
+function eraseDialogueBox(scene) {
+    boxText.setText("");
+    continueButton.visible = false;
+    xbutton.visible = false;
+    scene.dialogueBox.visible = false;
+    if(scene.selectedMemento.continueCount >= 2) { //if 2 continues have been used, options have been displayed
+        scene.selectedMemento.eraseOptions();     //and we need to erase those too
+    }
+} 
+
+
 //this function types text into the dialoguebox
 function typeText(scene, str) {
     let memento = null;
@@ -95,16 +116,27 @@ function typeText(scene, str) {
         repeat: str.length -1,
         callback: () => {
             console.log('typing!');
+
+            //check if xbutton is clicked
+            if(xClicked == true) {
+                xClicked = false;         //reset x button
+                boxText.setText("");      //erase text
+                this.textTimer.destroy(); //end typeText()
+                console.log("x button has ended typing");
+            }
             
             //Keep typing if a new memento hasn't been clicked
-            if(memento != null){
+            if(memento != null){ //typing for a memento
+                //check if a new memento has been selected
                 if(memento.texture.key == scene.selectedMemento.texture.key) {
+                    //if no new memento has been selected, type next char in string
                     boxText.setText(boxText.text + str[currentChar]);
                     currentChar++;
                 }
                 else {
                     //new memento has been clicked
-                    //this.textTimer.destroy(); 
+                    this.textTimer.destroy();
+
                 }
             }
             //if no memento has been selected in the scene AT ALL, then type text
@@ -113,8 +145,7 @@ function typeText(scene, str) {
                 boxText.setText(boxText.text + str[currentChar]);
                 currentChar++;
             }
-
-            
+     
             //finished printing
             if(this.textTimer.getRepeatCount() == 0) {
                 console.log('done typing!');
