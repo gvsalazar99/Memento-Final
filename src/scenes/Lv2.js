@@ -106,7 +106,7 @@ class Lv2 extends Phaser.Scene {
 
 		//Welcoming text!
 		boxText = this.add.text(480, this.dialogueBox.y + 15, '', { font: "12pt Baskerville", fill: "#000000", stroke: "#000000", wordWrap: { width: 450, useAdvancedWrap: true } });
-		boxText.setText('I am your 2nd reincarnation, the seahorse. Swim around and I will tell you of this life. Write your poem.');
+		boxText.setText('Yet again, a familiarity coupled with confusion. I need to explore my surroundings, and do what I can to remember.');
 		boxText.visible = true;
 		console.log(boxText);
 
