@@ -45,12 +45,14 @@ class Lv1 extends Phaser.Scene {
 	}
 
 	create() {
+		
 		mementoGroup = []; //reset collection of mementos
 
 		 //get audio ready
 		this.music = this.sound.add('level1music');
 		this.clickSFX = this.sound.add('mouseclick');
 		this.turningpage = this.sound.add('turningpage');
+
 
 
 		 //play music if unmuted
@@ -60,6 +62,7 @@ class Lv1 extends Phaser.Scene {
 				volume: 0.1
 			}); 
 		} 
+
 
 		this.selectedMemento = null; //current memento being interacted with
 
@@ -237,6 +240,7 @@ class Lv1 extends Phaser.Scene {
 			this.scene.start('cutsceneyellow'); 
 			this.music.stop();
 		}
+
 
 		var pointer = this.input.activePointer;
 		

@@ -57,7 +57,7 @@ class Lv2 extends Phaser.Scene {
 		 if(mute == false) { 
 			this.music.play({ 
 				loop: true, 
-				volume: 0.005
+				volume: 0.1
 			}); 
 		} 
 
