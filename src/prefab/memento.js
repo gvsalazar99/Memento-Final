@@ -54,9 +54,9 @@ class memento extends Phaser.GameObjects.Sprite {
         boxText.setText(''); //erase current text
 
         //typeText(this.scene, '[OPTION 1]\n[OPTION 2]\n[OPTION 3]');
-        this.option1 = this.scene.add.text(430, this.scene.dialogueBox.y + 15, this.options[0], { font: "14pt Courier", fill: "#000000", stroke: "#000000", wordWrap: { width: 570, useAdvancedWrap: true } }).setInteractive();
-        this.option2 = this.scene.add.text(430, this.scene.dialogueBox.y + 45, this.options[1], { font: "14pt Courier", fill: "#000000", stroke: "#000000", wordWrap: { width: 570, useAdvancedWrap: true } }).setInteractive();
-        this.option3 = this.scene.add.text(430, this.scene.dialogueBox.y + 75, this.options[2], { font: "14pt Courier", fill: "#000000", stroke: "#000000", wordWrap: { width: 570, useAdvancedWrap: true } }).setInteractive();
+        this.option1 = this.scene.add.text(480, this.scene.dialogueBox.y + 15, this.options[0], { font: "12pt Baskerville", fill: "#000000", stroke: "#000000", strokeThickness: .5, wordWrap: { width: 570, useAdvancedWrap: true } }).setInteractive();
+        this.option2 = this.scene.add.text(480, this.scene.dialogueBox.y + 45, this.options[1], { font: "12pt Baskerville", fill: "#000000", stroke: "#000000", strokeThickness: .5, wordWrap: { width: 570, useAdvancedWrap: true } }).setInteractive();
+        this.option3 = this.scene.add.text(480, this.scene.dialogueBox.y + 75, this.options[2], { font: "12pt Baskerville", fill: "#000000", stroke: "#000000", strokeThickness: .5, wordWrap: { width: 570, useAdvancedWrap: true } }).setInteractive();
         this.makeOptionsClickable(this.option1);
         this.makeOptionsClickable(this.option2);
         this.makeOptionsClickable(this.option3);

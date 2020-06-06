@@ -19,6 +19,15 @@ class Lv3 extends Phaser.Scene {
 		this.load.image('progressbarlong', 'assets/UI/progressBar/KarmaBar.PNG');
 		//load x button
 		this.load.image('xbutton', 'assets/TextBoxes/xbutton.png');
+		//load progress bar 
+		this.load.image('progressbar', 'assets/UI/progressBar/BallAndBar.PNG');
+		this.load.image('progressbarlong', 'assets/UI/progressBar/KarmaBar.PNG');
+		this.load.image('progressBall', 'assets/UI/progressBar/KarmaBall.PNG');
+		this.load.image('progress1', 'assets/UI/progressBar/Progress1.PNG');
+		this.load.image('progress2', 'assets/UI/progressBar/Progress4.PNG');
+		this.load.image('progress3', 'assets/UI/progressBar/Progress7.PNG');
+		this.load.image('progress4', 'assets/UI/progressBar/Progress10.PNG');
+		this.load.image('progress5', 'assets/UI/progressBar/Progress13.PNG')
 
 	   
 	}
@@ -33,12 +42,14 @@ class Lv3 extends Phaser.Scene {
 		this.music = this.sound.add('level3music');
 		this.music = this.sound.add('level2music');
 		this.clickSFX = this.sound.add('mouseclick');
+		this.turningpage = this.sound.add('turningpage');
+
 
 		 //play music if unmuted
 		 if(mute == false) { 
 			this.music.play({ 
 				loop: true, 
-				volume: 0.005
+				volume: 0.1
 			}); 
 		} 
 
@@ -51,19 +62,20 @@ class Lv3 extends Phaser.Scene {
 
 
 		//dialogue box art
-		this.dialogueBox = this.add.sprite(game.config.width/4.5, 0, 'level3box').setOrigin(0).setScale(.4,.4);
-		this.dialogueBox.y = game.config.height/1.01 - this.dialogueBox.displayHeight;
+		this.dialogueBox = this.add.sprite(game.config.width/3.5, 0, 'level3box').setOrigin(0).setScale(.32,.32);
+		this.dialogueBox.y = game.config.height/1.07 - this.dialogueBox.displayHeight;
 
-		//create x button
-		addXButton(this);	
 
 		//text
-		boxText = this.add.text(430, this.dialogueBox.y + 15, '', {font: "16pt Baskerville", fill: "#000000", stroke: "#000000", wordWrap: { width: 570, useAdvancedWrap: true } });
+		boxText = this.add.text(480, this.dialogueBox.y + 15, '', {font: "12pt Baskerville", fill: "#000000", stroke: "#000000", wordWrap: { width: 450, useAdvancedWrap: true } });
 		boxText.setText('YOU\'VE MADE IT TO THE LAST REINCARNATION');
 		boxText.visible = true;
 
 		//create continue button
 		addContinue(this);
+
+		//create x button
+		addXButton(this);	
 
 		//clickable picture of family
 		this.picture= new memento(this, game.config.width*.75, game.config.height*.25, 'catbed').setOrigin(0).setScale(.3);
@@ -111,10 +123,27 @@ class Lv3 extends Phaser.Scene {
 		this.sign.makeInteractive();
 
 
-		//progressbar
-		let progressbar = this.add.sprite('progressbar');
+		 //progressbar
+		//let progressbar = this.add.sprite('progressbar');
 		//progressbar= this.add.sprite(game.config.width/3.58,0, 'progressbar').setOrigin(0, 0).setScale(.35,.32); //this is when its on top
-		progressbar= this.add.sprite(game.config.width*.3, game.config.height*.93, 'progressbarlong').setOrigin(0, 0).setScale(.35,.2); //this is when its at bottom 
+		let progressbar= this.add.sprite(game.config.width*.3, game.config.height*.93, 'progressbarlong').setOrigin(0, 0).setScale(.35,.2); //this is when its at bottom 
+		//color bar
+		this.progress1= this.add.sprite(game.config.width*.3, game.config.height*.92, 'progress1').setOrigin(0, 0).setScale(.35,.2);
+		this.progress1.visible = false;
+		this.progress2= this.add.sprite(game.config.width*.3, game.config.height*.92, 'progress2').setOrigin(0, 0).setScale(.35,.2);
+		this.progress2.visible = false;
+		this.progress3= this.add.sprite(game.config.width*.3, game.config.height*.92, 'progress3').setOrigin(0, 0).setScale(.35,.2);
+		this.progress3.visible = false;
+		this.progress4= this.add.sprite(game.config.width*.3, game.config.height*.92, 'progress4').setOrigin(0, 0).setScale(.35,.2);
+		this.progress4.visible = false;
+		this.progress5= this.add.sprite(game.config.width*.3, game.config.height*.92, 'progress5').setOrigin(0, 0).setScale(.35,.2);
+		this.progress5.visible = false;
+		//little ball for the progress bar!
+		this.progressBall = this.add.sprite(366, 538, 'progressBall').setOrigin(0).setScale(.2, .2);
+		this.progressBall.visible = true;
+		//this.progressBall.texture.key = 'progressBall';
+		//this.progressBall.setInteractive();
+
 
 
 	// 	//create continue text prompt
@@ -145,6 +174,30 @@ class Lv3 extends Phaser.Scene {
 			this.scene.start('Credits'); 
 			this.music.stop();
 		}	
-		//boxText._text == 'Oh, c\'mon, no need to throw a fit!' ? this.memento.angle = 135 : this.memento.angle = 0;
+		this.checkProgressBar();
+	}
+
+	checkProgressBar() {
+		let optionsCount = mementoGroup.length;
+
+		if (optionsCount == 1) {
+			this.progress1.visible = true;
+			this.progressBall.x = 401;
+		}
+		else if (optionsCount == 2) {
+			this.progress1.visible = false;
+			this.progress2.visible = true;
+			this.progressBall.x = 503;
+		}
+		else if (optionsCount == 3) {
+			this.progress2.visible = false;
+			this.progress3.visible = true;
+			this.progressBall.x = 606;
+		}
+		else if (optionsCount == 4) {
+			this.progress3.visible = false;
+			this.progress4.visible = true;
+			this.progressBall.x = 735;
+		}
 	}
 }

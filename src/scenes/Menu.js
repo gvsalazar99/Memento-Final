@@ -33,15 +33,20 @@ class Menu extends Phaser.Scene {
       this.load.image('credits', './assets/FullScreen/EndScreen (1).PNG');
 
       //sounds
-      this.load.audio('mouseclick', './assets/audio/mouseclick.mp3');
-
+      this.load.audio('mouseclick', './assets/audio/shortmouseclick.mp3');
+      this.load.audio('turningpage', './assets/audio/turningpage.mp3');
+      this.load.audio('chimesound', './assets/audio/chimesoundcut.mp3');
+      
     }
 
 
 
-    create() {
+    create() { 
+
       //create sound effect
       this.clickSFX = this.sound.add('mouseclick');
+      this.turningpage = this.sound.add('turningpage');
+      this.chimesound = this.sound.add('chimesound');
 
 
       //camera fade in n out
@@ -49,7 +54,7 @@ class Menu extends Phaser.Scene {
         this.add.image(1260, 590, 'mementomenu').setOrigin(0, 0);
         camera.fadeIn(1000, 0,0,0);
 
-
+        
       //display background
       let background = this.add.sprite('mementomenu');
       background = this.add.sprite(0, 0, 'mementomenu').setOrigin(0, 0);
@@ -65,6 +70,16 @@ class Menu extends Phaser.Scene {
       });
       //add glow to playButton
       addGlow(this, this.playButton, 'playGlow');
+
+      if(mute == false) { 
+        this.chimesound.play({ 
+          loop: true, 
+          volume: 2
+        }); 
+        this.playButton.on('pointerdown',()=> {
+          this.chimesound.stop();
+        }); 
+        }
 
 
       //create muted button
@@ -107,26 +122,27 @@ class Menu extends Phaser.Scene {
       addGlow(this, this.creditsButton, 'creditsGlow');
 
 
-      
       console.log(this);
 
       }, this);
+      
   
       this.cameras.main.fadeOut(1000, 0,0,0);
     //custom mouse (doesnt work)
     this.input.setDefaultCursor('./assets/butterflysmall.cur), pointer');
   
-
-
-  
-
     }
 
-
+   
 
     update() {
       //this.creditsButton.rotation += .5;
-
+      //var enterKey= this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
+     // this.playButton.on('pointerdown',()=> {
+        //this.chimesound.stop();
+      //});
+      
+  
     }
 
 

@@ -2,6 +2,7 @@
 //https://www.bensound.com/royalty-free-music/acoustic-folk
 //http://soundbible.com/1976-Fast-Heel-Walk.html
 //https://www.freesoundeffects.com/searches/chatter/
+//https://www.zapsplat.com/?s=mouse+click&post_type=music&sound-effect-category-id=
 
 
 let config = {
@@ -65,7 +66,7 @@ function addContinue(scene) {
     //define what happens when continue is clicked
     continueButton.on('pointerdown', (pointer, gameObject) => {
         //console.log('conditional met');
-        scene.clickSFX.play();
+        scene.turningpage.play();
         if(scene.selectedMemento.continueCount <=1) {
             typeText(scene, scene.selectedMemento.text[2] + '\n\n' + scene.selectedMemento.text[3]);
         }
@@ -151,7 +152,7 @@ function typeText(scene, str) {
                 if(scene.selectedMemento != null) {    //if printing text for a memento
                     //console.log(scene.selectedMemento.texture.key + '\'s continues used = ' + scene.selectedMemento.continueCount);
                    if(scene.selectedMemento.continueCount <= 1) { //options have not been displayed yet if displaying memento
-                        //console.log('MADE CONTINUE BUTTON VISIBLE');
+                        console.log('MADE CONTINUE BUTTON VISIBLE');
                         continueButton.alpha = 1; //make continue button visible
                         scene.selectedMemento.continueCount ++;
                    }

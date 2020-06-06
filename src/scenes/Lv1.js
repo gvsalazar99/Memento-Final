@@ -45,11 +45,15 @@ class Lv1 extends Phaser.Scene {
 	}
 
 	create() {
+		
 		mementoGroup = []; //reset collection of mementos
 
 		 //get audio ready
 		this.music = this.sound.add('level1music');
 		this.clickSFX = this.sound.add('mouseclick');
+		this.turningpage = this.sound.add('turningpage');
+
+
 
 		 //play music if unmuted
 		 if(mute == false) { 
@@ -60,6 +64,7 @@ class Lv1 extends Phaser.Scene {
 		} 
 
 		this.previousMemento = null; //memento that was selected before the current
+
 		this.selectedMemento = null; //current memento being interacted with
 
 		//camera fade in n out 
@@ -94,9 +99,20 @@ class Lv1 extends Phaser.Scene {
 		// 	this.music.stop();
 		// });
 
-		//dialogue box art
+		//create dialogue box art
 		this.dialogueBox = this.add.sprite(game.config.width/3.5, game.config.height*.2, 'level1box').setOrigin(0).setScale(.32,.32);
 		this.dialogueBox.y = game.config.height/1.07 - this.dialogueBox.displayHeight;
+
+		//create text box
+		boxText = this.add.text(480, this.dialogueBox.y + 15, '', { font: "12pt Baskerville", fill: "#000000", stroke: "#000000", wordWrap: { width: 450, useAdvancedWrap: true } });
+		boxText.visible = true;
+		
+		addContinue(this); //create continue button
+		addXButton(this); //create x button
+		
+		
+		//Welcoming text
+		typeText(this, 'I am your first reincarnation, the magnolia tree. Take a look around and I will tell you of the life I live.');	
 
 		//progressbar
 		//let progressbar = this.add.sprite('progressbar');
@@ -114,24 +130,9 @@ class Lv1 extends Phaser.Scene {
 		this.progress5= this.add.sprite(game.config.width*.3, game.config.height*.92, 'progress5').setOrigin(0, 0).setScale(.35,.2);
 		this.progress5.visible = false;
 		//little ball for the progress bar!
-		this.progressBall = this.add.sprite(366, 538, 'progressBall').setOrigin(0).setScale(.35, .2);
+		this.progressBall = this.add.sprite(366, 538, 'progressBall').setOrigin(0).setScale(.2, .2);
 		this.progressBall.visible = true;
 
-
-		//create continue button
-		addContinue(this);
-
-		//create x button
-		addXButton(this);
-		// xbutton = this.add.sprite('xbutton');
-		// xbutton= this.add.sprite(game.config.width*.74,game.config.height*.743, 'xbutton').setOrigin(0, 0).setScale(.25,.25);
-	
-		
-		//Welcoming text
-		boxText = this.add.text(480, this.dialogueBox.y + 15, '', { font: "12pt Baskerville", fill: "#000000", stroke: "#000000", wordWrap: { width: 450, useAdvancedWrap: true } });
-		boxText.visible = true;
-		typeText(this, 'I am your first reincarnation, the magnolia tree. Take a look around and I will tell you of the life I live.');		
-		
 
 		//clickable memento magnolia
 		this.magnolia = new memento(this, game.config.width*.84, game.config.height*.000000000000000001, 'magnolianew').setOrigin(0).setScale(.7999);
@@ -230,6 +231,7 @@ class Lv1 extends Phaser.Scene {
 			this.scene.start('cutsceneyellow'); 
 			this.music.stop();
 		}
+
 
 		var pointer = this.input.activePointer;
 		

@@ -37,7 +37,7 @@ class cutscenejellyfish extends Phaser.Scene {
     // I SeaweedOption    that FishOption   (2 syl, 1 syl)
 
     //find chosen options for their respective memento
-    this.seahorsesChoice.setText('I wont ' + mementoGroup.find(mementos => mementos.texture.key == 'seahorses' + 'myself').chosenOption);
+    this.seahorsesChoice.setText('I wont ' + mementoGroup.find(mementos => mementos.texture.key == 'seahorses').chosenOption + 'myself');
     this.shellChoice.setText('To be  ' + mementoGroup.find(mementos => mementos.texture.key == 'shell').chosenOption);
     this.starfishChoice.setText(' takes ' + mementoGroup.find(mementos => mementos.texture.key == 'starfish').chosenOption);
     this.seaweedChoice.setText('I  ' + mementoGroup.find(mementos => mementos.texture.key == 'seaweed').chosenOption);
