@@ -7,12 +7,18 @@ class Lv3 extends Phaser.Scene {
 		this.load.image('level3box', 'assets/TextBoxes/LevelThreeTextBox.PNG');
 		this.load.audio('level3music', 'assets/audio/bensound-sweet.mp3');
 
-		//mementos for level3 (temp)
-		this.load.image('signtemp', 'assets/mementos/signtemp.png');
-		this.load.image('dogtemp', 'assets/mementos/dogtemp.png');
-		this.load.image('parenttemp', 'assets/mementos/parenttemp.png');
-		this.load.image('registertemp', 'assets/mementos/registertemp.png');
-		this.load.image('breadtemp', 'assets/mementos/breadtemp.png');
+		//mementos for level3 (glow)
+		this.load.image('dogGlow', 'assets/mementos/glow/dogGlow.PNG');
+		this.load.image('familyframeGlow', 'assets/mementos/glow/familyframeGlow.PNG');
+		this.load.image('menuGlow', 'assets/mementos/glow/menuGlow.PNG');
+		this.load.image('panGlow', 'assets/mementos/glow/panGlow.PNG');
+		this.load.image('signGlow', 'assets/mementos/glow/signGlow.PNG');
+		//no glow
+		this.load.image('sign', 'assets/mementos/sign.PNG');
+		this.load.image('dog', 'assets/mementos/dog.PNG');
+		this.load.image('familyframe', 'assets/mementos/familyframe.PNG');
+		this.load.image('menu', 'assets/mementos/menu.PNG');
+		this.load.image('pan', 'assets/mementos/pan.PNG');
 		this.load.image('continuebutton', 'assets/TextBoxes/ContinueButton.PNG');
 		//load progress bar 
 		this.load.image('progressbar', 'assets/UI/progressBar/BallAndBar.PNG');
@@ -63,6 +69,21 @@ class Lv3 extends Phaser.Scene {
 
 			let level3background = this.add.sprite(0,0, 'level3background').setOrigin(0, 0);
 
+
+			//clickable family dog
+			this.dog= new memento(this, game.config.width*.47, game.config.height*.45, 'dog').setOrigin(0);
+			addGlow(this, this.dog, 'dogGlow');
+			this.dog.makeInteractive();
+			this.dog.text = ['This is our sweet, ol’ pup, Oso.  I could never forget the Christmas our Dad brought him home, and how small he used to be! It turns out my Dad chose a name that fit our soon-to-be huge pup all too well.',
+					'...',
+					'.... We let him laze about the store in his old age, keeping us company. As silly as it may sound, my sister and I knew that Oso missed our family too, and it was also for him that we needed to ____________. We always made sure to give him extra lovin, extra belly rubs, and extra extra snacks.',
+					'...'];
+			this.dog.options = ['carry on', 'continue', 'stay afloat'];
+			this.dog.on('pointerdown',()=> {
+				//this.squirrelsound.play();
+			});
+
+
 		//dialogue box art
 		this.dialogueBox = this.add.sprite(game.config.width/3.5, 0, 'level3box').setOrigin(0).setScale(.32,.32);
 		this.dialogueBox.y = game.config.height/1.07 - this.dialogueBox.displayHeight;
@@ -80,49 +101,61 @@ class Lv3 extends Phaser.Scene {
 		addXButton(this);	
 
 		//clickable picture of family
-		this.picture= new memento(this, game.config.width*.75, game.config.height*.25, 'catbed').setOrigin(0).setScale(.3);
+		this.picture= new memento(this, game.config.width*.23, game.config.height*.4, 'familyframe').setOrigin(0);
+		addGlow(this, this.picture, 'familyframeGlow');
+		this.picture.makeInteractive();
 		this.picture.text = ['My beautiful family. My sister and I kept this picture here as a constant reminder of who we did this for.  It took us years to look at this picture without feeling overcome by grief.  In time, we learned to make sure we always smiled back at our parents and grandmother.',
 					'...',
 					'.... We knew that they would have wanted us to continue living happy and healthy lives after their ____________.  Natalia and I did our best to fulfil their wishes.',
 					'...'];
 		this.picture.options = ['loss', 'end', 'death'];
-		this.picture.makeInteractive();
+		this.picture.on('pointerdown',()=> {
+			//this.squirrelsound.play();
+		});
 
 		//clickable concha
-		this.concha = new memento(this, game.config.width*.7, game.config.height*.1, 'signtemp').setOrigin(0).setScale(.3);
+		this.concha = new memento(this, game.config.width*.73, game.config.height*.201, 'pan').setOrigin(0);
+		addGlow(this, this.concha, 'panGlow');
+		this.concha.makeInteractive();
 		this.concha.text = ['I remember fondly how our Abuelita refused to eat a concha unless she had coffee to go with it. It’s actually what inspired us to expand the panadería to sell coffee too. ',
 					'...',
 					'.... Abuelita always looked after us, even after her passing.  In the ____________ months following her loss, my sister and I always took comfort in sitting down together to have conchas with coffee.  I remember how it felt as if she were sitting right there with us. ',
 					'...'];
 		this.concha.options = ['heavy', 'empty', 'silent'];
-		this.concha.makeInteractive();
+		this.concha.on('pointerdown',()=> {
+			//this.squirrelsound.play();
+		});
+
 
 		//clickable updated menu
-		this.menu = new memento(this, game.config.width*.5, game.config.height*.25, 'parenttemp').setOrigin(0).setScale(.3);
+		this.menu = new memento(this, game.config.width*.012, game.config.height*.001, 'menu').setOrigin(0);
+		addGlow(this, this.menu, 'menuGlow');
+		this.menu.makeInteractive();
 		this.menu.text = ['I remember the day we redesigned the menu.  It was one of my darkest days, the first anniversary of our parents’ passing, the panadería was suffering due to our negligence, and we were falling under, fast. ',
 					'...',
 					'.... Natalia forced me out of bed, and into our new reality.  We cried, we yelled, we screamed, we laughed, and we held each other tight.  By the end of the night, we were in a feverish passion, working out how we could save the shop, for ____________. We began making plans for renovations, menu expansion, and a whole new outlook.',
 					'...'];
 		this.menu.options = ['them', 'her', 'us'];
-		this.menu.makeInteractive();
+		this.menu.on('pointerdown',()=> {
+			//this.squirrelsound.play();
+		});
 
-		//clickable family dog
-		this.dog= new memento(this, game.config.width*.1, game.config.height*.2, 'registertemp').setOrigin(0).setScale(.3);
-		this.dog.text = ['This is our sweet, ol’ pup, Oso.  I could never forget the Christmas our Dad brought him home, and how small he used to be! It turns out my Dad chose a name that fit our soon-to-be huge pup all too well.',
-					'...',
-					'.... We let him laze about the store in his old age, keeping us company. As silly as it may sound, my sister and I knew that Oso missed our family too, and it was also for him that we needed to ____________. We always made sure to give him extra lovin, extra belly rubs, and extra extra snacks.',
-					'...'];
-		this.dog.options = ['carry on', 'continue', 'stay afloat'];
-		this.dog.makeInteractive();
+
+		
 
 		//clickable sign w family name
-		this.sign = new memento(this, game.config.width*.15, game.config.height*.15, 'dogtemp').setOrigin(0).setScale(.3);
+		this.sign = new memento(this, game.config.width*.62, game.config.height*.001, 'sign').setOrigin(0);
+		addGlow(this, this.sign, 'signGlow');
+		this.sign.makeInteractive();
 		this.sign.text = ['When my Abuelos opened up the panadería in the late 70’s, they did so with the intention of giving generations of Castillos a piece of the family legacy. I always took pride in our shop, and its deeply rooted connection to our loved ones.',
 					'...',
 					'.... Though we had lost ourselves in our grief, when the business was threatened, Natalia and I knew we had to do whatever was necessary to keep our family’s ____________.',
 					'...'];
 		this.sign.options = ['memory', 'legacy', 'wish alive'];
-		this.sign.makeInteractive();
+		this.sign.on('pointerdown',()=> {
+			//this.squirrelsound.play();
+		});
+
 
 
 		 //progressbar
