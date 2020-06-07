@@ -71,15 +71,6 @@ class Menu extends Phaser.Scene {
       //add glow to playButton
       addGlow(this, this.playButton, 'playGlow');
 
-      if(mute == false) { 
-        this.chimesound.play({ 
-          loop: true, 
-          volume: 2
-        }); 
-        this.playButton.on('pointerdown',()=> {
-          this.chimesound.stop();
-        }); 
-        }
 
 
       //create muted button
@@ -120,6 +111,16 @@ class Menu extends Phaser.Scene {
       });      
       //add glow to credits button
       addGlow(this, this.creditsButton, 'creditsGlow');
+
+      if(mute == false) { 
+        this.chimesound.play({ 
+          loop: true, 
+          volume: 2
+        }); 
+        this.playButton.on('pointerdown',()=> {
+          this.chimesound.stop();
+        }); 
+        }
 
 
       console.log(this);

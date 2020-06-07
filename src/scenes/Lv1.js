@@ -39,7 +39,7 @@ class Lv1 extends Phaser.Scene {
 		this.load.audio('starsound', './assets/audio/starsound.mp3');
 		this.load.audio('squirrelsound', './assets/audio/squirrelsound.mp3');
 		this.load.audio('flowersound', './assets/audio/forflower.mp3'); //maybe change
-		this.load.audio('littlegirlsound', './assets/audio/littlegirlsound.mp3'); //maybe change
+		this.load.audio('littlegirlsound', './assets/audio/kidlaugh.mp3'); 
 
 
 	}

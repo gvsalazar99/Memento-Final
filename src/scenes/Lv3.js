@@ -36,6 +36,17 @@ class Lv3 extends Phaser.Scene {
 		this.load.image('progress5', 'assets/UI/progressBar/Progress13.PNG')
 		//load background
 		this.load.image('level3background', 'assets/FullScreen/LevelThreeBackground.png');
+		//loud sounds
+		this.load.audio('menusound', './assets/audio/moneysound.mp3');
+		this.load.audio('familysound', './assets/audio/familysound.mp3');
+		this.load.audio('signsound', './assets/audio/signsound.mp3');
+		this.load.audio('breadsound', './assets/audio/breadsound.mp3');
+		this.load.audio('dogsound', './assets/audio/dogsound.mp3');
+
+
+
+
+
 
 	   
 	}
@@ -51,6 +62,15 @@ class Lv3 extends Phaser.Scene {
 		this.music = this.sound.add('level2music');
 		this.clickSFX = this.sound.add('mouseclick');
 		this.turningpage = this.sound.add('turningpage');
+		this.menusound = this.sound.add('menusound');
+		this.familysound = this.sound.add('familysound');
+		this.signsound = this.sound.add('signsound');
+		this.breadsound = this.sound.add('breadsound');
+		this.dogsound = this.sound.add('dogsound');
+
+
+
+
 
 		
 		 //play music if unmuted
@@ -80,7 +100,7 @@ class Lv3 extends Phaser.Scene {
 					'...'];
 			this.dog.options = ['carry on', 'continue', 'stay afloat'];
 			this.dog.on('pointerdown',()=> {
-				//this.squirrelsound.play();
+			this.dogsound.play();
 			});
 
 
@@ -110,7 +130,7 @@ class Lv3 extends Phaser.Scene {
 					'...'];
 		this.picture.options = ['loss', 'end', 'death'];
 		this.picture.on('pointerdown',()=> {
-			//this.squirrelsound.play();
+		this.familysound.play();
 		});
 
 		//clickable concha
@@ -123,7 +143,7 @@ class Lv3 extends Phaser.Scene {
 					'...'];
 		this.concha.options = ['heavy', 'empty', 'silent'];
 		this.concha.on('pointerdown',()=> {
-			//this.squirrelsound.play();
+		this.breadsound.play();
 		});
 
 
@@ -137,7 +157,7 @@ class Lv3 extends Phaser.Scene {
 					'...'];
 		this.menu.options = ['them', 'her', 'us'];
 		this.menu.on('pointerdown',()=> {
-			//this.squirrelsound.play();
+		this.menusound.play();
 		});
 
 
@@ -153,7 +173,7 @@ class Lv3 extends Phaser.Scene {
 					'...'];
 		this.sign.options = ['memory', 'legacy', 'wish alive'];
 		this.sign.on('pointerdown',()=> {
-			//this.squirrelsound.play();
+		this.signsound.play();
 		});
 
 
