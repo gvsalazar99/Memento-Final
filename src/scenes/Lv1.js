@@ -125,7 +125,7 @@ class Lv1 extends Phaser.Scene {
 		
 		
 		//Welcoming text
-		typeText(this, 'I am your first reincarnation, the magnolia tree. Take a look around and I will tell you of the life I live.');	
+		typeText(this, 'Though this place feels so distant, the familiarity lingers.  I know this is one of the many lives that I have lived. I should explore the scene and remember what I can about this life.');	
 
 		//progressbar
 		//let progressbar = this.add.sprite('progressbar');
