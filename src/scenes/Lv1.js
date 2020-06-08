@@ -122,7 +122,7 @@ class Lv1 extends Phaser.Scene {
 						'...'];
 	this.carving.options = ['trials', 'worries', 'battles']; 
 	this.carving.on('pointerdown',()=> {
-	this.woodsound.play();
+	this.woodsound.play({volume: .1});
 });
 
 		//squirrel
