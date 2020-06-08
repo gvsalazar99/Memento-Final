@@ -63,14 +63,14 @@ class cutscenejellyfish extends Phaser.Scene {
     
     //make all chosen options invisible
     this.seahorsesChoice.alpha = 0;
-    this.seaweedChoice.alpha = 0;
     this.shellChoice.alpha = 0;
     this.starfishChoice.alpha = 0;
+    this.seaweedChoice.alpha = 0;
     this.fishChoice.alpha = 0;
 
     //fade in all chosen options with a tween
     this.tweens.add({
-      targets: [this.seahorsesChoice, this.seaweedChoice, this.shellChoice, this.starfishChoice, this.fishChoice],
+      targets: [this.seahorsesChoice, this.shellChoice, this.starfishChoice, this.seaweedChoice, this.fishChoice],
       alpha: 1,
       duration: 3000,
       delay: this.tweens.stagger(2000)
