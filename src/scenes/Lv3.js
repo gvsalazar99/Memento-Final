@@ -5,7 +5,7 @@ class Lv3 extends Phaser.Scene {
 
 	preload() {
 		this.load.image('level3box', 'assets/TextBoxes/LevelThreeTextBox.PNG');
-		this.load.audio('level3music', 'assets/audio/bensound-sweet.mp3');
+		this.load.audio('level3music', 'assets/audio/level3relaxing.mp3');
 
 		//mementos for level3 (glow)
 		this.load.image('dogGlow', 'assets/mementos/glow/dogGlow.PNG');
@@ -59,7 +59,6 @@ class Lv3 extends Phaser.Scene {
 
 		//create music
 		this.music = this.sound.add('level3music');
-		this.music = this.sound.add('level2music');
 		this.clickSFX = this.sound.add('mouseclick');
 		this.turningpage = this.sound.add('turningpage');
 		this.menusound = this.sound.add('menusound');

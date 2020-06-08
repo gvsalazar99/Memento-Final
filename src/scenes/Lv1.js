@@ -17,7 +17,7 @@ class Lv1 extends Phaser.Scene {
 		this.load.image('magnoliaGlow', 'assets/mementos/glow/magnoliawglow.png');
 		this.load.image('girlGlow', 'assets/mementos/glow/girlsmallwglow.png');
 		//load text box art
-		this.load.image('level1box', 'assets/TextBoxes/LevelOneTextBox.PNG');
+		this.load.image('level1box', 'assets/TextBoxes/LevelOneTextBox (1).PNG');
 		this.load.image('continuebutton', 'assets/TextBoxes/ContinueButton.PNG');
 		//load x button
 		this.load.image('xbutton', 'assets/TextBoxes/xbutton.png');
@@ -33,7 +33,7 @@ class Lv1 extends Phaser.Scene {
 		//load background
 		this.load.image('levelonenew', 'assets/FullScreen/LevelOneBackgroundResized.png');
 		//load background music
-		this.load.audio('level1music', 'assets/audio/bensound-tenderness.mp3');
+		this.load.audio('level1music', 'assets/audio/level1relaxing.mp3');
 		//memento click sounds 
 		this.load.audio('woodsound', './assets/audio/woodsound.mp3');
 		this.load.audio('starsound', './assets/audio/starsound.mp3');
@@ -204,8 +204,14 @@ class Lv1 extends Phaser.Scene {
 			this.littlegirlsound.play();
 		});
 
-	
+		
 
+
+
+
+
+		
+	
 		}, this);
   
 		this.cameras.main.fadeOut(2000, 0,0,0);
@@ -263,9 +269,11 @@ class Lv1 extends Phaser.Scene {
 	checkProgressBar() {
 		let optionsCount = mementoGroup.length;
 
+
 		if (optionsCount == 1) {
 			this.progress1.visible = true;
 			this.progressBall.x = 401;
+				this.starsound.play();
 		}
 		else if (optionsCount == 2) {
 			this.progress1.visible = false;
@@ -282,7 +290,8 @@ class Lv1 extends Phaser.Scene {
 			this.progress4.visible = true;
 			this.progressBall.x = 735;
 		}
-	}
+
+	 }
 
 //closes .Scene
 }

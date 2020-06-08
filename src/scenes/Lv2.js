@@ -6,7 +6,7 @@ class Lv2 extends Phaser.Scene {
 	preload() {
 		this.load.image('level2box', './assets/TextBoxes/LevelTwoTextBox.PNG');
 		this.load.image('leveltwo', './assets/FullScreen/LevelTwoBackground.png');
-		this.load.audio('level2music', './assets/audio/bensound-beyondtheline.mp3');
+		this.load.audio('level2music', './assets/audio/level2relaxing.mp3');
 
 		//mementos for level2 (temp)
 		this.load.image('seahorses', './assets/mementos/twoseahorses.png');

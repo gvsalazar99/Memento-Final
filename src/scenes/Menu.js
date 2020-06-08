@@ -33,7 +33,7 @@ class Menu extends Phaser.Scene {
       this.load.image('credits', './assets/FullScreen/EndScreen (1).PNG');
 
       //sounds
-      this.load.audio('mouseclick', './assets/audio/shortmouseclick.mp3');
+      this.load.audio('mouseclick', './assets/audio/clicksoundd.mp3');
       this.load.audio('turningpage', './assets/audio/turningpage.mp3');
       this.load.audio('chimesound', './assets/audio/chimesoundcut.mp3');
       
