@@ -38,7 +38,7 @@ class memento extends Phaser.GameObjects.Sprite {
             }
 
             this.scene.dialogueBox.visible = true;
-            xbutton.visible = true;
+            //xbutton.visible = true; //this is being commented out to remove the xbutton from the game, it causes too many bugs
             continueButton.alpha = 0;
             
             if(this.chosenOption == null) {
@@ -76,7 +76,7 @@ class memento extends Phaser.GameObjects.Sprite {
             // this.option3.visible = false;
             this.eraseOptions();
             this.scene.dialogueBox.visible = false; //erase box
-            xbutton.visible = false;
+            //xbutton.visible = false;
 
             //save player action!
             mementoGroup.push(this);          //add memento to group

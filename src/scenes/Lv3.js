@@ -117,7 +117,7 @@ class Lv3 extends Phaser.Scene {
 		addContinue(this);
 
 		//create x button
-		addXButton(this);	
+		//addXButton(this);	
 
 		//clickable picture of family
 		this.picture= new memento(this, game.config.width*.23, game.config.height*.4, 'familyframe').setOrigin(0);

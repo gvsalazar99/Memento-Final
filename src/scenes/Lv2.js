@@ -102,7 +102,7 @@ class Lv2 extends Phaser.Scene {
 		addContinue(this);
 
 		//create x button
-		addXButton(this);		
+		//addXButton(this);		
 
 		//Welcoming text!
 		boxText = this.add.text(480, this.dialogueBox.y + 15, '', { font: "12pt Baskerville", fill: "#000000", stroke: "#000000", wordWrap: { width: 450, useAdvancedWrap: true } });

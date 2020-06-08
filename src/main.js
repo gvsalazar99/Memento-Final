@@ -86,6 +86,8 @@ function addXButton(scene) {
         xClicked = true;
         eraseDialogueBox(scene);
     });
+    //THIS LINE IS BEING ADDED TO REMOVE THE X BUTTON, IT CAUSES TOO MANY BUGS
+    //xbutton.visible = false;
 }
 
 
@@ -93,7 +95,7 @@ function addXButton(scene) {
 function eraseDialogueBox(scene) {
     boxText.setText("");
     continueButton.visible = false;
-    xbutton.visible = false;
+    //xbutton.visible = false;
     scene.dialogueBox.visible = false;
     if(scene.selectedMemento.continueCount >= 2) { //if 2 continues have been used, options have been displayed
         scene.selectedMemento.eraseOptions();     //and we need to erase those too

@@ -16,7 +16,6 @@ class Menu extends Phaser.Scene {
 
       //buttons
       this.load.image('playbutton', 'assets/UI/PlayButtonNew.PNG');
-      this.load.image('playagainbutton', './assets/UI/PlayAgainButton.PNG'); 
       this.load.image('creditsbutton', './assets/UI/CreditsButton.PNG'); 
       this.load.image('mutebutton', './assets/UI/MuteButton.PNG'); 
       this.load.image('unmutebutton', './assets/UI/UnmuteButton.PNG');
@@ -26,7 +25,6 @@ class Menu extends Phaser.Scene {
       this.load.image('muteGlow', './assets/UI/glow/MuteButtonGlow.PNG');
       this.load.image('unmuteGlow', './assets/UI/glow/UnmuteButtonGlow.PNG');
       this.load.image('creditsGlow', './assets/UI/glow/CreditsButtonGlow.PNG');
-      this.load.image('playagainGlow', './assets/UI/glow/PlayAgainButtonGlow.PNG');
 
       //screens
       this.load.image('mementomenu', './assets/FullScreen/MenuScreen.PNG');

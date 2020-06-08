@@ -174,7 +174,7 @@ class Lv1 extends Phaser.Scene {
 		boxText.visible = true;
 		
 		addContinue(this); //create continue button
-		addXButton(this); //create x button
+		//addXButton(this); //create x button
 		
 		
 		//Welcoming text
