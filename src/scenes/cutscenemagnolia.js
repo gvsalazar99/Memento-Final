@@ -10,7 +10,7 @@ class cutscenemagnolia extends Phaser.Scene {
   create() {
     console.log('We are in the cutscene!');    
 
-    var style = { font: "16pt Courier", fill: "#00ff00", stroke: "#00ff00", strokeThickness: 1.5 , wordWrap: { width: 570, useAdvancedWrap: true } };
+    var style = { font: "12pt Baskerville", fill: "#00ff00", stroke: "#00ff00", wordWrap: { width: 570, useAdvancedWrap: true } };
 		//text
 	 // boxText = this.add.text(game.config.height/2, game.config.height/2, '', { font: "14pt Courier", fill: "#00ff00", stroke: "#00ff00", wordWrap: { width: 570, useAdvancedWrap: true } });
     boxText = this.add.text(game.config.height/2, game.config.height/2, '', style );

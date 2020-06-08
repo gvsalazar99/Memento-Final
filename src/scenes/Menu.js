@@ -30,7 +30,8 @@ class Menu extends Phaser.Scene {
 
       //screens
       this.load.image('mementomenu', './assets/FullScreen/MenuScreen.PNG');
-      this.load.image('credits', './assets/FullScreen/EndScreen (1).PNG');
+      this.load.image('endscreen', './assets/FullScreen/EndScreen (1).PNG');
+      this.load.image('finalcredits', './assets/FullScreen/creditsempty.PNG');
 
       //sounds
       this.load.audio('mouseclick', './assets/audio/clicksoundd.mp3');

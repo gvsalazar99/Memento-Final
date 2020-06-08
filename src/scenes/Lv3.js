@@ -110,7 +110,7 @@ class Lv3 extends Phaser.Scene {
 
 		//text
 		boxText = this.add.text(480, this.dialogueBox.y + 15, '', {font: "12pt Baskerville", fill: "#000000", stroke: "#000000", wordWrap: { width: 450, useAdvancedWrap: true } });
-		boxText.setText('YOU\'VE MADE IT TO THE LAST REINCARNATION');
+		boxText.setText('Another distant but familiar place. This is yet another one of the lives that I have lived. I should explore the scene and remember what I can about the life I lived.');
 		boxText.visible = true;
 
 		//create continue button
@@ -225,7 +225,7 @@ class Lv3 extends Phaser.Scene {
 		//switch to cut scene when all options have been chosen from mementos
 		if(mementoGroup.length >= 5) {
 			console.log('Switching scenes!'); 
-			this.scene.start('Credits'); 
+			this.scene.start('EndScreen'); 
 			this.music.stop();
 		}	
 		this.checkProgressBar();
