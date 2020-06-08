@@ -273,8 +273,7 @@ class Lv1 extends Phaser.Scene {
 		if (optionsCount == 1) {
 			this.progress1.visible = true;
 			this.progressBall.x = 401;
-				this.starsound.play();
-		}
+				}
 		else if (optionsCount == 2) {
 			this.progress1.visible = false;
 			this.progress2.visible = true;
