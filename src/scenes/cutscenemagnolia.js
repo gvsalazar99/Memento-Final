@@ -20,7 +20,7 @@ class cutscenemagnolia extends Phaser.Scene {
 
     this.secCount = 10;
     this.textTimer = this.time.addEvent({
-      delay: 1000, //ms
+      delay: 1300, //ms
       repeat: this.secCount,
       callback: () => {
           boxText.setText('');

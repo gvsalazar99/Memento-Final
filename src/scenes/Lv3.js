@@ -233,7 +233,7 @@ class Lv3 extends Phaser.Scene {
 		var enterKey= this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
 		if(Phaser.Input.Keyboard.JustDown(enterKey)) {
 			this.music.stop();
-			this.scene.start('EndScreen');
+			this.scene.start('Credits');
 		}
 	}
 
