@@ -225,10 +225,16 @@ class Lv3 extends Phaser.Scene {
 		//switch to cut scene when all options have been chosen from mementos
 		if(mementoGroup.length >= 5) {
 			console.log('Switching scenes!'); 
-			this.scene.start('EndScreen'); 
+			this.scene.start('cutsceneperson'); 
 			this.music.stop();
 		}	
 		this.checkProgressBar();
+
+		var enterKey= this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
+		if(Phaser.Input.Keyboard.JustDown(enterKey)) {
+			this.music.stop();
+			this.scene.start('EndScreen');
+		}
 	}
 
 	checkProgressBar() {

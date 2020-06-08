@@ -11,7 +11,7 @@ class cutscenemagnolia extends Phaser.Scene {
   create() {
     console.log('We are in the cutscene!');    
 
-    var style = { font: "12pt Baskerville", fill: "#00ff00", stroke: "#00ff00", wordWrap: { width: 570, useAdvancedWrap: true } };
+    var style = { font: "16pt Baskerville", fill: "#ffffff", stroke: "#ffffff", wordWrap: { width: 570, useAdvancedWrap: true } };
 		//text
 	 // boxText = this.add.text(game.config.height/2, game.config.height/2, '', { font: "14pt Courier", fill: "#00ff00", stroke: "#00ff00", wordWrap: { width: 570, useAdvancedWrap: true } });
     boxText = this.add.text(game.config.height/2, game.config.height/2, '', style );
@@ -58,32 +58,35 @@ class cutscenemagnolia extends Phaser.Scene {
     
 
     //create text for 1st level's chosen options
-    this.magnoliaChoice = this.add.text(game.config.width/2, game.config.height/4 + 60, '', style);
-    this.carvingChoice = this.add.text(game.config.width/2, game.config.height/4 + 20, '', style);
-    this.squirrelChoice = this.add.text(game.config.width/2, game.config.height/4, '', style);
-    this.girlChoice = this.add.text(game.config.width/2, game.config.height/4 + 80, '', style); 
-    this.butterflyChoice = this.add.text(game.config.width/2, game.config.height/4 + 40, '', style);
-
+    this.magnoliaChoice = this.add.text(game.config.width/2, game.config.height/4, '', style);
+    this.carvingChoice = this.add.text(game.config.width/2, game.config.height/4, '', style);
+    this.squirrelChoice = this.add.text(game.config.width/2, game.config.height/4 + 20, '', style);
+    this.girlChoice = this.add.text(game.config.width/2, game.config.height/4 + 20, '', style);
+    this.butterflyChoice = this.add.text(game.config.width/2, game.config.height/4 + 40, '', style); 
+   
     //MAGNOLIA HAIKU
     //Through MagnoliaOption, InitialsOption   (2 syl, 2 syl)
     //I won’t SquirrelOption my GirlOption   (2 syl, 2 syl)
     //I will ButterflyOption   (3 syl)
 
     //find chosen options for their respective memento
-    this.magnoliaChoice.setText('Through  ' + mementoGroup.find(mementos => mementos.texture.key == 'magnolianew').chosenOption);
+    //find chosen options for their respective memento
+    this.magnoliaChoice.setText('Through  ' + mementoGroup.find(mementos => mementos.texture.key == 'magnolianew').chosenOption + ',  ');
     this.carvingChoice.setText('   ' + mementoGroup.find(mementos => mementos.texture.key == 'treecarving').chosenOption);
-    this.squirrelChoice.setText('I wont  ' + mementoGroup.find(mementos => mementos.texture.key == 'squirrel').chosenOption);
-    this.girlChoice.setText('  ' + mementoGroup.find(mementos => mementos.texture.key == 'girlsmall').chosenOption);
+    this.squirrelChoice.setText('I wont  ' + mementoGroup.find(mementos => mementos.texture.key == 'squirrel').chosenOption + '  my  ');
+    this.girlChoice.setText(mementoGroup.find(mementos => mementos.texture.key == 'girlsmall').chosenOption);
     this.butterflyChoice.setText('I will  ' + mementoGroup.find(mementos => mementos.texture.key == 'butterflysmall').chosenOption);
     
+    //setting widths for haiku format
+    this.carvingChoice.x += this.magnoliaChoice.width + 3;
+    this.girlChoice.x += this.squirrelChoice.width + 3;
     
-    
-    //make all chosen options near invisible
-    this.magnoliaChoice.alpha = .1;
-    this.carvingChoice.alpha = .1;
-    this.squirrelChoice.alpha = .1;
-    this.girlChoice.alpha = .1;
-    this.butterflyChoice.alpha = .1;
+    //make all chosen options  invisible
+    this.magnoliaChoice.alpha = 0;
+    this.carvingChoice.alpha = 0;
+    this.squirrelChoice.alpha = 0;
+    this.girlChoice.alpha = 0;
+    this.butterflyChoice.alpha = 0;
 
     //fade in all chosen options with a tween
     this.tweens.add({

@@ -9,7 +9,7 @@ class cutscenejellyfish extends Phaser.Scene {
     console.log('We are in the cutscene!');    
 
     //text
-    var style = { font: "14pt Courier", fill: "#00ff00", stroke: "#00ff00",strokeThickness: 1.5, wordWrap: { width: 570, useAdvancedWrap: true } };
+    var style = { font: "16pt Baskerville", fill: "#ffffff", stroke: "#ffffff",strokeThickness: 1.0, wordWrap: { width: 570, useAdvancedWrap: true } };
     boxText = this.add.text(game.config.height/2, game.config.height/2, '', style);
     boxText.setText('[CUT SCENE 2]');
     boxText.visible = true;
@@ -20,7 +20,7 @@ class cutscenejellyfish extends Phaser.Scene {
       repeat: this.secCount,
       callback: () => {
         boxText.setText('');
-        boxText.setText('[CUT SCENE 2]\nEnds in ' + this.secCount);
+        //boxText.setText('[CUT SCENE 2]\nEnds in ' + this.secCount);
         this.secCount--;
       },
         callbackScope: game
@@ -40,10 +40,10 @@ class cutscenejellyfish extends Phaser.Scene {
     
     //create text for 1st level's chosen options
     this.seahorsesChoice = this.add.text(game.config.width/2, game.config.height/4, '', style);
-    this.seaweedChoice = this.add.text(game.config.width/2, game.config.height/4 + 20, '', style);
-    this.shellChoice = this.add.text(game.config.width/2, game.config.height/4 + 40, '', style);
-    this.starfishChoice = this.add.text(game.config.width/2, game.config.height/4 + 60, '', style);
-    this.fishChoice = this.add.text(game.config.width/2, game.config.height/4 + 80, '', style); 
+    this.shellChoice = this.add.text(game.config.width/2, game.config.height/4 + 20, '', style);
+    this.starfishChoice = this.add.text(game.config.width/2, game.config.height/4 + 20, '', style);
+    this.seaweedChoice = this.add.text(game.config.width/2, game.config.height/4 + 40, '', style);
+    this.fishChoice = this.add.text(game.config.width/2, game.config.height/4 + 40, '', style); 
 
     //SEAHORSE HAIKU
     // I won’t SeahorsesOption myself  (1 syl)
@@ -51,19 +51,22 @@ class cutscenejellyfish extends Phaser.Scene {
     // I SeaweedOption    that FishOption   (2 syl, 1 syl)
 
     //find chosen options for their respective memento
-    this.seahorsesChoice.setText('I wont ' + mementoGroup.find(mementos => mementos.texture.key == 'seahorses').chosenOption + 'myself');
+    this.seahorsesChoice.setText('I wont ' + mementoGroup.find(mementos => mementos.texture.key == 'seahorses').chosenOption + ' myself');
     this.shellChoice.setText('To be  ' + mementoGroup.find(mementos => mementos.texture.key == 'shell').chosenOption);
     this.starfishChoice.setText(' takes ' + mementoGroup.find(mementos => mementos.texture.key == 'starfish').chosenOption);
     this.seaweedChoice.setText('I  ' + mementoGroup.find(mementos => mementos.texture.key == 'seaweed').chosenOption);
-    this.fishChoice.setText('That ' + mementoGroup.find(mementos => mementos.texture.key == 'fish').chosenOption);
+    this.fishChoice.setText(' that ' + mementoGroup.find(mementos => mementos.texture.key == 'fish').chosenOption);
     
+    //setting widths for haiku format
+    this.starfishChoice.x += this.shellChoice.width + 3;
+    this.fishChoice.x += this.seaweedChoice.width + 3;  
     
-    //make all chosen options near invisible
-    this.seahorsesChoice.alpha = .1;
-    this.seaweedChoice.alpha = .1;
-    this.shellChoice.alpha = .1;
-    this.starfishChoice.alpha = .1;
-    this.fishChoice.alpha = .1;
+    //make all chosen options invisible
+    this.seahorsesChoice.alpha = 0;
+    this.seaweedChoice.alpha = 0;
+    this.shellChoice.alpha = 0;
+    this.starfishChoice.alpha = 0;
+    this.fishChoice.alpha = 0;
 
     //fade in all chosen options with a tween
     this.tweens.add({
