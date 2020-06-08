@@ -30,10 +30,11 @@ class Menu extends Phaser.Scene {
 
       //screens
       this.load.image('mementomenu', './assets/FullScreen/MenuScreen.PNG');
-      this.load.image('credits', './assets/FullScreen/EndScreen (1).PNG');
+      this.load.image('endscreen', './assets/FullScreen/EndScreen (1).PNG');
+      this.load.image('finalcredits', './assets/FullScreen/creditsempty.PNG');
 
       //sounds
-      this.load.audio('mouseclick', './assets/audio/shortmouseclick.mp3');
+      this.load.audio('mouseclick', './assets/audio/clicksoundd.mp3');
       this.load.audio('turningpage', './assets/audio/turningpage.mp3');
       this.load.audio('chimesound', './assets/audio/chimesoundcut.mp3');
       
@@ -71,15 +72,6 @@ class Menu extends Phaser.Scene {
       //add glow to playButton
       addGlow(this, this.playButton, 'playGlow');
 
-      if(mute == false) { 
-        this.chimesound.play({ 
-          loop: true, 
-          volume: 2
-        }); 
-        this.playButton.on('pointerdown',()=> {
-          this.chimesound.stop();
-        }); 
-        }
 
 
       //create muted button
@@ -120,6 +112,16 @@ class Menu extends Phaser.Scene {
       });      
       //add glow to credits button
       addGlow(this, this.creditsButton, 'creditsGlow');
+
+      if(mute == false) { 
+        this.chimesound.play({ 
+          loop: true, 
+          volume: 2
+        }); 
+        this.playButton.on('pointerdown',()=> {
+          this.chimesound.stop();
+        }); 
+        }
 
 
       console.log(this);

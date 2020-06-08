@@ -6,7 +6,7 @@ class Lv2 extends Phaser.Scene {
 	preload() {
 		this.load.image('level2box', './assets/TextBoxes/LevelTwoTextBox.PNG');
 		this.load.image('leveltwo', './assets/FullScreen/LevelTwoBackground.png');
-		this.load.audio('level2music', './assets/audio/bensound-beyondtheline.mp3');
+		this.load.audio('level2music', './assets/audio/level2relaxing.mp3');
 
 		//mementos for level2 (temp)
 		this.load.image('seahorses', './assets/mementos/twoseahorses.png');
@@ -106,7 +106,7 @@ class Lv2 extends Phaser.Scene {
 
 		//Welcoming text!
 		boxText = this.add.text(480, this.dialogueBox.y + 15, '', { font: "12pt Baskerville", fill: "#000000", stroke: "#000000", wordWrap: { width: 450, useAdvancedWrap: true } });
-		boxText.setText('Yet again, a familiarity coupled with confusion. I need to explore my surroundings, and do what I can to remember.');
+		boxText.setText('Again, a distant but familiar place. This is another one of the many lives that I have lived. I should explore the scene and remember what I can about this life.');
 		boxText.visible = true;
 		console.log(boxText);
 
@@ -178,7 +178,7 @@ class Lv2 extends Phaser.Scene {
 					'...',
 					'....  I was in for a surprise the day I learned that despite their name, hermit crabs actually travel with their friends.  They need socialization and companionship to feel whole. They want to be ____________.',
 					'...'];
-		this.shell.options = ['known', 'seed', 'loved'];
+		this.shell.options = ['known', 'seen', 'loved'];
 		this.shell.makeInteractive();
 		addGlow(this, this.shell, 'shellGlow');
 		this.shell.on('pointerdown',()=> {
