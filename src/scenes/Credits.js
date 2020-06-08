@@ -14,16 +14,16 @@ class Credits extends Phaser.Scene {
 		let credits = this.add.sprite('finalcredits');
 		credits = this.add.sprite(0, 0, 'finalcredits').setOrigin(0, 0);
 
-		this.add.text(160, game.config.height*.3, 'Derek Gomez:', { font: "35pt Baskerville", fill: "#FFFFFF", stroke: "#FFFFFF", strokeThickness:2, wordWrap: { width: 570, useAdvancedWrap: true } });
-		this.add.text(500, game.config.height*.3, 'Executive Producer, Executive Director, and Writer', { font: "35pt Baskerville", fill: "#FFFFFF", stroke: "#FFFFFF", strokeThickness:2, wordWrap: { width: 570, useAdvancedWrap: true } });
+		this.add.text(160, game.config.height*.3, 'Derek Gomez:', { font: "25pt Baskerville", fill: "#FFFFFF", stroke: "#FFFFFF", strokeThickness:1.5, wordWrap: { width: 570, useAdvancedWrap: true } });
+		this.add.text(500, game.config.height*.3, 'Executive Producer, Executive Director, Writer', { font: "25pt Baskerville", fill: "#FFFFFF", stroke: "#FFFFFF", strokeThickness:1.5, wordWrap: { width: 570, useAdvancedWrap: true } });
 
 		
-		this.add.text(160, game.config.height*.4, 'Gabi Serna:', { font: "35pt Baskerville", fill: "#FFFFFF", stroke: "#FFFFFF", strokeThickness:2, wordWrap: { width: 570, useAdvancedWrap: true } });
-		this.add.text(500, game.config.height*.4, 'Artist, Narrative', { font: "35pt Baskerville", fill: "#FFFFFF", stroke: "#FFFFFF", strokeThickness:2, wordWrap: { width: 570, useAdvancedWrap: true } });
+		this.add.text(160, game.config.height*.44, 'Gabi Serna:', { font: "25pt Baskerville", fill: "#FFFFFF", stroke: "#FFFFFF", strokeThickness:1.5, wordWrap: { width: 570, useAdvancedWrap: true } });
+		this.add.text(500, game.config.height*.44, 'Game Artist: Menu, End Screen, Level Backgrounds, Objects, Textboxes', { font: "25pt Baskerville", fill: "#FFFFFF", stroke: "#FFFFFF", strokeThickness:1.5, wordWrap: { width: 570, useAdvancedWrap: true } });
 
 		
-		this.add.text(160, game.config.height*.5, 'Grecia Salazar:', { font: "35pt Baskerville", fill: "#FFFFFF", stroke: "#FFFFFF", strokeThickness:2, wordWrap: { width: 570, useAdvancedWrap: true } });
-		this.add.text(500, game.config.height*.5, 'Narrative, Music, Polish', { font: "35pt Baskerville", fill: "#FFFFFF", stroke: "#FFFFFF", strokeThickness:1, wordWrap: { width: 570, useAdvancedWrap: true } });
+		this.add.text(160, game.config.height*.58, 'Grecia Salazar:', { font: "25pt Baskerville", fill: "#FFFFFF", stroke: "#FFFFFF", strokeThickness:1.5, wordWrap: { width: 570, useAdvancedWrap: true } });
+		this.add.text(500, game.config.height*.58, 'Narrative, Music, Polish', { font: "25pt Baskerville", fill: "#FFFFFF", stroke: "#FFFFFF", strokeThickness:1.5, wordWrap: { width: 570, useAdvancedWrap: true } });
 
 
 		this.add.text(160, game.config.height*.7, 'Music/Audio:', { font: "20pt Baskerville", fill: "#FFFFFF", stroke: "#FFFFFF", strokeThickness:1.5, wordWrap: { width: 570, useAdvancedWrap: true } });
