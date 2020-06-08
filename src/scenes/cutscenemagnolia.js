@@ -104,5 +104,12 @@ class cutscenemagnolia extends Phaser.Scene {
     if(this.secCount == -1) {
       this.scene.start('Level2');
     }
+
+		var enterKey= this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
+		if(Phaser.Input.Keyboard.JustDown(enterKey)) {
+			this.music.stop();
+			//this.scene.start('Level2');
+			this.scene.start('Level2');
+		}
   }
 }

@@ -249,7 +249,7 @@ class Lv1 extends Phaser.Scene {
 		if(Phaser.Input.Keyboard.JustDown(enterKey)) {
 			this.music.stop();
 			//this.scene.start('Level2');
-			this.scene.start('cutsceneyellow');
+			this.scene.start('Level2');
 		}
 	
 	
