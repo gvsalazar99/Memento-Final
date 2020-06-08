@@ -5,6 +5,7 @@ class cutsceneperson extends Phaser.Scene {
   
     preload() {
       this.load.image('pink', './assets/FullScreen/pink.png');
+      this.load.spritesheet('cutscene3', './assets/cutscenes/CutScene3SpriteSheet.png', {frameWidth: 1260, frameHeight: 590, startFrame: 0, endFrame: 39});
     }
   
     create() {
@@ -28,7 +29,18 @@ class cutsceneperson extends Phaser.Scene {
         },
         callbackScope: game
       });  
-  
+      
+    //make the cut scene work!
+    this.cutscene = this.add.sprite(0, 0, 'cutscene3').setOrigin(0,0);
+    console.log('animation loaded into scene');
+    this.anims.create({
+      key: 'cutscene3',
+      frames: this.anims.generateFrameNumbers('cutscene3', {start: 0, end: 39, first: 0}),
+      frameRate: 5
+    });
+    console.log('animation has been configured')
+    this.cutscene.anims.play('cutscene3', true);
+    console.log('animation has started to play!');
   
       //create text for 1st level's chosen options
       this.familyframeChoice = this.add.text(game.config.width/2, game.config.height/4, '', style);
