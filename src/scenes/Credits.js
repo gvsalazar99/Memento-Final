@@ -15,11 +15,11 @@ class Credits extends Phaser.Scene {
 		credits = this.add.sprite(0, 0, 'finalcredits').setOrigin(0, 0);
 
 		this.add.text(160, game.config.height*.3, 'Derek Gomez:', { font: "35pt Baskerville", fill: "#FFFFFF", stroke: "#FFFFFF", strokeThickness:2, wordWrap: { width: 570, useAdvancedWrap: true } });
-		this.add.text(500, game.config.height*.3, 'lalalla', { font: "35pt Baskerville", fill: "#FFFFFF", stroke: "#FFFFFF", strokeThickness:2, wordWrap: { width: 570, useAdvancedWrap: true } });
+		this.add.text(500, game.config.height*.3, 'Executive Producer, Executive Director, and Writer', { font: "35pt Baskerville", fill: "#FFFFFF", stroke: "#FFFFFF", strokeThickness:2, wordWrap: { width: 570, useAdvancedWrap: true } });
 
 		
 		this.add.text(160, game.config.height*.4, 'Gabi Serna:', { font: "35pt Baskerville", fill: "#FFFFFF", stroke: "#FFFFFF", strokeThickness:2, wordWrap: { width: 570, useAdvancedWrap: true } });
-		this.add.text(500, game.config.height*.4, 'lalalala', { font: "35pt Baskerville", fill: "#FFFFFF", stroke: "#FFFFFF", strokeThickness:2, wordWrap: { width: 570, useAdvancedWrap: true } });
+		this.add.text(500, game.config.height*.4, 'Artist, Narrative', { font: "35pt Baskerville", fill: "#FFFFFF", stroke: "#FFFFFF", strokeThickness:2, wordWrap: { width: 570, useAdvancedWrap: true } });
 
 		
 		this.add.text(160, game.config.height*.5, 'Grecia Salazar:', { font: "35pt Baskerville", fill: "#FFFFFF", stroke: "#FFFFFF", strokeThickness:2, wordWrap: { width: 570, useAdvancedWrap: true } });
