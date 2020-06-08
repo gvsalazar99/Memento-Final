@@ -2,7 +2,9 @@ class cutscenejellyfish extends Phaser.Scene {
 	constructor() {
 		super('cutsceneblue');      
   }
-
+  preload() {
+    this.load.spritesheet('cutscene2', './assets/cutscenes/CutScene2SpriteSheet.png', {frameWidth: 1260, frameHeight: 590, startFrame: 0, endFrame: 39});
+  }
   create() {
     console.log('We are in the cutscene!');    
 
@@ -23,6 +25,18 @@ class cutscenejellyfish extends Phaser.Scene {
       },
         callbackScope: game
     });  
+
+    //make the cut scene work!
+    this.cutscene = this.add.sprite(0, 0, 'cutscene2').setOrigin(0,0);
+    console.log('animation loaded into scene');
+    this.anims.create({
+      key: 'cutscene2',
+      frames: this.anims.generateFrameNumbers('cutscene2', {start: 0, end: 39, first: 0}),
+      frameRate: 5
+    });
+    console.log('animation has been configured')
+    this.cutscene.anims.play('cutscene2', true);
+    console.log('animation has started to play!');
     
     //create text for 1st level's chosen options
     this.seahorsesChoice = this.add.text(game.config.width/2, game.config.height/4, '', style);
@@ -65,6 +79,11 @@ class cutscenejellyfish extends Phaser.Scene {
     if(this.secCount == -1) {
       this.scene.start('Level3');
     }
+		var enterKey= this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
+		if(Phaser.Input.Keyboard.JustDown(enterKey)) {
+			this.music.stop();
+			this.scene.start('Level3');
+		}
   }
 }
 

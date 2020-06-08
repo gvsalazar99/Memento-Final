@@ -5,6 +5,7 @@ class cutscenemagnolia extends Phaser.Scene {
 
   preload() {
     this.load.image('pink', './assets/FullScreen/pink.png');
+    this.load.spritesheet('cutscene1', './assets/cutscenes/CutScene1SpriteSheet.png', {frameWidth: 1260, frameHeight: 590, startFrame: 0, endFrame: 35});
   }
 
   create() {
@@ -42,6 +43,20 @@ class cutscenemagnolia extends Phaser.Scene {
     // mementoGroup.find(mementos => mementos.texture.key == 'girlsmall').chosenOption = 'bush did 9/11';
     // console.log(mementoGroup.find(mementos => mementos.texture.key == 'girlsmall').chosenOption);
 
+
+    //make the cut scene work!
+    this.cutscene = this.add.sprite(0, 0, 'cutscene1').setOrigin(0,0);
+    console.log('animation loaded into scene');
+    this.anims.create({
+      key: 'cutscene1',
+      frames: this.anims.generateFrameNumbers('cutscene1', {start: 0, end: 35, first: 0}),
+      frameRate: 5
+    });
+    console.log('animation has been configured')
+    this.cutscene.anims.play('cutscene1', true);
+    console.log('animation has started to play!');
+    
+
     //create text for 1st level's chosen options
     this.magnoliaChoice = this.add.text(game.config.width/2, game.config.height/4 + 60, '', style);
     this.carvingChoice = this.add.text(game.config.width/2, game.config.height/4 + 20, '', style);
@@ -78,11 +93,23 @@ class cutscenemagnolia extends Phaser.Scene {
       delay: this.tweens.stagger(2000)
   });
 
+
+
+
   }
 
   update() {
+    //this.cutscene.anims.play('cutscene1', true);
+
     if(this.secCount == -1) {
       this.scene.start('Level2');
     }
+
+		var enterKey= this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
+		if(Phaser.Input.Keyboard.JustDown(enterKey)) {
+			this.music.stop();
+			//this.scene.start('Level2');
+			this.scene.start('Level2');
+		}
   }
 }
