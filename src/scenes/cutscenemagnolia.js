@@ -43,12 +43,11 @@ class cutscenemagnolia extends Phaser.Scene {
     // console.log(mementoGroup.find(mementos => mementos.texture.key == 'girlsmall').chosenOption);
 
     //create text for 1st level's chosen options
-    this.squirrelChoice = this.add.text(game.config.width/2, game.config.height/4, '', style);
-    this.carvingChoice = this.add.text(game.config.width/2, game.config.height/4 + 20, '', style);
-    this.butterflyChoice = this.add.text(game.config.width/2, game.config.height/4 + 40, '', style);
     this.magnoliaChoice = this.add.text(game.config.width/2, game.config.height/4 + 60, '', style);
+    this.carvingChoice = this.add.text(game.config.width/2, game.config.height/4 + 20, '', style);
+    this.squirrelChoice = this.add.text(game.config.width/2, game.config.height/4, '', style);
     this.girlChoice = this.add.text(game.config.width/2, game.config.height/4 + 80, '', style); 
-
+    this.butterflyChoice = this.add.text(game.config.width/2, game.config.height/4 + 40, '', style);
 
     //MAGNOLIA HAIKU
     //Through MagnoliaOption, InitialsOption   (2 syl, 2 syl)
@@ -65,15 +64,15 @@ class cutscenemagnolia extends Phaser.Scene {
     
     
     //make all chosen options near invisible
-    this.squirrelChoice.alpha = .1;
-    this.carvingChoice.alpha = .1;
-    this.butterflyChoice.alpha = .1;
     this.magnoliaChoice.alpha = .1;
+    this.carvingChoice.alpha = .1;
+    this.squirrelChoice.alpha = .1;
     this.girlChoice.alpha = .1;
+    this.butterflyChoice.alpha = .1;
 
     //fade in all chosen options with a tween
     this.tweens.add({
-      targets: [this.squirrelChoice, this.carvingChoice, this.butterflyChoice, this.magnoliaChoice, this.girlChoice],
+      targets: [this.magnoliaChoice,this.carvingChoice, this.squirrelChoice, this.girlChoice, this.butterflyChoice],
       alpha: 1,
       duration: 3000,
       delay: this.tweens.stagger(2000)
