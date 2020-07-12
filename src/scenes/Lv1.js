@@ -50,7 +50,7 @@ class Lv1 extends Phaser.Scene {
 	}
 
 	create() {
-		console.log('Welcome to Level 1!\m');
+		console.log('Welcome to Level 1!\n');
 
 		console.log('Press 0 to restart the level!');
 		console.log('Press 1 to skip to cutscene! (All word choices randomly chosen!)');
