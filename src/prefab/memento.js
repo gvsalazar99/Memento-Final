@@ -25,7 +25,7 @@ class memento extends Phaser.GameObjects.Sprite {
     makeInteractive() {
 
         this.on('pointerdown', (pointer, gameObject) => {
-            console.log(this.texture.key + ' clicked!');
+            //console.log(this.texture.key + ' clicked!');
 
             //assign memento selected before this to previousMemento
             //and this memento to selectedMemento 

@@ -9,7 +9,7 @@ class cutsceneperson extends Phaser.Scene {
     }
   
     create() {
-      console.log('We are in the cutscene!');    
+      console.log('Welcome to cutscene 3!\n');    
   
       var style = { font: "16pt Baskerville", fill: "#ffffff", stroke: "#ffffff", strokeThickness: 1.0 , wordWrap: { width: 570, useAdvancedWrap: true } };
       //text
@@ -32,15 +32,15 @@ class cutsceneperson extends Phaser.Scene {
       
     //make the cut scene work!
     this.cutscene = this.add.sprite(0, 0, 'cutscene3').setOrigin(0,0);
-    console.log('animation loaded into scene');
+    //console.log('animation loaded into scene');
     this.anims.create({
       key: 'cutscene3',
       frames: this.anims.generateFrameNumbers('cutscene3', {start: 0, end: 39, first: 0}),
       frameRate: 5
     });
-    console.log('animation has been configured')
+    //console.log('animation has been configured')
     this.cutscene.anims.play('cutscene3', true);
-    console.log('animation has started to play!');
+    //console.log('animation has started to play!');
   
       //create text for 1st level's chosen options
       this.familyframeChoice = this.add.text(game.config.width/2, game.config.height/4, '', style);

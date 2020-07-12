@@ -47,6 +47,12 @@ class Menu extends Phaser.Scene {
       this.turningpage = this.sound.add('turningpage');
       this.chimesound = this.sound.add('chimesound');
 
+      //if(mute == false) { 
+        this.chimesound.play({ 
+          loop: true, 
+          volume: 2
+        }); 
+
 
       //camera fade in n out
       this.cameras.main.once('camerafadeoutcomplete', function (camera) {
@@ -113,15 +119,9 @@ class Menu extends Phaser.Scene {
       //add glow to credits button
       addGlow(this, this.creditsButton, 'creditsGlow');
 
-      if(mute == false) { 
-        this.chimesound.play({ 
-          loop: true, 
-          volume: 2
-        }); 
         this.playButton.on('pointerdown',()=> {
           this.chimesound.stop();
         }); 
-        }
 
 
     //   console.log(this);

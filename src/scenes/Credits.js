@@ -45,7 +45,7 @@ class Credits extends Phaser.Scene {
 		this.playButton.visible = true;
 		this.playButton.setInteractive();
 		this.playButton.on('pointerdown',()=> {
-			console.log('button clicked!');
+			//console.log('button clicked!');
 			if(mute == false) { this.clickSFX.play(); }
 			this.scene.start('menuScene');
 		  });

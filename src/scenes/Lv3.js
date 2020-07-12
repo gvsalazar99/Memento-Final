@@ -54,11 +54,11 @@ class Lv3 extends Phaser.Scene {
 
 	create() {
 
-		console.log('Press 0 to restart the level!');
-		console.log('Press 1 to skip to cutscene! (All word choices randomly chosen!)');
-		console.log('Press 2 to skip to the next level!');
-		console.log('Press 3 to skip a memento\'s story and randomly choose a word choice!');
+		console.log('Welcome to level 3!\n');
+
 		
+		levelOver = false;
+
 		mementoGroup = []; //reset collection of mementos
 		this.previousMemento = null; //memento that was selected before the current
 		this.selectedMemento = null; //current memento being interacted with
@@ -239,7 +239,7 @@ class Lv3 extends Phaser.Scene {
 
 		//switch to cut scene when all options have been chosen from mementos
 		if(mementoGroup.length >= 5 && !levelOver) {
-			console.log('Switching scenes!'); 
+			//console.log('Switching scenes!'); 
 			//this.scene.start('cutsceneperson'); 
 			this.music.stop();
 			endScene(this, 'cutsceneperson');
@@ -250,7 +250,7 @@ class Lv3 extends Phaser.Scene {
 			this.music.stop();
 			this.scene.start(this);	
 		}
-		
+
 		//Press 1 to skip to the cut scene!
 		var one = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ONE);
 		if(Phaser.Input.Keyboard.JustDown(one)) {

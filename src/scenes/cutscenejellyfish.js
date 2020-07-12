@@ -6,7 +6,7 @@ class cutscenejellyfish extends Phaser.Scene {
     this.load.spritesheet('cutscene2', './assets/cutscenes/CutScene2SpriteSheet.png', {frameWidth: 1260, frameHeight: 590, startFrame: 0, endFrame: 39});
   }
   create() {
-    console.log('We are in the cutscene!');    
+    console.log('\nWelcome to cutscene 2!');    
 
     //text
     var style = { font: "16pt Baskerville", fill: "#ffffff", stroke: "#ffffff",strokeThickness: 1.0, wordWrap: { width: 570, useAdvancedWrap: true } };
@@ -28,7 +28,7 @@ class cutscenejellyfish extends Phaser.Scene {
 
     //make the cut scene work!
     this.cutscene = this.add.sprite(0, 0, 'cutscene2').setOrigin(0,0);
-    console.log('animation loaded into scene');
+    //console.log('animation loaded into scene');
     this.anims.create({
       key: 'cutscene2',
       frames: this.anims.generateFrameNumbers('cutscene2', {start: 0, end: 39, first: 0}),

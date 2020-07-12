@@ -46,11 +46,10 @@ class Lv2 extends Phaser.Scene {
 
 	create() {
 
-		console.log('Press 0 to restart the level!');
-		console.log('Press 1 to skip to cutscene! (All word choices randomly chosen!)');
-		console.log('Press 2 to skip to the next level!');
-		console.log('Press 3 to skip a memento\'s story and randomly choose a word choice!');
+		console.log('Welcome to Level 2!\n');
 		
+		levelOver = false;
+
 		mementoGroup = []; //reset collection of mementos
 		this.previousMemento = null; //memento that was selected before the current
 		this.selectedMemento = null; //current memento being interacted with
@@ -210,7 +209,7 @@ class Lv2 extends Phaser.Scene {
 		boxText = this.add.text(480, this.dialogueBox.y + 15, '', { font: "12pt Baskerville", fill: "#000000", stroke: "#000000", wordWrap: { width: 450, useAdvancedWrap: true } });
 		boxText.setText('Again, a distant but familiar place. This is another one of the many lives that I have lived. I should explore the scene and remember what I can about this life.');
 		boxText.visible = true;
-		console.log(boxText);
+		//console.log(boxText);
 
 		//progressbar
 		//progressbar= this.add.sprite(game.config.width/3.58,0, 'progressbar').setOrigin(0, 0).setScale(.35,.32); //this is when its on top
@@ -244,8 +243,7 @@ class Lv2 extends Phaser.Scene {
 		
 		//switch to cut scene when all options have been chosen from mementos
 		if(mementoGroup.length >= 5 && !levelOver) {
-			console.log('Switching scenes!'); 
-			this.scene.start('cutsceneblue'); 
+			//console.log('Switching scenes!'); 
 			endScene(this, 'cutsceneblue');
 		}
 
