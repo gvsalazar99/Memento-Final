@@ -40,11 +40,21 @@ class Lv1 extends Phaser.Scene {
 		this.load.audio('squirrelsound', './assets/audio/squirrelsound.mp3');
 		this.load.audio('flowersound', './assets/audio/forflower.mp3'); //maybe change
 		this.load.audio('littlegirlsound', './assets/audio/kidlaugh.mp3'); 
-
+		//vignettes
+		this.load.image('vignette1', './assets/FullScreen/VignetteOne.PNG');
+		this.load.image('vignette2', './assets/FullScreen/VignetteTwo.png');
+		this.load.image('vignette3', './assets/FullScreen/VignetteThree.png');
+		this.load.image('vignette4', './assets/FullScreen/VignetteFour.png');
+		this.load.image('vignette5', './assets/FullScreen/VignetteFive.png');
 
 	}
 
 	create() {
+
+		console.log('Press 0 to restart the level!');
+		console.log('Press 1 to skip to cutscene! (All word choices randomly chosen!)');
+		console.log('Press 2 to skip to the next level!');
+		console.log('Press 3 to skip a memento\'s story and randomly choose a word choice!');
 		
 		mementoGroup = []; //reset collection of mementos
 
@@ -84,9 +94,6 @@ class Lv1 extends Phaser.Scene {
 		 this.squirrelsound = this.sound.add('squirrelsound');
 		 this.flowersound = this.sound.add('flowersound');
 		 this.littlegirlsound = this.sound.add('littlegirlsound');
-
-
-
 		
 		// //THIS EXIT BUTTON FUNCTIONS AS A RESTART BUTTON  
 		// this.tempLevl2button = this.add.sprite(game.config.width/4,game.config.height/4, 'exitbutton').setScale(0.25,0.25).setOrigin(0);
@@ -109,21 +116,21 @@ class Lv1 extends Phaser.Scene {
 							'...'];
 		this.magnolia.options = ['struggles', 'hardships', 'tough times'];
 		this.magnolia.on('pointerdown',()=> {
-			this.flowersound.play();
+			if(!mute) { this.flowersound.play(); }
 	});
 
-	//tree carving
-	this.carving = new memento(this, 10, 200, 'treecarving').setOrigin(0).setScale(.3);
-	addGlow(this, this.carving, 'carvingGlow');
-	this.carving.makeInteractive();
-	this.carving.text = ['X+A were carved into my bark years ago, yet I struggled for decades to recover from this wound. Their declaration of love marked me as property, but I would eventually learn that I belonged only to myself.',
+		//tree carving
+		this.carving = new memento(this, 10, 200, 'treecarving').setOrigin(0).setScale(.3);
+		addGlow(this, this.carving, 'carvingGlow');
+		this.carving.makeInteractive();
+		this.carving.text = ['X+A were carved into my bark years ago, yet I struggled for decades to recover from this wound. Their declaration of love marked me as property, but I would eventually learn that I belonged only to myself.',
 						'...',
 						'I remember how they set me back years in growth, but despite their disregard for my personal ____________ , I never gave up the effort to bloom my own flowers, and to be the best version of myself.',
 						'...'];
-	this.carving.options = ['trials', 'worries', 'battles']; 
-	this.carving.on('pointerdown',()=> {
-	this.woodsound.play({volume: .1});
-});
+		this.carving.options = ['trials', 'worries', 'battles']; 
+		this.carving.on('pointerdown',()=> {
+			if(!mute) { this.woodsound.play({volume: .1}); }
+	});
 
 		//squirrel
 		this.squirrel = new memento(this, 638, 340, 'squirrel').setOrigin(0).setScale(.64);
@@ -135,7 +142,7 @@ class Lv1 extends Phaser.Scene {
 							'...'];
 		this.squirrel.options = ['ignore', 'forget', 'overlook']; 
 		this.squirrel.on('pointerdown',()=> {
-		this.squirrelsound.play();
+			if(!mute) { this.squirrelsound.play(); }
 	});
 
 	//girl
@@ -148,7 +155,7 @@ class Lv1 extends Phaser.Scene {
 					'...'];
 	this.girl.options = ['power', 'vigor', 'passion']; 
 	this.girl.on('pointerdown',()=> {
-		this.littlegirlsound.play();
+		if(!mute) { this.littlegirlsound.play(); }
 	});
 
 	//butterfly
@@ -161,10 +168,21 @@ class Lv1 extends Phaser.Scene {
 						'...'];
 	this.butterfly.options = ['persevere', 'overcome', 'remain strong']; 
 	this.butterfly.on('pointerdown',()=> {
-	this.starsound.play();
+		if(!mute) { this.starsound.play(); }
 });
 
-	
+		//load vignettes into scene
+		this.vignette1 = this.add.image(0,0, 'vignette1').setOrigin(0,0);
+		this.vignette1.visible = false;
+		this.vignette2 = this.add.image(0,0, 'vignette2').setOrigin(0,0);
+		this.vignette2.visible = false;
+		this.vignette3 = this.add.image(0,0, 'vignette3').setOrigin(0,0);
+		this.vignette3.visible = false;
+		this.vignette4 = this.add.image(0,0, 'vignette4').setOrigin(0,0);
+		this.vignette4.visible = false;
+		this.vignette5 = this.add.sprite(0,0, 'vignette5').setOrigin(0,0);
+		this.vignette5.visible = false;
+
 		//create dialogue box art
 		this.dialogueBox = this.add.sprite(game.config.width/3.5, game.config.height*.2, 'level1box').setOrigin(0).setScale(.32,.32);
 		this.dialogueBox.y = game.config.height/1.07 - this.dialogueBox.displayHeight;
@@ -200,88 +218,63 @@ class Lv1 extends Phaser.Scene {
 		this.progressBall.visible = true;
 
 
-		
+
 	
 		}, this);
   
 		this.cameras.main.fadeOut(2000, 0,0,0);
-
 		
 		var pointer = this.input.activePointer;
-
-		//I AM FOR DEBUGGING, IF YOU DO NOT COMMENT OUT THIS BLOCK, 
-		//I WILL RUIN THE PLAYER EXPERIENCE
-		//mementoGroup = [this.squirrel, this.girl, this.carving, this.butterfly, this.magnolia];
-
-	
 
 	}
 	//end of create()
 		
 	update() {
+		//DEBUGGING
+		// var pointer = this.input.activePointer;
+		// console.log('x: ' + pointer.x + '\n y: ' + pointer.y);
 		//console.log('Ball: (' + this.progressBall.x + ', ' + this.progressBall.y + ')');
-		this.checkProgressBar();
+		
+		checkProgressBar(this);
 
 		//switch to cut scene when all options have been chosen from mementos
-		if(mementoGroup.length >= 5) {
-			console.log('Switching scenes!'); 
-			this.scene.start('cutsceneyellow'); 
-			this.music.stop();
+		if(mementoGroup.length >= 5 && !levelOver) {
+			//DEBIGGING
+			//console.log('Switching scenes!'); 
+			//this.scene.start('cutsceneyellow'); 
+			endScene(this, 'cutsceneyellow');
 		}
 
-
-		var pointer = this.input.activePointer;
-		
-		//console.log('x: ' + pointer.x + '\ny: ' + pointer.y);
-
-		//continue text
-
-		// if(Phaser.Input.Keyboard.JustDown(enterKey) && this.continueButton.alpha == 1) {
-		// 	console.log('conditional met');
-		// 	if(this.selectedMemento.continueCount <=1) {
-		// 		typeText(this, this.selectedMemento.text[2] + '\n\n' + this.selectedMemento.text[3]);
-		// 	}
-		// 	else {
-		// 		this.selectedMemento.displayOptions();
-		// 	}
-		// }
-		var enterKey= this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
-		if(Phaser.Input.Keyboard.JustDown(enterKey)) {
+		var zero = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ZERO);
+		if(Phaser.Input.Keyboard.JustDown(zero)) {
 			this.music.stop();
-			//this.scene.start('Level2');
+			this.scene.start(this);
+		}
+
+		//Press 1 to skip to the cut scene!
+		var one = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ONE);
+		if(Phaser.Input.Keyboard.JustDown(one)) {
+			this.music.stop();
+			fillMementoGroup(this.squirrel, this.girl, this.carving, this.magnolia, this.butterfly);
+			autoPick();
+			this.scene.start('cutsceneyellow');
+		}
+
+		//Press 2 to skip to the next level!
+		var two = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.TWO);
+		if(Phaser.Input.Keyboard.JustDown(two)) {
+			this.music.stop();
 			this.scene.start('Level2');
 		}
-	
-	
+		
+		//Press 3 to autochoose an option for current selected memento
+		var three = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.THREE);
+		if(Phaser.Input.Keyboard.JustDown(three)) {
+			autoPick2(this);
+		}
 	
 	}
 
-//this function updates the progress bar by checking how many memento's have had options chosen
-	checkProgressBar() {
-		let optionsCount = mementoGroup.length;
-
-
-		if (optionsCount == 1) {
-			this.progress1.visible = true;
-			this.progressBall.x = 401;
-				}
-		else if (optionsCount == 2) {
-			this.progress1.visible = false;
-			this.progress2.visible = true;
-			this.progressBall.x = 503;
-		}
-		else if (optionsCount == 3) {
-			this.progress2.visible = false;
-			this.progress3.visible = true;
-			this.progressBall.x = 606;
-		}
-		else if (optionsCount == 4) {
-			this.progress3.visible = false;
-			this.progress4.visible = true;
-			this.progressBall.x = 735;
-		}
-
-	 }
 
 //closes .Scene
 }

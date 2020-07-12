@@ -14,25 +14,8 @@ class cutscenemagnolia extends Phaser.Scene {
     var style = { font: "16pt Baskerville", fill: "#ffffff", stroke: "#ffffff", wordWrap: { width: 570, useAdvancedWrap: true } };
 		//text
 	 // boxText = this.add.text(game.config.height/2, game.config.height/2, '', { font: "14pt Courier", fill: "#00ff00", stroke: "#00ff00", wordWrap: { width: 570, useAdvancedWrap: true } });
-    boxText = this.add.text(game.config.height/2, game.config.height/2, '', style );
-    boxText.setText('[CUT SCENE 1]');
-  	boxText.visible = true;
-
-    this.secCount = 10;
-    this.textTimer = this.time.addEvent({
-      delay: 1300, //ms
-      repeat: this.secCount,
-      callback: () => {
-          boxText.setText('');
-          boxText.setText('[CUT SCENE 1]\nEnds in ' + this.secCount);
-          this.secCount--;
-      },
-      callbackScope: game
-    });  
 
     // //THIS BLOCK IS FOR DEBUGGING ONLY
-    // mementoGroup.forEach(memento => console.log(memento.texture.key));
-    // mementoGroup.find(mementos => mementos.texture.key == 'squirrel').chosenOption = 'I crave the nut';
     // console.log(mementoGroup.find(mementos => mementos.texture.key == 'squirrel').chosenOption);
     // mementoGroup.find(mementos => mementos.texture.key == 'treecarving').chosenOption = 'I speak lies';
     // console.log(mementoGroup.find(mementos => mementos.texture.key == 'treecarving').chosenOption);
@@ -42,6 +25,17 @@ class cutscenemagnolia extends Phaser.Scene {
     // console.log(mementoGroup.find(mementos => mementos.texture.key == 'magnolianew').chosenOption);
     // mementoGroup.find(mementos => mementos.texture.key == 'girlsmall').chosenOption = 'bush did 9/11';
     // console.log(mementoGroup.find(mementos => mementos.texture.key == 'girlsmall').chosenOption);
+
+    //this timer counts down from 10
+    this.seconds = 10;
+    this.textTimer = this.time.addEvent({
+      delay: 1300, //ms
+      repeat: this.seconds,
+      callback: () => {
+        this.seconds--;
+      },
+        callbackScope: game
+    });  
 
 
     //make the cut scene work!
@@ -53,7 +47,7 @@ class cutscenemagnolia extends Phaser.Scene {
       frameRate: 5
     });
     console.log('animation has been configured')
-    this.cutscene.anims.play('cutscene1', true);
+    this.cutscene.anims.play('cutscene1');
     console.log('animation has started to play!');
     
 
@@ -104,13 +98,13 @@ class cutscenemagnolia extends Phaser.Scene {
   update() {
     //this.cutscene.anims.play('cutscene1', true);
 
-    if(this.secCount == -1) {
+    if(this.seconds == -1) {
       this.scene.start('Level2');
     }
 
 		var enterKey= this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
 		if(Phaser.Input.Keyboard.JustDown(enterKey)) {
-			this.music.stop();
+			//this.music.stop();
 			//this.scene.start('Level2');
 			this.scene.start('Level2');
 		}

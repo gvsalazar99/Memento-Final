@@ -34,9 +34,9 @@ class cutscenejellyfish extends Phaser.Scene {
       frames: this.anims.generateFrameNumbers('cutscene2', {start: 0, end: 39, first: 0}),
       frameRate: 5
     });
-    console.log('animation has been configured')
+    //console.log('animation has been configured')
     this.cutscene.anims.play('cutscene2', true);
-    console.log('animation has started to play!');
+    //console.log('animation has started to play!');
     
     //create text for 1st level's chosen options
     this.seahorsesChoice = this.add.text(game.config.width/2, game.config.height/4, '', style);

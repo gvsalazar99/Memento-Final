@@ -45,6 +45,12 @@ class Lv2 extends Phaser.Scene {
 	}
 
 	create() {
+
+		console.log('Press 0 to restart the level!');
+		console.log('Press 1 to skip to cutscene! (All word choices randomly chosen!)');
+		console.log('Press 2 to skip to the next level!');
+		console.log('Press 3 to skip a memento\'s story and randomly choose a word choice!');
+		
 		mementoGroup = []; //reset collection of mementos
 		this.previousMemento = null; //memento that was selected before the current
 		this.selectedMemento = null; //current memento being interacted with
@@ -94,41 +100,6 @@ class Lv2 extends Phaser.Scene {
 		// 	this.music.stop();
 		// });
 		
-		//dialogue box art
-		this.dialogueBox = this.add.sprite(game.config.width/3.5, game.config.height*.2, 'level2box').setOrigin(0).setScale(.32,.32);
-		this.dialogueBox.y = game.config.height/1.07 - this.dialogueBox.displayHeight;	
-
-		//create continue button
-		addContinue(this);
-
-		//create x button
-		//addXButton(this);		
-
-		//Welcoming text!
-		boxText = this.add.text(480, this.dialogueBox.y + 15, '', { font: "12pt Baskerville", fill: "#000000", stroke: "#000000", wordWrap: { width: 450, useAdvancedWrap: true } });
-		boxText.setText('Again, a distant but familiar place. This is another one of the many lives that I have lived. I should explore the scene and remember what I can about this life.');
-		boxText.visible = true;
-		console.log(boxText);
-
-		//progressbar
-		//progressbar= this.add.sprite(game.config.width/3.58,0, 'progressbar').setOrigin(0, 0).setScale(.35,.32); //this is when its on top
-		let progressbar= this.add.sprite(game.config.width*.3, game.config.height*.93, 'progressbarlong').setOrigin(0, 0).setScale(.35,.2); //this is when its at bottom 
-		//color bar
-		this.progress1= this.add.sprite(game.config.width*.3, game.config.height*.92, 'progress1').setOrigin(0, 0).setScale(.35,.2);
-		this.progress1.visible = false;
-		this.progress2= this.add.sprite(game.config.width*.3, game.config.height*.92, 'progress2').setOrigin(0, 0).setScale(.35,.2);
-		this.progress2.visible = false;
-		this.progress3= this.add.sprite(game.config.width*.3, game.config.height*.92, 'progress3').setOrigin(0, 0).setScale(.35,.2);
-		this.progress3.visible = false;
-		this.progress4= this.add.sprite(game.config.width*.3, game.config.height*.92, 'progress4').setOrigin(0, 0).setScale(.35,.2);
-		this.progress4.visible = false;
-		this.progress5= this.add.sprite(game.config.width*.3, game.config.height*.92, 'progress5').setOrigin(0, 0).setScale(.35,.2);
-		this.progress5.visible = false;
-		//little ball for the progress bar!
-		this.progressBall = this.add.sprite(366, 538, 'progressBall').setOrigin(0).setScale(.2, .2);
-		this.progressBall.visible = true;
-		//this.progressBall.texture.key = 'progressBall';
-		//this.progressBall.setInteractive();
 
 
 		// //create continue text prompt
@@ -212,54 +183,101 @@ class Lv2 extends Phaser.Scene {
 			this.starfishsound.play();
 	});
 
+
+		//load vignettes into scene
+		this.vignette1 = this.add.image(0,0, 'vignette1').setOrigin(0,0);
+		this.vignette1.visible = false;
+		this.vignette2 = this.add.image(0,0, 'vignette2').setOrigin(0,0);
+		this.vignette2.visible = false;
+		this.vignette3 = this.add.image(0,0, 'vignette3').setOrigin(0,0);
+		this.vignette3.visible = false;
+		this.vignette4 = this.add.image(0,0, 'vignette4').setOrigin(0,0);
+		this.vignette4.visible = false;
+		this.vignette5 = this.add.sprite(0,0, 'vignette5').setOrigin(0,0);
+		this.vignette5.visible = false;
+
+		//dialogue box art
+		this.dialogueBox = this.add.sprite(game.config.width/3.5, game.config.height*.2, 'level2box').setOrigin(0).setScale(.32,.32);
+		this.dialogueBox.y = game.config.height/1.07 - this.dialogueBox.displayHeight;	
+
+		//create continue button
+		addContinue(this);
+
+		//create x button
+		//addXButton(this);		
+
+		//Welcoming text!
+		boxText = this.add.text(480, this.dialogueBox.y + 15, '', { font: "12pt Baskerville", fill: "#000000", stroke: "#000000", wordWrap: { width: 450, useAdvancedWrap: true } });
+		boxText.setText('Again, a distant but familiar place. This is another one of the many lives that I have lived. I should explore the scene and remember what I can about this life.');
+		boxText.visible = true;
+		console.log(boxText);
+
+		//progressbar
+		//progressbar= this.add.sprite(game.config.width/3.58,0, 'progressbar').setOrigin(0, 0).setScale(.35,.32); //this is when its on top
+		let progressbar= this.add.sprite(game.config.width*.3, game.config.height*.93, 'progressbarlong').setOrigin(0, 0).setScale(.35,.2); //this is when its at bottom 
+		//color bar
+		this.progress1= this.add.sprite(game.config.width*.3, game.config.height*.92, 'progress1').setOrigin(0, 0).setScale(.35,.2);
+		this.progress1.visible = false;
+		this.progress2= this.add.sprite(game.config.width*.3, game.config.height*.92, 'progress2').setOrigin(0, 0).setScale(.35,.2);
+		this.progress2.visible = false;
+		this.progress3= this.add.sprite(game.config.width*.3, game.config.height*.92, 'progress3').setOrigin(0, 0).setScale(.35,.2);
+		this.progress3.visible = false;
+		this.progress4= this.add.sprite(game.config.width*.3, game.config.height*.92, 'progress4').setOrigin(0, 0).setScale(.35,.2);
+		this.progress4.visible = false;
+		this.progress5= this.add.sprite(game.config.width*.3, game.config.height*.92, 'progress5').setOrigin(0, 0).setScale(.35,.2);
+		this.progress5.visible = false;
+		//little ball for the progress bar!
+		this.progressBall = this.add.sprite(366, 538, 'progressBall').setOrigin(0).setScale(.2, .2);
+		this.progressBall.visible = true;
+		//this.progressBall.texture.key = 'progressBall';
+		//this.progressBall.setInteractive();
+
 	}, this);
   
 	this.cameras.main.fadeOut(1000, 0,0,0);
-
 
 	}
 	
 
 	update() {
+		checkProgressBar(this);
+		
 		//switch to cut scene when all options have been chosen from mementos
-		if(mementoGroup.length >= 5) {
+		if(mementoGroup.length >= 5 && !levelOver) {
 			console.log('Switching scenes!'); 
 			this.scene.start('cutsceneblue'); 
-
-			this.music.stop();
+			endScene(this, 'cutsceneblue');
 		}
-		// console.log(boxText._text != 'Rule #2: Don\'t trust anything you\'re told');
-		// boxText._text != 'Rule #2: Don\'t trust anything you\'re told' ? this.memento.alpha = 0 : this.memento.alpha = 1;
-		var enterKey= this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
-		if(Phaser.Input.Keyboard.JustDown(enterKey)) {
+
+		var zero = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ZERO);
+		if(Phaser.Input.Keyboard.JustDown(zero)) {
+			this.music.stop();
+			this.scene.start(this);
+		}		
+	
+		//Press 1 to skip to the cut scene!
+		var one = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ONE);
+		if(Phaser.Input.Keyboard.JustDown(one)) {
+			this.music.stop();
+			fillMementoGroup(this.seahorses, this.seaweed, this.shell, this.fish, this.starfish);
+			autoPick();
+			//this.scene.start('cutsceneblue');
+			endScene(this, 'cutsceneblue');
+		}
+
+		//Press 2 to skip to the next level!
+		var two = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.TWO);
+		if(Phaser.Input.Keyboard.JustDown(two)) {
 			this.music.stop();
 			this.scene.start('Level3');
 		}
-		this.checkProgressBar();
+
+		//Press 3 to autochoose an option for current selected memento
+		var three = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.THREE);
+		if(Phaser.Input.Keyboard.JustDown(three)) {
+			autoPick2(this);
+		}
 	}
 
-	checkProgressBar() {
-		let optionsCount = mementoGroup.length;
-
-		if (optionsCount == 1) {
-			this.progress1.visible = true;
-			this.progressBall.x = 401;
-		}
-		else if (optionsCount == 2) {
-			this.progress1.visible = false;
-			this.progress2.visible = true;
-			this.progressBall.x = 503;
-		}
-		else if (optionsCount == 3) {
-			this.progress2.visible = false;
-			this.progress3.visible = true;
-			this.progressBall.x = 606;
-		}
-		else if (optionsCount == 4) {
-			this.progress3.visible = false;
-			this.progress4.visible = true;
-			this.progressBall.x = 735;
-		}
-	}
 }
 

@@ -1,8 +1,34 @@
-//https://hannemann.itch.io/ui-button-pack-free
-//https://www.bensound.com/royalty-free-music/acoustic-folk
-//http://soundbible.com/1976-Fast-Heel-Walk.html
-//https://www.freesoundeffects.com/searches/chatter/
-//https://www.zapsplat.com/?s=mouse+click&post_type=music&sound-effect-category-id=
+///////////////////////////////////////////////////////////////
+//                                                           //
+//                        Memento                            //
+//                  Completed: 06/08/2020                    //
+//                                                           //
+//                                                           //
+//  Created by:      Grecia Salazar B)                       //
+//                   Gabrielle Serna C:                      //
+//                   Derek Gomez ;P                          //
+//                                                           //
+//  Created for:     CMPM 120 Game Design Experience         //
+//                   UCSC Spring 2020                        //     
+//                                                           //                      
+///////////////////////////////////////////////////////////////
+//                                                           //
+//            WE STOLE CODE FROM THESE PLACES                // 
+//                                                           //       
+//            https://github.com/nathanaltice                //
+//            https://phaser.io/examples/v3                  //
+//            https://github.com/photonstorm/phaser          //
+//                                                           //
+//                                                           //
+//           Audio:                                          //
+//           https://hannemann.itch.io/                      // 
+//           https://www.bensound.com/                       //
+//           http://soundbible.com/                          //
+//           https://www.freesoundeffects.com/               //
+//           https://www.zapsplat.com/                       //
+//                                                           //       
+///////////////////////////////////////////////////////////////
+
 
 
 let config = {
@@ -31,7 +57,61 @@ var mute = false;
 
 
 //collection of mementos in each scene, meant to be erased at the beginning of each scene
+//the player has chosen words for these mementos
 var mementoGroup = [];
+
+//populate mementoGroup with ALL mementos in scene
+function fillMementoGroup(mem1, mem2, mem3, mem4, mem5) {
+    mementoGroup.push(mem1);
+    mementoGroup.push(mem2);
+    mementoGroup.push(mem3);
+    mementoGroup.push(mem4);
+    mementoGroup.push(mem5);
+}
+    
+
+//this function updates the progress bar AND vignettes by checking how many memento's have had options chosen
+function checkProgressBar(scene) {
+	let optionsCount = mementoGroup.length;
+
+
+	if (optionsCount == 1) {
+		scene.vignette1.visible = true;
+
+		scene.progress1.visible = true;
+		scene.progressBall.x = 401;
+				}
+	else if (optionsCount == 2) {
+        scene.vignette2.visible = true;
+        
+		scene.progress1.visible = false;
+		scene.progress2.visible = true;
+        scene.progressBall.x = 503;
+    
+    }
+    
+    else if (optionsCount == 3) {
+		scene.vignette3.visible = true;
+
+		scene.progress2.visible = false;
+		scene.progress3.visible = true;
+		scene.progressBall.x = 606;
+	}
+	else if (optionsCount == 4) {
+		scene.vignette4.visible = true;
+
+		scene.progress3.visible = false;
+		scene.progress4.visible = true;
+		scene.progressBall.x = 735;
+    }
+    
+    else if (optionsCount == 5) {
+        scene.progress4.visible = false;
+        scene.progress5.visible = true;
+        scene.progressBall.x = 900;
+    }
+
+ }
 
 
 //this is the text that is positioned within the dialogue box!
@@ -66,7 +146,7 @@ function addContinue(scene) {
     //define what happens when continue is clicked
     continueButton.on('pointerdown', (pointer, gameObject) => {
         //console.log('conditional met');
-        scene.turningpage.play();
+        if(!mute) { scene.turningpage.play();}
         if(scene.selectedMemento.continueCount <=1) {
             typeText(scene, scene.selectedMemento.text[2] + '\n\n' + scene.selectedMemento.text[3]);
         }
@@ -90,6 +170,26 @@ function addXButton(scene) {
     //xbutton.visible = false;
 }
 
+//this function assigns a random word choice to all the scene's mementos
+//called after fillMementoGroup()
+function autoPick() {
+    mementoGroup.forEach( memento => {
+        randIndex = Math.floor(Math.random() * 3);          //pick a random index between (0-2)
+        memento.chosenOption = memento.options[randIndex]; //use random index to choose an option
+        //DEBUGGING
+        //console.log(memento.texture.key + ' - ' + memento.chosenOption); //print what option each memento was assigned
+    });
+}
+
+function autoPick2(scene) {
+    randIndex = Math.floor(Math.random() * 3);
+    scene.selectedMemento.chosenOption = scene.selectedMemento.options[randIndex];
+    mementoGroup.push(scene.selectedMemento);
+    //execute code as if the x button was pressed
+    xClicked = true;
+    eraseDialogueBox(scene);
+}
+
 
 //this function erases the textBox, continue button, x button, and option text
 function eraseDialogueBox(scene) {
@@ -102,6 +202,38 @@ function eraseDialogueBox(scene) {
     }
 } 
 
+var levelOver = false;
+function endScene(scene, nextScene) {
+    levelOver = true;
+    //take a random image, make it black, and comletely transparent
+    let blackout = scene.add.sprite(0,0, 'mementomenu').setOrigin(0,0);
+    blackout.setTint('ffffff');
+    blackout.alpha = 0;
+
+    //fade in the blackout screen
+    this.blackoutTimer = scene.time.addEvent({
+        delay: 2000, 
+        callback: () => {
+            scene.tweens.add({
+                targets: blackout,
+                alpha: 1,
+                duration: 3000
+            });
+        }
+    });
+
+    //switch scenes in 5 sec
+    this.switchTimer = scene.time.addEvent({
+        delay: 5000, //ms
+        callback: () => {
+            scene.music.stop();
+            scene.scene.start(nextScene);
+        },
+          callbackScope: game
+    });  
+
+
+}
 
 //this function types text into the dialoguebox
 function typeText(scene, str) {
@@ -117,14 +249,16 @@ function typeText(scene, str) {
         delay: 30, //ms
         repeat: str.length -1,
         callback: () => {
-            console.log('typing!');
+            //DEBUGGING
+            //console.logconsole.log('typing!');
 
             //check if xbutton is clicked
             if(xClicked == true) {
                 xClicked = false;         //reset x button
                 boxText.setText("");      //erase text
                 this.textTimer.destroy(); //end typeText()
-                console.log("x button has ended typing");
+                //DEBUGGING
+                //console.log("x button has ended typing");
             }
             
             //Keep typing if a new memento hasn't been clicked
@@ -150,11 +284,13 @@ function typeText(scene, str) {
      
             //finished printing
             if(this.textTimer.getRepeatCount() == 0) {
-                console.log('done typing!');
+                //DEBUGGING
+                //console.log('done typing!');
                 if(scene.selectedMemento != null) {    //if printing text for a memento
                     //console.log(scene.selectedMemento.texture.key + '\'s continues used = ' + scene.selectedMemento.continueCount);
                    if(scene.selectedMemento.continueCount <= 1) { //options have not been displayed yet if displaying memento
-                        console.log('MADE CONTINUE BUTTON VISIBLE');
+                        //DEBUGGING
+                        //console.log('MADE CONTINUE BUTTON VISIBLE');
                         continueButton.alpha = 1; //make continue button visible
                         scene.selectedMemento.continueCount ++;
                    }

@@ -11,7 +11,7 @@ class Credits extends Phaser.Scene {
 	create() {
 		//this is the thank you for playing/ play again scene 
 
-		this.chimesound = this.sound.add('chimesound');
+		this.clickSFX = this.sound.add('mouseclick');
 
 		//camera fade in n out
 		this.cameras.main.once('camerafadeoutcomplete', function (camera) {
@@ -35,7 +35,6 @@ class Credits extends Phaser.Scene {
 
 
 		this.add.text(160, game.config.height*.7, 'Music/Audio:', { font: "20pt Baskerville", fill: "#FFFFFF", stroke: "#FFFFFF", strokeThickness:1.5, wordWrap: { width: 570, useAdvancedWrap: true } });
-
 		this.add.text(350, game.config.height*.7, 'www.bensound.com , soundbible.com , www.freesoundeffects.com , www.zapsplat.com ', { font: "20pt Baskerville", fill: "#FFFFFF", stroke: "#FFFFFF", strokeThickness:1, wordWrap: { width: 570, useAdvancedWrap: true } });
 		
 		
@@ -46,7 +45,8 @@ class Credits extends Phaser.Scene {
 		this.playButton.visible = true;
 		this.playButton.setInteractive();
 		this.playButton.on('pointerdown',()=> {
-			this.chimesound.play();
+			console.log('button clicked!');
+			if(mute == false) { this.clickSFX.play(); }
 			this.scene.start('menuScene');
 		  });
 		//add glow to muted button

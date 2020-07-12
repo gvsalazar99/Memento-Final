@@ -41,7 +41,7 @@ class Menu extends Phaser.Scene {
 
 
     create() { 
-
+      
       //create sound effect
       this.clickSFX = this.sound.add('mouseclick');
       this.turningpage = this.sound.add('turningpage');
@@ -64,7 +64,7 @@ class Menu extends Phaser.Scene {
       this.playButton.setInteractive();
       //switch scenes if play is clicked
       this.playButton.on('pointerdown',()=> {
-        this.clickSFX.play();
+        if(mute == false) { this.clickSFX.play(); }
         this.scene.start('Level1');
       });
       //add glow to playButton
@@ -82,6 +82,7 @@ class Menu extends Phaser.Scene {
         mute = false;              
         this.mutedButton.alpha = 0;   //remove this button visibility
         this.unmutedButton.alpha = 1; //unmuted button is visible
+        this.chimesound.play();
       });
       //add glow to muted button
       addGlow(this, this.mutedButton, 'muteGlow');
@@ -95,6 +96,7 @@ class Menu extends Phaser.Scene {
         mute = true;
         this.unmutedButton.alpha = 0; //remove this button's visibility
         this.mutedButton.alpha = 1;   //muted button is visible
+        this.chimesound.stop();
       });
       //add glow to unmuted button
       addGlow(this, this.unmutedButton, 'unmuteGlow');
@@ -105,7 +107,7 @@ class Menu extends Phaser.Scene {
       this.creditsButton.setInteractive();
       //when credits button is clicked
       this.creditsButton.on('pointerdown',()=> {
-        this.clickSFX.play();
+        if(mute == false) { this.clickSFX.play(); }
         this.scene.start('Credits');
       });      
       //add glow to credits button
@@ -122,7 +124,20 @@ class Menu extends Phaser.Scene {
         }
 
 
-      console.log(this);
+    //   console.log(this);
+
+
+    //   //THIS IS HOW YOU CAN FADE IN/OUT BLACK SCREENS W A TWEEN
+    //   let blackout = this.add.sprite(0,0, 'mementomenu').setOrigin(0,0);
+    //   blackout.setTint('ffffff');
+    //   blackout.alpha = 1;
+    //   console.log(blackout);
+
+    //   this.tweens.add({
+    //     targets: blackout,
+    //     alpha: 0,
+    //     duration: 3000
+    // });
 
       }, this);
       
@@ -140,6 +155,7 @@ class Menu extends Phaser.Scene {
      // this.playButton.on('pointerdown',()=> {
         //this.chimesound.stop();
       //});
+      
       
   
     }

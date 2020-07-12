@@ -53,6 +53,12 @@ class Lv3 extends Phaser.Scene {
 
 
 	create() {
+
+		console.log('Press 0 to restart the level!');
+		console.log('Press 1 to skip to cutscene! (All word choices randomly chosen!)');
+		console.log('Press 2 to skip to the next level!');
+		console.log('Press 3 to skip a memento\'s story and randomly choose a word choice!');
+		
 		mementoGroup = []; //reset collection of mementos
 		this.previousMemento = null; //memento that was selected before the current
 		this.selectedMemento = null; //current memento being interacted with
@@ -66,11 +72,6 @@ class Lv3 extends Phaser.Scene {
 		this.signsound = this.sound.add('signsound');
 		this.breadsound = this.sound.add('breadsound');
 		this.dogsound = this.sound.add('dogsound');
-
-
-
-
-
 		
 		 //play music if unmuted
 		 if(mute == false) { 
@@ -176,8 +177,20 @@ class Lv3 extends Phaser.Scene {
 		});
 
 
+		//load vignettes into scene
+		this.vignette1 = this.add.image(0,0, 'vignette1').setOrigin(0,0);
+		this.vignette1.visible = false;
+		this.vignette2 = this.add.image(0,0, 'vignette2').setOrigin(0,0);
+		this.vignette2.visible = false;
+		this.vignette3 = this.add.image(0,0, 'vignette3').setOrigin(0,0);
+		this.vignette3.visible = false;
+		this.vignette4 = this.add.image(0,0, 'vignette4').setOrigin(0,0);
+		this.vignette4.visible = false;
+		this.vignette5 = this.add.sprite(0,0, 'vignette5').setOrigin(0,0);
+		this.vignette5.visible = false;
 
-		 //progressbar
+
+		//progressbar
 		//let progressbar = this.add.sprite('progressbar');
 		//progressbar= this.add.sprite(game.config.width/3.58,0, 'progressbar').setOrigin(0, 0).setScale(.35,.32); //this is when its on top
 		let progressbar= this.add.sprite(game.config.width*.3, game.config.height*.93, 'progressbarlong').setOrigin(0, 0).setScale(.35,.2); //this is when its at bottom 
@@ -222,42 +235,44 @@ class Lv3 extends Phaser.Scene {
 	}
 
 	update() {
-		//switch to cut scene when all options have been chosen from mementos
-		if(mementoGroup.length >= 5) {
-			console.log('Switching scenes!'); 
-			this.scene.start('cutsceneperson'); 
-			this.music.stop();
-		}	
-		this.checkProgressBar();
+		checkProgressBar(this);
 
-		var enterKey= this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
-		if(Phaser.Input.Keyboard.JustDown(enterKey)) {
+		//switch to cut scene when all options have been chosen from mementos
+		if(mementoGroup.length >= 5 && !levelOver) {
+			console.log('Switching scenes!'); 
+			//this.scene.start('cutsceneperson'); 
+			this.music.stop();
+			endScene(this, 'cutsceneperson');
+		}	
+
+		var zero = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ZERO);
+		if(Phaser.Input.Keyboard.JustDown(zero)) {
+			this.music.stop();
+			this.scene.start(this);	
+		}
+		
+		//Press 1 to skip to the cut scene!
+		var one = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ONE);
+		if(Phaser.Input.Keyboard.JustDown(one)) {
+			this.music.stop();
+			fillMementoGroup(this.dog, this.picture, this.concha, this.menu, this.sign);
+			autoPick();
+			this.scene.start('cutsceneperson');
+		}
+
+		//Press 2 to skip to the next level!
+		var two = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.TWO);
+		if(Phaser.Input.Keyboard.JustDown(two)) {
 			this.music.stop();
 			this.scene.start('Credits');
 		}
+
+		//Press 3 to autochoose an option for current selected memento
+		var three = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.THREE);
+		if(Phaser.Input.Keyboard.JustDown(three)) {
+			autoPick2(this);
+		}
 	}
 
-	checkProgressBar() {
-		let optionsCount = mementoGroup.length;
 
-		if (optionsCount == 1) {
-			this.progress1.visible = true;
-			this.progressBall.x = 401;
-		}
-		else if (optionsCount == 2) {
-			this.progress1.visible = false;
-			this.progress2.visible = true;
-			this.progressBall.x = 503;
-		}
-		else if (optionsCount == 3) {
-			this.progress2.visible = false;
-			this.progress3.visible = true;
-			this.progressBall.x = 606;
-		}
-		else if (optionsCount == 4) {
-			this.progress3.visible = false;
-			this.progress4.visible = true;
-			this.progressBall.x = 735;
-		}
-	}
 }
