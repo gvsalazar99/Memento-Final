@@ -103,17 +103,6 @@ class Lv3 extends Phaser.Scene {
 			this.dogsound.play();
 			});
 
-
-		//dialogue box art
-		this.dialogueBox = this.add.sprite(game.config.width/3.5, 0, 'level3box').setOrigin(0).setScale(.32,.32);
-		this.dialogueBox.y = game.config.height/1.07 - this.dialogueBox.displayHeight;
-
-
-		//text
-		boxText = this.add.text(480, this.dialogueBox.y + 15, '', {font: "12pt Baskerville", fill: "#000000", stroke: "#000000", wordWrap: { width: 450, useAdvancedWrap: true } });
-		boxText.setText('Another distant but familiar place. This is yet another one of the lives that I have lived. I should explore the scene and remember what I can about the life I lived.');
-		boxText.visible = true;
-
 		//create continue button
 		addContinue(this);
 
@@ -189,6 +178,15 @@ class Lv3 extends Phaser.Scene {
 		this.vignette5 = this.add.sprite(0,0, 'vignette5').setOrigin(0,0);
 		this.vignette5.visible = false;
 
+
+		//dialogue box art
+		this.dialogueBox = this.add.sprite(game.config.width/3.5, 0, 'level3box').setOrigin(0).setScale(.32,.32);
+		this.dialogueBox.y = game.config.height/1.07 - this.dialogueBox.displayHeight;
+
+		//text
+		boxText = this.add.text(480, this.dialogueBox.y + 15, '', {font: "12pt Baskerville", fill: "#000000", stroke: "#000000", wordWrap: { width: 450, useAdvancedWrap: true } });
+		boxText.setText('Another distant but familiar place. This is yet another one of the lives that I have lived. I should explore the scene and remember what I can about the life I lived.');
+		boxText.visible = true;
 
 		//progressbar
 		//let progressbar = this.add.sprite('progressbar');
