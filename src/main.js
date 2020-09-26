@@ -195,10 +195,13 @@ function autoPick2(scene) {
 function eraseDialogueBox(scene) {
     boxText.setText("");
     continueButton.visible = false;
+
     //xbutton.visible = false;
     scene.dialogueBox.visible = false;
-    if(scene.selectedMemento.continueCount >= 2) { //if 2 continues have been used, options have been displayed
+    //if(scene.selectedMemento.continueCount >= 2) { //if 2 continues have been used, options have been displayed
+    if(scene.selectedMemento.continueCount >= 1) {  //after optionsBox is added
         scene.selectedMemento.eraseOptions();     //and we need to erase those too
+        scene.optionsBox.visible = false;
     }
 } 
 
@@ -288,7 +291,8 @@ function typeText(scene, str) {
                 //console.log('done typing!');
                 if(scene.selectedMemento != null) {    //if printing text for a memento
                     //console.log(scene.selectedMemento.texture.key + '\'s continues used = ' + scene.selectedMemento.continueCount);
-                   if(scene.selectedMemento.continueCount <= 1) { //options have not been displayed yet if displaying memento
+                   //if(scene.selectedMemento.continueCount <= 1) { //options have not been displayed yet if displaying memento
+                   if(scene.selectedMemento.continueCount < 1) {  //only allow one continue instead of two continues after the optionsBox
                         //DEBUGGING
                         //console.log('MADE CONTINUE BUTTON VISIBLE');
                         continueButton.alpha = 1; //make continue button visible
@@ -298,6 +302,7 @@ function typeText(scene, str) {
                        //if 2 continues have been displayed, then options are being memento's options are on display
                        //and no continue is needed
                        continueButton.alpha = 0;
+                       scene.selectedMemento.displayOptions(); //this line was added after optionsBox was added
                    }
                 }
                 this.textTimer.destroy();

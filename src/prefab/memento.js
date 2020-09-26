@@ -33,8 +33,9 @@ class memento extends Phaser.GameObjects.Sprite {
             this.scene.selectedMemento = this;
 
             //double check no left over options are being displayed
-            if(this.scene.previousMemento != null && this.scene.previousMemento.continueCount >= 2) {
+            if(this.scene.previousMemento != null && this.scene.previousMemento.continueCount >= 1) {
                 this.scene.previousMemento.eraseOptions();
+                this.scene.optionsBox.visible = false;
             }
 
             this.scene.dialogueBox.visible = true;
@@ -55,21 +56,40 @@ class memento extends Phaser.GameObjects.Sprite {
 
     displayOptions() {
         continueButton.alpha = 0; //remove continue button
-        boxText.setText(''); //erase current text
+        //boxText.setText(''); //erase current text
+
+        //slide options box out of text box
+        this.scene.optionsBox.visible = true;
+        this.scene.tweens.add({
+			targets: this.scene.optionsBox,
+			x: 946,
+			duration: 250,
+
+		});
 
         //typeText(this.scene, '[OPTION 1]\n[OPTION 2]\n[OPTION 3]');
+
+        //Throwback to when the options erased the textbox and took an entire textbox up
+        /*
         this.option1 = this.scene.add.text(480, this.scene.dialogueBox.y + 15, this.options[0], { font: "12pt Baskerville", fill: "#000000", stroke: "#000000", strokeThickness: .5, wordWrap: { width: 570, useAdvancedWrap: true } }).setInteractive();
         this.option2 = this.scene.add.text(480, this.scene.dialogueBox.y + 45, this.options[1], { font: "12pt Baskerville", fill: "#000000", stroke: "#000000", strokeThickness: .5, wordWrap: { width: 570, useAdvancedWrap: true } }).setInteractive();
         this.option3 = this.scene.add.text(480, this.scene.dialogueBox.y + 75, this.options[2], { font: "12pt Baskerville", fill: "#000000", stroke: "#000000", strokeThickness: .5, wordWrap: { width: 570, useAdvancedWrap: true } }).setInteractive();
+        */
+        this.option1 = this.scene.add.text(972, this.scene.dialogueBox.y + 15, this.options[0], { font: "14pt Baskerville", fill: "#000000", stroke: "#000000", strokeThickness: .5, wordWrap: { width: 570, useAdvancedWrap: true } }).setInteractive();
+        this.option2 = this.scene.add.text(972, this.scene.dialogueBox.y + 50, this.options[1], { font: "14pt Baskerville", fill: "#000000", stroke: "#000000", strokeThickness: .5, wordWrap: { width: 570, useAdvancedWrap: true } }).setInteractive();
+        this.option3 = this.scene.add.text(972, this.scene.dialogueBox.y + 85, this.options[2], { font: "14pt Baskerville", fill: "#000000", stroke: "#000000", strokeThickness: .5, wordWrap: { width: 570, useAdvancedWrap: true } }).setInteractive();
+        
         this.makeOptionsClickable(this.option1);
         this.makeOptionsClickable(this.option2);
         this.makeOptionsClickable(this.option3);
+
     } 
 
     makeOptionsClickable(option) {
         //when option is clicked
         option.on('pointerdown', (pointer, gameObject) =>{
             console.log(option.text + ' clicked!');
+            boxText.setText(''); //erase current text
             //erase options
             // this.option1.visible = false;
             // this.option2.visible = false;
@@ -85,6 +105,19 @@ class memento extends Phaser.GameObjects.Sprite {
             mementoGroup.forEach(memento => console.log(memento.texture.key));
             console.log('Chosen options so far:');
             mementoGroup.forEach(memento => console.log(memento.chosenOption));
+
+            //slide options box back in!
+            this.scene.optionsBox.visible = false;
+            this.scene.optionsBox.x = 820;
+            /*
+            this.scene.tweens.add({
+                targets: this.scene.optionsBox,
+                x: 820,
+                duration: 250,
+            });
+            */
+
+            
         });
 
         //highlight player option when mouse hovers

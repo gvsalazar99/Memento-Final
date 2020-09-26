@@ -19,6 +19,7 @@ class Lv1 extends Phaser.Scene {
 		//load text box art
 		this.load.image('level1box', 'assets/TextBoxes/LevelOneTextBox (1).PNG');
 		this.load.image('continuebutton', 'assets/TextBoxes/ContinueButton.PNG');
+		this.load.image('optionsBox', 'assets/TextBoxes/HaikuOptionsBox.png');
 		//load x button
 		this.load.image('xbutton', 'assets/TextBoxes/xbutton.png');
 		//load progress bar 
@@ -185,6 +186,8 @@ class Lv1 extends Phaser.Scene {
 		this.vignette5.visible = false;
 
 		//create dialogue box art
+		//DEBUGGING options box
+		this.optionsBox = this.add.sprite(820, game.config.height*.736,'optionsBox').setOrigin(0).setScale(.5,.5);
 		this.dialogueBox = this.add.sprite(game.config.width/3.5, game.config.height*.2, 'level1box').setOrigin(0).setScale(.32,.32);
 		this.dialogueBox.y = game.config.height/1.07 - this.dialogueBox.displayHeight;
 
@@ -218,8 +221,6 @@ class Lv1 extends Phaser.Scene {
 		this.progressBall = this.add.sprite(366, 538, 'progressBall').setOrigin(0).setScale(.2, .2);
 		this.progressBall.visible = true;
 
-
-
 	
 		}, this);
   
@@ -227,14 +228,54 @@ class Lv1 extends Phaser.Scene {
 		
 		var pointer = this.input.activePointer;
 
+
+
 	}
 	//end of create()
+	
+	displayOptions() {
 		
+		if(!this.slide) {
+			this.slide = true;
+		this.tweens.add({
+			targets: this.optionsBox,
+			x: 946,
+			duration: 250,
+
+		});
+
+		}
+
+		else {
+			this.slide = false; 
+			this.tweens.add({
+				targets: this.optionsBox,
+				x: 820,
+				duration: 250,
+			});
+		}
+
+	}
+
 	update() {
 		//DEBUGGING
 		// var pointer = this.input.activePointer;
 		// console.log('x: ' + pointer.x + '\n y: ' + pointer.y);
 		//console.log('Ball: (' + this.progressBall.x + ', ' + this.progressBall.y + ')');
+
+		var five = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.FIVE);
+		if(Phaser.Input.Keyboard.JustDown(five)) {
+			this.selectedMemento.option1.x --;
+			console.log(this.selectedMemento.option1.x);
+
+		}
+		var six = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SIX);
+		if(Phaser.Input.Keyboard.JustDown(six)) {
+			this.selectedMemento.option1.x ++;
+			console.log(this.selectedMemento.option1.x);
+
+		}
+			
 		
 		checkProgressBar(this);
 
@@ -271,6 +312,12 @@ class Lv1 extends Phaser.Scene {
 		var three = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.THREE);
 		if(Phaser.Input.Keyboard.JustDown(three)) {
 			autoPick2(this);
+		}
+
+		//TESTING OPTIONS BOX
+		var four = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.FOUR);
+		if(Phaser.Input.Keyboard.JustDown(four)) {
+			this.displayOptions();
 		}
 	
 	}

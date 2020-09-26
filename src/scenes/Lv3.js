@@ -180,8 +180,12 @@ class Lv3 extends Phaser.Scene {
 
 
 		//dialogue box art
+		this.optionsBox = this.add.sprite(820, game.config.height*.736,'optionsBox').setOrigin(0).setScale(.5,.5);
 		this.dialogueBox = this.add.sprite(game.config.width/3.5, 0, 'level3box').setOrigin(0).setScale(.32,.32);
 		this.dialogueBox.y = game.config.height/1.07 - this.dialogueBox.displayHeight;
+
+		//create continue button
+		addContinue(this);
 
 		//text
 		boxText = this.add.text(480, this.dialogueBox.y + 15, '', {font: "12pt Baskerville", fill: "#000000", stroke: "#000000", wordWrap: { width: 450, useAdvancedWrap: true } });
